@@ -1,3 +1,4 @@
+
 # Copyright (C) 2013-2016, The CyanogenMod Project
 # Copyright (C) 2017, The LineageOS Project
 #
@@ -71,6 +72,13 @@ $(call inherit-product, vendor/omni/config/phone-xxxhdpi-3072-hwui-memory.mk)
 
 # Dalvik overrides
 $(call inherit-product, vendor/omni/config/phone-xxxhdpi-3072-dalvik-heap.mk)
+
+# facelock properties
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.facelock.black_timeout=700 \
+    ro.facelock.det_timeout=2500 \
+    ro.facelock.rec_timeout=3500 \
+    ro.facelock.est_max_time=600
 
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
@@ -231,6 +239,7 @@ PRODUCT_PACKAGES += \
 # Power
 PRODUCT_PACKAGES += \
     power.msm8996
+
 
 # VR
 PRODUCT_PACKAGES += \
