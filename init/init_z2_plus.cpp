@@ -34,6 +34,9 @@
 #include "log.h"
 #include "util.h"
 
+char const *heapminfree;
+char const *heapmaxfree;
+
 static void init_alarm_boot_properties()
 {
     int boot_reason;
@@ -65,6 +68,23 @@ static void init_alarm_boot_properties()
      }
 }
 
+void check_device()
+{
+	struct sysinfo sys;
+
+	sysinfo(&sys);
+
+	if (sys.totalram > 3072ull * 1024 * 1024) {
+		// from - phone-xxxhdpi-4096-dalvik-heap.mk
+		heapminfree = "4m";
+		heapmaxfree = "16m";
+	} else {
+		// from - phone-xxhdpi-3072-dalvik-heap.mk
+		heapminfree = "512k";
+		heapmaxfree = "8m";
+	}
+}
+
 void vendor_load_properties() {
     char device[PROP_VALUE_MAX];
     char rf_version[PROP_VALUE_MAX];
@@ -75,6 +95,15 @@ void vendor_load_properties() {
         return;
 
         property_set("ro.product.model", "Z2 Plus");
+
+	check_device();
+
+	property_set("dalvik.vm.heapstartsize", "8m");
+	property_set("dalvik.vm.heapgrowthlimit", "384m");
+	property_set("dalvik.vm.heapsize", "1024m");
+	property_set("dalvik.vm.heaptargetutilization", "0.75");
+	property_set("dalvik.vm.heapminfree", heapminfree);
+	property_set("dalvik.vm.heapmaxfree", heapmaxfree);
 
     init_alarm_boot_properties();
 }
