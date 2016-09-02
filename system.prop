@@ -85,6 +85,7 @@ persist.media.treble_omx=false
 vendor.audio.flac.sw.decoder.24bit=true
 vendor.audio.use.sw.alac.decoder=true
 vendor.audio.use.sw.ape.decoder=true
+vendor.vidc.enc.disable.pq=true
 
 # NITZ
 persist.rild.nitz_plmn=""
