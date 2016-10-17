@@ -87,6 +87,11 @@ ro.gps.agps_provider=1
 persist.speaker.prot.enable=true
 qcom.hw.aac.encoder=true
 
+# Higher fling velocities to smooth scrolling
+# and provide better responsiveness
+ro.min.fling_velocity=140
+ro.max.fling_velocity=20000
+
 # Media
 flac.sw.decoder.24bit.support=true
 media.aac_51_output_enabled=true
