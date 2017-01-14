@@ -169,6 +169,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
 
+# IMS Shim
+PRODUCT_PACKAGES += \
+    libshims_ims
+
 # IPA Manager
 PRODUCT_PACKAGES += \
     ipacm \
