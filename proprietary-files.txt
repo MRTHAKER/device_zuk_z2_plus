@@ -21,6 +21,9 @@ vendor/lib/libmmcamera_paaf_lib.so
 vendor/lib/libmmcamera_isp_bpc47.so
 vendor/lib/libvoice-svc.so
 vendor/lib/libseemore.so
+vendor/lib/libaptX-1.0.0-rel-Android21-ARMv7A.so
+vendor/lib/libaptXHD-1.0.0-rel-Android21-ARMv7A.so
+vendor/lib/libaptXScheduler.so
 vendor/lib/libTimeService.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/libqomx_jpegenc_pipe.so
