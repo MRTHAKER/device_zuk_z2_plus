@@ -73,6 +73,10 @@ on fs
 
 on boot
 
+    # Set permissions by node reads by dumpstate
+    chmod 0644 /sys/devices/system/cpu/present
+    chmod 0644 /sys/devices/system/cpu/online
+
     # Secure touch
     chmod 0660 /sys/devices/soc/75ba000.i2c/i2c-12/12-004a/secure_touch_enable
     chmod 0440 /sys/devices/soc/75ba000.i2c/i2c-12/12-004a/secure_touch
@@ -695,6 +699,10 @@ on property:sys.boot_completed=1
     write /sys/block/sda/queue/iostats 1
     
     chown media audio /sys/kernel/wcd_cpe0/fw_name
+    
+    # Set permissions for dumpstate nodes
+    chmod 0644 /d/rpm_stats
+    chmod 0644 /d/dpm_master_stats
 
 on property:persist.radio.atfwd.start=false
     stop atfwd
