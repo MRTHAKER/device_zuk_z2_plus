@@ -164,3 +164,8 @@ persist.sys.usb.config=mtp,adb
 #Increase cached app limit
 ro.sys.fw.bg_apps_limit=60
 
+# Higher fling velocities
+# for smoother scrolling and better responsiveness
+ro.min.fling_velocity=160
+ro.max.fling_velocity=20000
+
