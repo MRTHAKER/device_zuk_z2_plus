@@ -149,3 +149,8 @@ persist.fuse_sdcard=true
 
 # TimeService
 persist.timed.enable=true
+
+# Higher fling velocities
+# for smoother scrolling and better responsiveness
+ro.min.fling_velocity=160
+ro.max.fling_velocity=20000
