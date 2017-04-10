@@ -22,6 +22,13 @@ on boot
     write /sys/devices/virtual/graphics/fb0/ct_onoff 1
 
 on enable-low-power
+    # Disable thermal bcl hotplug to switch governor
+    write /sys/module/msm_thermal/core_control/enabled 0
+    write /sys/devices/soc/soc:qcom,bcl/mode "disable"
+    write /sys/devices/soc/soc:qcom,bcl/hotplug_mask 0
+    write /sys/devices/soc/soc:qcom,bcl/hotplug_soc_mask 0
+    write /sys/devices/soc/soc:qcom,bcl/mode "enable"
+
     # Enable Adaptive LMK
 
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
@@ -63,6 +70,17 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif 1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/enable_prediction 1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/powersave_bias 1
+
+    # Re-enable thermal and BCL hotplug
+    write /sys/module/msm_thermal/core_control/enabled 1
+    write /sys/devices/soc/soc:qcom,bcl/mode "disable"
+    write /sys/devices/soc/soc:qcom,bcl/hotplug_mask 12
+    write /sys/devices/soc/soc:qcom,bcl/hotplug_soc_mask 8
+    write /sys/devices/soc/soc:qcom,bcl/mode "enable"
+
+    # Input boost configuration
+    write /sys/module/cpu_boost/parameters/input_boost_freq "0:1324800 2:1324800"
+    write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
     # Setting b.L scheduler parameters
     write /proc/sys/kernel/sched_boost 0
@@ -106,6 +124,11 @@ on enable-low-power
     # Starting io prefetcher service
     start iop
 
+service hvdcp_opti /system/bin/hvdcp_opti
+    class main
+    user root
+    group root
+
 on charger
     write /sys/module/msm_thermal/core_control/cpus_offlined 14
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
@@ -113,11 +136,12 @@ on charger
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
+    wait /dev/block/bootdevice/by-name/system
+    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
+    start hvdcp_opti
 
 on class_start:late_start
     write /proc/sys/kernel/sched_boost 1
-
-
     trigger enable-low-power
 
 on property:init.svc.recovery=running
@@ -128,8 +152,3 @@ on property:dev.bootcomplete=1
 
 
     setprop sys.io.scheduler "bfq"
-    
-# It's set in "bootanimation_main.cpp" when shutdown charging.
-# service "qcom-post-boot" is defined in [init.qcom.rc] on Qcom platform for CPU frequence configuration.
-on property:sys.shutdown_charging=1
-    start qcom-post-boot
