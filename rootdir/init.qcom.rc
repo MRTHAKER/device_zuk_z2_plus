@@ -1011,7 +1011,7 @@ service wifi_fccutild /system/bin/wifi_fccutild
 on property:wifi.fccutild.load.qcacld=true
     insmod /system/lib/modules/qca_cld/qca_cld_wlan.ko con_mode=5
 
-service cnss_diag /system/bin/cnss_diag -q -f
+service cnss_diag /system/bin/cnss_diag -q
     class main
     user root
     group root
