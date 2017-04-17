@@ -18,9 +18,19 @@
 <!-- Camera app resources that may need to be customized
      for different hardware or product builds. -->
 <resources>
+    <!-- Restart preview for back camera onPictureTaken -->
+    <bool name="back_camera_restart_preview_onPictureTaken">true</bool>
+
+    <!-- Restart preview for front camera onPictureTaken -->
+    <bool name="front_camera_restart_preview_onPictureTaken">true</bool>
+
     <!-- hide zsl preference and use whatever devices wants -->
     <bool name="pref_camera_zsl_disabled">true</bool>
 
     <!-- show/hide the advanced features menu -->
     <bool name="enable_advanced_features">true</bool>
+
+    <!-- set custom camera parameter -->
+    <string name="preview_fps_range">30000,30000</string>
+    <bool name="config_iso_auto_tweak">true</bool>
 </resources>
