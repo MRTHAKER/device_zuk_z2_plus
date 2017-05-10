@@ -363,6 +363,7 @@ on post-fs-data
     mkdir /persist/bms 0700 root system
     restorecon_recursive /persist
     mkdir /data/misc/dts 0770 media audio
+    mkdir /persist/display 0770 system graphics
     mkdir /data/usf 0700 system system
     mkdir /data/misc/qvop 0660 system system
     mkdir /data/misc/audio_pp 0771 media audio
@@ -441,7 +442,7 @@ on post-fs-data
 
 
     # Create directory used by display clients
-    mkdir /data/misc/display 0770 system graphics
+    mkdir /data/vendor/display 0770 system graphics
 
     # Create directory for radio
     mkdir /data/vendor/radio 0770 system radio
