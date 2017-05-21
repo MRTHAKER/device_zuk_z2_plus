@@ -132,7 +132,7 @@ PRODUCT_PACKAGES += \
 
 # Doze mode
 PRODUCT_PACKAGES += \
-    ZukDoze
+    OneplusThreeDoze
 
 # Fingerprint
 PRODUCT_PACKAGES += \
