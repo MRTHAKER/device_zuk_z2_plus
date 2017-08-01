@@ -14,3 +14,5 @@ allow sysinit system_block_device:blk_file ioctl;
 allow sysinit proc:file getattr;
 allow sysinit proc_dirty_ratio:file getattr;
 allow sysinit self:capability sys_admin;
+type sysinit, domain;
+type sysinit_exec, exec_type, file_type;
