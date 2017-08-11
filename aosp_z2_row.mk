@@ -20,6 +20,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from z2_row device
 $(call inherit-product, device/zuk/z2_row/device.mk)
 
+# Boot animation resolution
+TARGET_BOOT_ANIMATION_RES := 1080
+
 # Inherit some common AOSP-OMS stuff.
 $(call inherit-product, vendor/aosp/common.mk)
 
