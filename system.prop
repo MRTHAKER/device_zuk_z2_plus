@@ -82,10 +82,6 @@ ro.gps.agps_provider=1
 persist.speaker.prot.enable=true
 qcom.hw.aac.encoder=true
 
-# Higher fling velocities for smooth scrolling and to provide better responsiveness - From HalogenOS Team
-ro.min.fling_velocity=160
-ro.max.fling_velocity=20000
-
 # Media
 flac.sw.decoder.24bit.support=true
 media.aac_51_output_enabled=true
