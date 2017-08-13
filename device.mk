@@ -262,6 +262,7 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl
+
 # Seccomp policy
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:system/vendor/etc/seccomp_policy/mediacodec.policy
@@ -269,6 +270,10 @@ PRODUCT_COPY_FILES += \
 # Subsystem silent restart
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.restart_level=venus,AR6320,slpi,modem,adsp
+
+# Thermal
+PRODUCT_PACKAGES += \
+    thermal.msm8996
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
