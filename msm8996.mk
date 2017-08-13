@@ -131,6 +131,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/calib.cfg:system/etc/calib.cfg
+
 #For android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files
@@ -166,6 +167,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
 	
 # Thermal
+PRODUCT_PACKAGES += \
+    thermal.msm8996
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
 
@@ -248,6 +252,7 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2 \
     rild_socket
+
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
