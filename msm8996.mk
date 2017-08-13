@@ -211,6 +211,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.msm8996
 
+# VR
+PRODUCT_PACKAGES += \
+    vr.msm8996
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml
+
 # QMI
 PRODUCT_PACKAGES += \
     libjson
