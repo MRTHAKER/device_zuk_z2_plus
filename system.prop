@@ -1,29 +1,6 @@
 # Audio
-af.fast_track_multiplier=1
-af.resampler.quality=7
-audio_hal.period_size=192
-audio.dolby.ds2.enabled=false
-audio.dolby.ds2.hardbypass=false
-audio.deep_buffer.media=true
-audio.heap.size.multiplier=7
-audio.offload.buffer.size.kb=64
-audio.offload.gapless.enabled=true
-audio.offload.multiaac.enable=true
-audio.offload.multiple.enabled=false
-audio.offload.passthrough=false
-audio.offload.pcm.16bit.enable=true
-audio.offload.pcm.24bit.enable=true
-audio.offload.track.enable=true
-audio.offload.video=true
-audio.parser.ip.buffer.size=262144
-audio.safx.pbe.enabled=true
-persist.audio.fluence.voicecall=true
-persist.audio.fluence.voicerec=false
-persist.audio.fluence.speaker=true
+audio.offload.min.duration.secs=15
 ro.qc.sdk.audio.fluencetype=fluence
-ro.qc.sdk.audio.ssr=false
-tunnel.audio.encode=false
-use.voice.path.for.pcm.voip=true
 
 # Bluetooth
 bt.max.hfpclient.connections=1
@@ -37,10 +14,20 @@ persist.camera.llc=1
 persist.camera.llnoise=1
 persist.camera.stats.test=0
 camera.disable_zsl_mode=1
+persist.camera.gyro.disable=0
 
 # CNE
 persist.cne.feature=1
 
+# Dalvik properties
+dalvik.vm.heapgrowthlimit=256m
+dalvik.vm.heapstartsize=8m
+dalvik.vm.heapsize=512m
+dalvik.vm.heaptargetutilization=0.75
+dalvik.vm.heapminfree=512k
+dalvik.vm.heapmaxfree=8m
+dalvik.vm.dex2oat-min-free-mem=209715200
+ 
 # Data modules
 persist.data.mode=concurrent
 persist.data.netmgrd.qos.enable=true
@@ -78,6 +65,19 @@ persist.gps.qc_nlp_in_use=1
 persist.loc.nlp_name=com.qualcomm.location
 ro.gps.agps_provider=1
 
+# HWUI properties
+ro.hwui.texture_cache_size=72
+ro.hwui.layer_cache_size=48
+ro.hwui.r_buffer_cache_size=8
+ro.hwui.path_cache_size=32
+ro.hwui.gradient_cache_size=1
+ro.hwui.drop_shadow_cache_size=6
+ro.hwui.texture_cache_flushrate=0.4
+ro.hwui.text_small_cache_width=1024
+ro.hwui.text_small_cache_height=1024
+ro.hwui.text_large_cache_width=2048
+ro.hwui.text_large_cache_height=1024
+
 # Hdmi
 persist.speaker.prot.enable=true
 qcom.hw.aac.encoder=true
@@ -107,6 +107,9 @@ ro.min_freq_4=307200
 ro.sys.fw.bg_apps_limit=60
 ro.vendor.extension_library=libqti-perfd-client.so
 
+# Qualcomm BT aptXHD
+persist.bt.enableAptXHD=true
+
 # Radio
 DEVICE_PROVISIONED=1
 rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
@@ -123,14 +126,12 @@ persist.radio.apm_sim_not_pwdn=1
 persist.radio.custom_ecc=1
 persist.radio.flexmap_type=dds
 persist.radio.force_on_dc=true
-persist.radio.hw_mbn_update=1
 persist.radio.multisim.config=dsds
 persist.radio.primarycard=true
 persist.radio.rat_on=combine
 persist.radio.sib16_support=1
 persist.radio.sw_mbn_volte=1
 persist.radio.sw_mbn_openmkt=1
-persist.radio.sw_mbn_update=1
 
 # RmNet Data
 persist.rmnet.data.enable=true
@@ -148,11 +149,3 @@ persist.fuse_sdcard=true
 
 # TimeService
 persist.timed.enable=true
-
-# ADB
-ro.adb.secure=0
-ro.secure=0
-ro.allow.mock.location=1
-persist.service.adb.enable=1
-persist.service.debuggable=1
-persist.sys.usb.config=mtp,adb
