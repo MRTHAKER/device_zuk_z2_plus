@@ -134,6 +134,7 @@ vendor/lib/libmmosal.so
 vendor/lib/libchromatix_ov8865_zsl_video.so
 vendor/lib/libaudcal.so
 vendor/lib/libmmcamera2_c2d_module.so
+vendor/lib/libqti-iop.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libchromatix_ov8865_common.so
 vendor/lib/libwms.so
@@ -177,6 +178,7 @@ vendor/lib/libmmcamera_isp_pedestal_correct46.so
 vendor/lib/libdisp-aba.so
 vendor/lib/libqcci_legacy.so
 vendor/lib/libdpmctmgr.so
+vendor/lib/libqti_performance.so
 vendor/lib/libaudioalsa.so
 vendor/lib/libCB.so
 vendor/lib/libtzdrmgenprov.so
@@ -545,6 +547,7 @@ bin/imsqmidaemon
 bin/energy-awareness
 bin/rmt_storage
 bin/sensors.qcom
+etc/public.libraries.txt
 etc/dpm/nsrm/NsrmConfiguration.xml
 etc/dpm/dpm.conf
 etc/sensors/hals.conf
@@ -606,6 +609,7 @@ etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb
 etc/permissions/telephonyservice.xml
 etc/permissions/com.qualcomm.location.xml
 etc/permissions/dpmapi.xml
+etc/permissions/com.qualcomm.qti.Performance.xml
 etc/permissions/cneapiclient.xml
 etc/permissions/qcrilhook.xml
 etc/permissions/com.qti.snapdragon.sdk.display.xml
@@ -658,6 +662,7 @@ app/TimeService/TimeService.apk
 framework/qcrilhook.jar
 framework/dpmapi.jar
 framework/com.qti.location.sdk.jar
+framework/QPerformance.jar
 framework/com.qti.snapdragon.sdk.display.jar
 framework/ConnectivityExt.jar
 framework/com.qti.dpmframework.jar
