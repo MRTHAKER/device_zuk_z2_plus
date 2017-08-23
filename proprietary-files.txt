@@ -636,7 +636,6 @@ etc/tfa98xx/shenqi_speech.preset
 etc/tfa98xx/coldboot.patch
 etc/tfa98xx/shenqi_music.eq
 etc/capability.xml
-etc/init.qcom.post_boot.sh
 lib/libmm-qcamera.so
 lib/libvpplibrary.so
 lib/libOmxVpp.so
