@@ -251,7 +251,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2 \
+    libprotobuf-cpp-full \
     rild_socket
+
+# Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl
+>>>>>>> f68b595... oneplus3: Add rild socket shim
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
