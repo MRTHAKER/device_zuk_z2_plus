@@ -63,7 +63,9 @@ PRODUCT_PACKAGES += \\
     qcrilhook \\
     com.qualcomm.qti.Performance.xml \\
     libqti_performance \\
-    QPerformance
+    QPerformance \\
+    ims \\
+    imssettings
 EOF
 
 (cat << EOF) > ../../../$OUTDIR/BoardConfigVendor.mk
