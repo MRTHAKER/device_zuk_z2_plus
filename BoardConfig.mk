@@ -186,6 +186,10 @@ TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
+# Ril
+TARGET_RIL_VARIANT := caf
+USE_DEVICE_SPECIFIC_DATASERVICES := true
+
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 
