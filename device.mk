@@ -157,10 +157,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/sap.conf:system/etc/sap.conf \
     $(LOCAL_PATH)/gps/etc/xtwifi.conf:system/etc/xtwifi.conf
 
-# Graphics
-PRODUCT_PACKAGES += \
-    libsdm-disp-apis
-
 # HIDL
 $(call inherit-product, $(LOCAL_PATH)/hidl.mk)
 
