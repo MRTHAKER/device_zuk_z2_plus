@@ -257,12 +257,21 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl
->>>>>>> f68b595... oneplus3: Add rild socket shim
-
 # Seccomp policy
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:system/vendor/etc/seccomp_policy/mediacodec.policy
 
+# Subsystem silent restart
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.ssr.restart_level=venus,AR6320,slpi,modem,adsp
+
+# Offline charging
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.enable_boot_charger_mode=1 
+
+# FlipFlap
+PRODUCT_PACKAGES += \
+    FlipFlap
 # Wifi
 PRODUCT_PACKAGES += \
     libwpa_client \

@@ -117,7 +117,20 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
+BOARD_CHARGING_CMDLINE_NAME  := "androidboot.mode"
+BOARD_CHARGING_CMDLINE_VALUE := "usb_chg"
+BACKLIGHT_PATH := "/sys/class/leds/lcd-backlight/brightness"
+BLINK_PATH     := "/sys/class/leds/led:rgb_red/blink"
+RED_LED_PATH   := "/sys/class/leds/led:rgb_red/brightness"
+GREEN_LED_PATH := "/sys/class/leds/led:rgb_green/brightness"
+BLUE_LED_PATH  := "/sys/class/leds/led:rgb_blue/brightness"
 
+# CM Hardware
+BOARD_HARDWARE_CLASS += $(VENDOR_PATH)/cmhw
+TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/touch/tp_dev/gesture_on"
+BOARD_USES_CYANOGEN_HARDWARE := true
+BOARD_HARDWARE_CLASS += \
+    hardware/cyanogen/cmhw
 # CNE and DPM
 BOARD_USES_QCNE := true
 
