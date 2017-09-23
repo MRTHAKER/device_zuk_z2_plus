@@ -160,6 +160,10 @@ PRODUCT_COPY_FILES += \
 # HIDL
 $(call inherit-product, $(LOCAL_PATH)/hidl.mk)
 
+# HIDL manifest
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
+
 # IPA Manager
 PRODUCT_PACKAGES += \
     ipacm \
