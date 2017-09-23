@@ -222,7 +222,6 @@ PRODUCT_PACKAGES += \
     libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
-    libOmxVdecHevc \
     libstagefrighthw
 
 # Power
