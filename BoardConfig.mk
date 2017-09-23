@@ -151,6 +151,9 @@ WITH_DEXPREOPT_PIC := true
 endif
 endif
 
+# Filesystem
+TARGET_FS_CONFIG_GEN := $(PLATFORM_PATH)/config.fs
+
 # Init
 # TARGET_INIT_VENDOR_LIB := libinit_z2_row
 # TARGET_RECOVERY_DEVICE_MODULES := libinit_z2_row
