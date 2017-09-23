@@ -66,17 +66,11 @@ ro.panel.mountflip=3
 ro.opa.eligible_device=true
 
 # Graphics
-debug.sf.hw=1
-debug.egl.hw=1
 debug.gralloc.enable_fb_ubwc=1
-dev.pm.dyn_samplingrate=1
-persist.demo.hdmirotationlock=false
+persist.hwc.enable_vds=1
 ro.opengles.version=196609
 ro.sf.lcd_density=480
-persist.sys.wfd.virtual=0
 sdm.perf_hint_window=50
-persist.hwc.enable_vds=1
-sdm.debug.disable_rotator_split=1
 
 # GPS
 persist.gps.qc_nlp_in_use=1
@@ -87,17 +81,13 @@ ro.gps.agps_provider=1
 persist.speaker.prot.enable=true
 qcom.hw.aac.encoder=true
 
-# Higher fling velocities to smooth scrolling
-# and provide better responsiveness
-ro.min.fling_velocity=140
-ro.max.fling_velocity=20000
-
 # Media
 flac.sw.decoder.24bit.support=true
 media.aac_51_output_enabled=true
 mm.enable.smoothstreaming=true
 use.qti.sw.alac.decoder=true
 use.qti.sw.ape.decoder=true
+persist.media.treble_omx=false
 
 # NITZ
 persist.rild.nitz_plmn=""
