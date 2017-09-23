@@ -249,10 +249,6 @@ PRODUCT_PACKAGES += \
     libxml2 \
     rild_socket
 
-# Sensors
-PRODUCT_PACKAGES += \
-    sensors.msm8996
-
 # Wifi
 PRODUCT_PACKAGES += \
     ipacm \
