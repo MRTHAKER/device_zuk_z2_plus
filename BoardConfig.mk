@@ -152,8 +152,8 @@ endif
 endif
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_z2_row
-TARGET_RECOVERY_DEVICE_MODULES := libinit_z2_row
+# TARGET_INIT_VENDOR_LIB := libinit_z2_row
+# TARGET_RECOVERY_DEVICE_MODULES := libinit_z2_row
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 
 # Keystore
