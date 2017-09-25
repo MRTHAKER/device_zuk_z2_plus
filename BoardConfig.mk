@@ -190,7 +190,7 @@ USE_DEVICE_SPECIFIC_DATASERVICES := true
 
 # SELinux
 # include device/qcom/sepolicy/sepolicy.mk
-# BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
 # Tap to wake 
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/touch/tp_dev/gesture_on"
