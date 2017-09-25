@@ -1,1 +1,2 @@
-allow hostapd hostapd:chr_file { read write };
+allowxperm hostapd self:udp_socket ioctl priv_sock_ioctls;
+r_dir_file(hostapd, sysfs_type)
