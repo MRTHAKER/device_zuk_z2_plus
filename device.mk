@@ -117,8 +117,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    SnapdragonCamera \
-    libshim_camera
+    SnapdragonCamera
 
 # Display
 PRODUCT_PACKAGES += \

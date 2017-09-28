@@ -37,8 +37,6 @@ on early-init
 
 on init
 
-export LD_SHIM_LIBS /system/vendor/lib/libmmcamera_ppeiscore.so|libshim_camera.so:/system/vendor/lib/hw/camera.msm8996.so|libshim_camera.so
-
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 
