@@ -20,14 +20,16 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from z2_plus device
 $(call inherit-product, device/zuk/z2_plus/device.mk)
 
-# Boot animation resolution
-TARGET_BOOT_ANIMATION_RES := 1080
 
-# Inherit some common AOSP-OMS stuff.
-$(call inherit-product, vendor/gzosp/config/common_full_phone.mk)
-$(call inherit-product, vendor/gzosp/config/caf_fw.mk)
+# must be before including omni part
+TARGET_BOOTANIMATION_SIZE := 1080x608
 
-PRODUCT_NAME := gzosp_z2_plus
+# Inherit some common OMNI stuff.
+$(call inherit-product, vendor/omni/config/gsm.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+$(call inherit-product, vendor/omni/config/common.mk)
+
+PRODUCT_NAME := omni_z2_plus
 PRODUCT_DEVICE := z2_plus
 PRODUCT_MANUFACTURER := ZUK
 PRODUCT_BRAND := ZUK
