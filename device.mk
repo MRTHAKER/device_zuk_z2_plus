@@ -129,10 +129,6 @@ PRODUCT_PACKAGES += \
 # PRODUCT_PACKAGES += \
 #     ZukDoze
 
-# Dumpstate HAL
-PRODUCT_PACKAGES += \
-    android.hardware.dumpstate@1.0-service.msm8996
-
 # Fingerprint
 PRODUCT_PACKAGES += \
     fingerprint.msm8996
