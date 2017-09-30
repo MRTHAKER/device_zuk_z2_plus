@@ -21,7 +21,6 @@ on boot
     # disable nightmode display
     write /sys/devices/virtual/graphics/fb0/ct_onoff 1
 
-on enable-low-power
     # Disable thermal bcl hotplug to switch governor
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/devices/soc/soc:qcom,bcl/mode "disable"
