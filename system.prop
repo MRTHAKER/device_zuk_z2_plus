@@ -57,6 +57,12 @@ ro.panel.mountflip=3
 # Google
 ro.opa.eligible_device=true
 
+# enable navigation bar
+qemu.hw.mainkeys=0
+
+#Camera fullscreen doesn't show navigation bar
+Camera.no_navigation_bar=true
+
 # Graphics
 debug.gralloc.enable_fb_ubwc=1
 persist.hwc.enable_vds=1
