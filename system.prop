@@ -39,6 +39,7 @@ camera.disable_zsl_mode=1
 
 # CNE
 persist.cne.feature=1
+persist.dpm.feature=11
 
 # Data modules
 persist.data.mode=concurrent
@@ -133,6 +134,15 @@ persist.radio.sib16_support=1
 persist.radio.sw_mbn_volte=1
 persist.radio.sw_mbn_openmkt=1
 persist.radio.sw_mbn_update=1
+
+# IMS
+persist.volte_enabled_by_hw=1
+persist.data.iwlan.enable=true
+persist.dbg.ims_volte_enable=1
+persist.dbg.volte_avail_ovr=1
+persist.dbg.vt_avail_ovr=0
+persist.data.iwlan.enable=true
+persist.dbg.wfc_avail_ovr=0
 
 # RmNet Data
 persist.rmnet.data.enable=true
