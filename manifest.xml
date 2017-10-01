@@ -32,6 +32,18 @@
         <version>1.0</version>
         <interface>
             <name>IVr</name>
+    <hal format="hidl">
+        <name>android.hardware.drm</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ICryptoFactory</name>
+            <instance>widevine</instance>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IDrmFactory</name>
+            <instance>widevine</instance>
             <instance>default</instance>
         </interface>
      </hal>
