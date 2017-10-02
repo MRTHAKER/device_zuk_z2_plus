@@ -142,6 +142,9 @@ persist.data.df.dev_name=rmnet_usb0
 # Storage
 persist.fuse_sdcard=true
 
+# Sdcardfs
+ro.sys.sdcardfs=true
+
 # TimeService
 persist.timed.enable=true
 
