@@ -1801,6 +1801,8 @@
         <ctl name="SLIM_0_RX Channels" value="Two" />
         <ctl name="RX INT7_1 MIX1 INP0" value="RX0" />
         <ctl name="RX INT8_1 MIX1 INP0" value="RX1" />
+        <ctl name="RX0 Digital Volume" value="89" />
+        <ctl name="RX1 Digital Volume" value="89" />
         <ctl name="SpkrLeft COMP Switch" value="1" />
         <ctl name="SpkrRight COMP Switch" value="1" />
         <ctl name="SpkrLeft BOOST Switch" value="1" />
