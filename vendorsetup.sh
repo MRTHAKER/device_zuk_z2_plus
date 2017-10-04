@@ -1,2 +1,0 @@
-add_lunch_combo aosp_z2_row-userdebug
-add_lunch_combo aosp_z2_row-eng
