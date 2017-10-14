@@ -104,7 +104,7 @@ vendor/lib/libQtiTether.so
 vendor/lib/libqti-iop-client.so
 vendor/lib/libquipc_os_api.so
 vendor/lib/hw/sound_trigger.primary.msm8996.so
-vendor/lib/hw/camera.msm8996.so
+vendor/lib/hw/camera.vendor.msm8996.so
 vendor/lib/hw/gatekeeper.msm8996.so
 vendor/lib/hw/keystore.msm8996.so
 vendor/lib/hw/vulkan.msm8996.so
