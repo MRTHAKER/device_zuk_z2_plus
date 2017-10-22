@@ -134,7 +134,7 @@
             64 - Volume rocker
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
-    <integer name="config_deviceHardwareKeys">95</integer> 
+    <!-- <integer name="config_deviceHardwareKeys">95</integer> -->
 
     <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
     <bool name="config_cellBroadcastAppLinks">true</bool>
@@ -480,7 +480,7 @@
     <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
 
     <!-- Whether home button can wake device -->
-    <bool name="config_homeCanWake">true</bool> 
+   <!-- <bool name="config_homeCanWake">true</bool> -->
 
     <!-- Whether notify fingerprint client of successful cancelled authentication -->
     <bool name="config_notifyClientOnFingerprintCancelSuccess">true</bool>
