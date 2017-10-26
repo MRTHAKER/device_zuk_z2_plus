@@ -143,6 +143,7 @@ vendor/lib/libtm_interface.so
 vendor/lib/libmmcamera_isp_chroma_suppress40.so
 vendor/lib/libmmcamera_isp_scaler_viewfinder46.so
 vendor/lib/libchromatix_ov8865_default_preview_none.so
+vendor/lib/libqcmaputils.so
 vendor/lib/sensors.oem.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib/libchromatix_ov8865_video_full.so
@@ -189,6 +190,7 @@ vendor/lib/libchromatix_s5k2m8sx_zsl_preview_dw9767.so
 vendor/lib/lib-rcsjni.so
 vendor/lib/libmmcamera_isp_sce40.so
 vendor/lib/libmmcamera_isp_gic46.so
+vendor/lib/libconfigdb.so
 vendor/lib/libmmcamera_isp_demux40.so
 vendor/lib/libacdbmapper.so
 vendor/lib/lib-imsrcscm.so
@@ -522,7 +524,6 @@ vendor/lib64/liblowi_wifihal_nl.so
 vendor/lib64/libaudiodevarb.so
 vendor/lib64/liblowi_client.so
 vendor/lib64/libFidoSuiJNI.so
-vendor/lib64/libloc_xtra.so
 vendor/lib64/liblqe.so
 vendor/lib64/libOmxAlacDec.so
 vendor/lib64/libril-qc-qmi-1.so
@@ -649,6 +650,7 @@ etc/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/a530v1_pm4.fw
 etc/firmware/a530_zap.b00
 etc/firmware/a540_gpmu.fw2
+etc/xtra_root_cert.pem
 etc/dpm/nsrm/NsrmConfiguration.xml
 etc/dpm/dpm.conf
 etc/data/netmgr_config.xml
@@ -658,6 +660,7 @@ etc/capability.xml
 etc/camera/s5k2m8sx_chromatix.xml
 etc/camera/msm8996_camera.xml
 etc/camera/ov8865_chromatix.xml
+etc/permissions/com.qualcomm.location.vzw_library.xml
 etc/permissions/com.qualcomm.location.xml
 etc/permissions/qti_permissions.xml
 etc/permissions/qcrilhook.xml
@@ -666,16 +669,15 @@ etc/permissions/com.qti.location.sdk.xml
 etc/permissions/cneapiclient.xml
 etc/permissions/ConnectivityExt.xml
 etc/permissions/com.qti.snapdragon.sdk.display.xml
+etc/permissions/izat.xt.srv.xml
 etc/permissions/dpmapi.xml
 etc/permissions/com.qti.dpmframework.xml
 etc/permissions/com.quicinc.cne.xml
 lib64/lib_fpc_tac_shared.so
 lib64/libloc_ds_api.so
-lib64/libloc_eng.so
 lib64/libloc_api_v02.so
 lib64/libextmedia_jni.so
 lib64/libtfa98xx.so
-lib64/libloc_core.so
 bin/rmt_storage
 bin/qmuxd
 bin/mm-qcamera-app
@@ -696,13 +698,16 @@ bin/mm-qcamera-daemon
 bin/loc_launcher
 bin/cnd
 bin/ims_rtp_daemon
+bin/xtwifi-client
 bin/energy-awareness
 bin/radish
 bin/hci_qcomm_init
 bin/netmgrd
+bin/xtwifi-inet-agent
 bin/port-bridge
 bin/adsprpcd
 bin/irsc_util
+bin/ssr_setup
 bin/tftp_server
 bin/sensors.qcom
 bin/iop
@@ -712,6 +717,8 @@ framework/ConnectivityExt.jar
 framework/com.qti.snapdragon.sdk.display.jar
 framework/dpmapi.jar
 framework/tcmclient.jar
+framework/izat.xt.srv.jar
+framework/com.qualcomm.location.vzw_library.jar
 framework/cneapiclient.jar
 framework/qti-telephony-common.jar
 framework/qcrilhook.jar
