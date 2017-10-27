@@ -526,7 +526,6 @@ vendor/lib64/liblowi_wifihal_nl.so
 vendor/lib64/libaudiodevarb.so
 vendor/lib64/liblowi_client.so
 vendor/lib64/libFidoSuiJNI.so
-vendor/lib64/libloc_xtra.so
 vendor/lib64/liblqe.so
 vendor/lib64/libOmxAlacDec.so
 vendor/lib64/libril-qc-qmi-1.so
@@ -656,6 +655,7 @@ etc/firmware/a530_zap.b00
 etc/firmware/a540_gpmu.fw2
 etc/public.libraries.txt
 etc/calib.cfg
+etc/xtra_root_cert.pem
 etc/dpm/nsrm/NsrmConfiguration.xml
 etc/dpm/dpm.conf
 etc/data/netmgr_config.xml
@@ -665,6 +665,7 @@ etc/capability.xml
 etc/camera/s5k2m8sx_chromatix.xml
 etc/camera/msm8996_camera.xml
 etc/camera/ov8865_chromatix.xml
+etc/permissions/com.qualcomm.location.vzw_library.xml
 etc/permissions/com.qualcomm.location.xml
 etc/permissions/qti_permissions.xml
 etc/permissions/qcrilhook.xml
@@ -673,6 +674,7 @@ etc/permissions/com.qti.location.sdk.xml
 etc/permissions/cneapiclient.xml
 etc/permissions/ConnectivityExt.xml
 etc/permissions/com.qti.snapdragon.sdk.display.xml
+etc/permissions/izat.xt.srv.xml
 etc/permissions/dpmapi.xml
 etc/permissions/com.qti.dpmframework.xml
 etc/permissions/com.quicinc.cne.xml
@@ -686,11 +688,9 @@ etc/tfa98xx/TFA9890_N1C3_2_1_1.patch
 etc/tfa98xx/shenqi_music.preset
 lib64/lib_fpc_tac_shared.so
 lib64/libloc_ds_api.so
-lib64/libloc_eng.so
 lib64/libloc_api_v02.so
 lib64/libextmedia_jni.so
 lib64/libtfa98xx.so
-lib64/libloc_core.so
 bin/rmt_storage
 bin/qmuxd
 bin/imsdatadaemon
@@ -709,13 +709,16 @@ bin/mm-qcamera-daemon
 bin/loc_launcher
 bin/cnd
 bin/ims_rtp_daemon
+bin/xtwifi-client
 bin/energy-awareness
 bin/radish
 bin/hci_qcomm_init
 bin/netmgrd
+bin/xtwifi-inet-agent
 bin/port-bridge
 bin/adsprpcd
 bin/irsc_util
+bin/ssr_setup
 bin/tftp_server
 bin/sensors.qcom
 bin/iop
@@ -725,6 +728,8 @@ framework/ConnectivityExt.jar
 framework/com.qti.snapdragon.sdk.display.jar
 framework/dpmapi.jar
 framework/tcmclient.jar
+framework/izat.xt.srv.jar
+framework/com.qualcomm.location.vzw_library.jar
 framework/cneapiclient.jar
 framework/qti-telephony-common.jar
 framework/qcrilhook.jar
