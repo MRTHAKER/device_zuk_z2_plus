@@ -121,9 +121,11 @@ PRODUCT_PACKAGES += \
     gralloc.msm8996 \
     hwcomposer.msm8996 \
     memtrack.msm8996 \
+    memtrack.msm8996 \
     libgenlock \
     liboverlay \
-    libtinyxml
+    libtinyxml \
+    libgpustats
 
 # Doze mode
 # PRODUCT_PACKAGES += \
