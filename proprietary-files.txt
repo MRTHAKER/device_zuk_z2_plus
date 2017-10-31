@@ -109,7 +109,6 @@ vendor/lib/lib-imsvt.so
 vendor/lib/libcneqmiutils.so
 vendor/lib/libnetmgr.so
 vendor/lib/libadreno_utils.so
-vendor/lib/libNimsWrap.so
 vendor/lib/libmmcamera_isp_aec_bg_stats47.so
 vendor/lib/libc2d30-a5xx.so
 vendor/lib/libOmxAacDec.so
@@ -166,7 +165,6 @@ vendor/lib/libmmcamera_isp_hdr46.so
 vendor/lib/libmpbase.so
 vendor/lib/libmmcamera_isp_mce40.so
 vendor/lib/libmmcamera_hvx_add_constant.so
-vendor/lib/libqc-opt.so
 vendor/lib/libtime_genoff.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libmmcamera2_q3a_core.so
@@ -219,7 +217,6 @@ vendor/lib/libmmcamera2_imglib_modules.so
 vendor/lib/libmmcamera_sw2d_lib.so
 vendor/lib/libmmcamera_hvx_zzHDR.so
 vendor/lib/librcc.so
-vendor/lib/libcneconn.so
 vendor/lib/libmmjpeg.so
 vendor/lib/libOmxWmaDec.so
 vendor/lib/libmmcamera_isp_fovcrop_encoder46.so
@@ -303,7 +300,6 @@ vendor/lib64/libOpenCL.so
 vendor/lib64/libgeofence.so
 vendor/lib64/libthermalclient.so
 vendor/lib64/libidl.so
-vendor/lib64/libhwdaphal.so
 vendor/lib64/libsdm-diag.so
 vendor/lib64/libgsl.so
 vendor/lib64/lib_drplugin_server.so
@@ -339,7 +335,6 @@ vendor/lib64/egl/libGLESv1_CM_adreno.so
 vendor/lib64/egl/libGLESv2_adreno.so
 vendor/lib64/libdiag.so
 vendor/lib64/lib-imsSDP.so
-vendor/lib64/libuiblur.so
 vendor/lib64/libsd_sdk_display.so
 vendor/lib64/libprotobuf-cpp-shit.so
 vendor/lib64/libqdp.so
@@ -369,7 +364,6 @@ vendor/lib64/lib-imsvt.so
 vendor/lib64/libcneqmiutils.so
 vendor/lib64/libnetmgr.so
 vendor/lib64/libadreno_utils.so
-vendor/lib64/libNimsWrap.so
 vendor/lib64/libasn1crt.so
 vendor/lib64/libc2d30-a5xx.so
 vendor/lib64/librilqmiservices.so
@@ -406,7 +400,6 @@ vendor/lib64/libconfigdb.so
 vendor/lib64/libGPreqcancel_svc.so
 vendor/lib64/libacdbmapper.so
 vendor/lib64/lib-imsrcscm.so
-vendor/lib64/libqc-opt.so
 vendor/lib64/libtime_genoff.so
 vendor/lib64/libmmcamera2_q3a_core.so
 vendor/lib64/libxml.so
@@ -443,7 +436,6 @@ vendor/lib64/lib-imsdpl.so
 vendor/lib64/libqmi_cci.so
 vendor/lib64/libdataitems.so
 vendor/lib64/librcc.so
-vendor/lib64/libcneconn.so
 vendor/lib64/libOmxWmaDec.so
 vendor/lib64/libcneapiclient.so
 vendor/lib64/liblbs_core.so
@@ -542,7 +534,6 @@ etc/cne/wqeclient/VZW/VZW_profile4.xml
 etc/cne/wqeclient/VZW/VZW_profile1.xml
 etc/cne/wqeclient/VZW/VZW_profile3.xml
 etc/cne/SwimConfig.xml
-etc/dhcpcd/dhcpcd.conf
 etc/firmware/cpp_firmware_v1_8_0.fw
 etc/firmware/cpp_firmware_v1_5_2.fw
 etc/firmware/nvm_tlv_1.3.bin
@@ -594,7 +585,6 @@ etc/firmware/a540_gpmu.fw2
 etc/dpm/nsrm/NsrmConfiguration.xml
 etc/dpm/dpm.conf
 etc/data/netmgr_config.xml
-etc/data/qmi_config.xml
 etc/data/dsi_config.xml
 etc/camera/ov8865_chromatix.xml
 etc/permissions/com.qualcomm.location.vzw_library.xml
@@ -616,7 +606,6 @@ lib64/libloc_api_v02.so
 lib64/libextmedia_jni.so
 lib64/libtfa98xx.so
 bin/rmt_storage
-bin/qmuxd
 bin/imsdatadaemon
 bin/imscmservice
 bin/time_daemon
