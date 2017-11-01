@@ -11,7 +11,6 @@ vendor/lib/libOmxAmrwbplusDec.so
 vendor/lib/libOmxMux.so
 vendor/lib/libsensor_reg.so
 vendor/lib/libdpmctmgr.so
-vendor/lib/libHu.so
 vendor/lib/libmmcamera_ppbase_module.so
 vendor/lib/libacdbloader.so
 vendor/lib/libdsutils.so
@@ -230,7 +229,6 @@ vendor/lib/libmmcamera_isp_linearization40.so
 vendor/lib/libmmcamera2_mct.so
 vendor/lib/lib-imsqimf.so
 vendor/lib/libmmcamera_isp_mesh_rolloff44.so
-vendor/lib/libHui.so
 vendor/lib/libqti-wl.so
 vendor/lib/libqti_performance.so
 vendor/lib/libqmi_client_helper.so
