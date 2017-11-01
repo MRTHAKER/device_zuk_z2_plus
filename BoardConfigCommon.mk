@@ -21,13 +21,9 @@
 # definition file).
 #
 
-#TARGET_BUILD_VARIANT:=user
+VENDOR_PATH := device/zuk/msm8996-common
 
-TARGET_OTA_ASSERT_DEVICE := z2,Z2,z2row,z2_row
-
-PLATFORM_PATH := device/zuk/z2_row
-
-TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH := $(VENDOR_PATH)/include
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msm8996
@@ -38,7 +34,7 @@ TARGET_BOARD_PLATFORM := msm8996
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno530
 
 # Properties
-TARGET_SYSTEM_PROP += $(PLATFORM_PATH)/system.prop
+TARGET_SYSTEM_PROP += $(VENDOR_PATH)/system.prop
 
 # Architecture
 TARGET_ARCH := arm64
@@ -67,7 +63,6 @@ TARGET_KERNEL_APPEND_DTB := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-TARGET_KERNEL_CONFIG := z2_row_defconfig
 TARGET_KERNEL_SOURCE := kernel/zuk/msm8996
 
 # Audio
@@ -93,7 +88,7 @@ USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(PLATFORM_PATH)/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(VENDOR_PATH)/bluetooth
 BOARD_HAS_QCA_BT_ROME := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
@@ -128,11 +123,8 @@ endif
 endif
 
 # Filesystem
-TARGET_FS_CONFIG_GEN := $(PLATFORM_PATH)/config.fs
+TARGET_FS_CONFIG_GEN := $(VENDOR_PATH)/config.fs
 
-# Init
-# TARGET_INIT_VENDOR_LIB := libinit_z2_row
-# TARGET_RECOVERY_DEVICE_MODULES := libinit_z2_row
 
 # Keystore
 TARGET_PROVIDES_KEYMASTER := true
@@ -158,7 +150,7 @@ TARGET_POWERHAL_VARIANT := qcom
 BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/etc/fstab.qcom
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
@@ -168,7 +160,7 @@ USE_DEVICE_SPECIFIC_DATASERVICES := true
 
 # SELinux
 # include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+# BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
 
 # Tap to wake 
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/touch/tp_dev/gesture_on"
@@ -185,6 +177,3 @@ WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-
-# inherit from the proprietary version
--include vendor/zuk/z2_row/BoardConfigVendor.mk

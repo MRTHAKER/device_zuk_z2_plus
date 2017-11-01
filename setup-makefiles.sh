@@ -1,6 +1,6 @@
 #!/bin/bash
 VENDOR=zuk
-DEVICE=z2_row
+DEVICE=msm8996-common
 
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor.mk
@@ -98,8 +98,6 @@ EOF
 # limitations under the License.
 
 LOCAL_PATH := \$(call my-dir)
-
-ifeq (\$(TARGET_DEVICE),$DEVICE)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := libloc_api_v02
@@ -263,5 +261,4 @@ include \$(BUILD_PREBUILT)
 \$(shell mkdir -p \$(PRODUCT_OUT)/proprietary/lib/egl && pushd \$(PRODUCT_OUT)/proprietary/lib > /dev/null && ln -s egl/libEGL_adreno.so libEGL_adreno.so && popd > /dev/null)
 \$(shell mkdir -p \$(PRODUCT_OUT)/proprietary/lib64/egl && pushd \$(PRODUCT_OUT)/proprietary/lib64 > /dev/null && ln -s egl/libEGL_adreno.so libEGL_adreno.so && popd > /dev/null)
 
-endif
 EOF
