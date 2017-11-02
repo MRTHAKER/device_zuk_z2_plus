@@ -73,7 +73,6 @@ persist.loc.nlp_name=com.qualcomm.location
 ro.gps.agps_provider=1
 
 # Hdmi
-persist.speaker.prot.enable=true
 qcom.hw.aac.encoder=true
 
 # Media
