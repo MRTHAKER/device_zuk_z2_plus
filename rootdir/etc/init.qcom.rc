@@ -513,6 +513,12 @@ on post-fs-data
     chown radio radio /data/misc/radio/db_check_done
     chmod 0660 /data/misc/radio/db_check_done
 
+service ril-daemon2 /vendor/bin/hw/rild -c 2
+    class main
+    user radio
+    group radio cache inet misc audio log diag net_raw wifi compass
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
+
 # start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class main
@@ -830,6 +836,12 @@ service ipacm-diag /system/bin/ipacm-diag
     socket ipacm_log_file dgram 660 system net_admin
     group net_admin diag
 
+service ipacm /system/bin/ipacm
+    class main
+    user net_admin
+    group net_admin inet
+    writepid /dev/cpuset/system-background/tasks
+
 service qti /system/vendor/bin/qti
     class main
     user radio
@@ -887,12 +899,6 @@ service loc_launcher /system/bin/loc_launcher
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
-
-service ril-daemon2 /vendor/bin/hw/rild -c 2
-    class main
-    user radio
-    group radio cache inet misc audio log diag net_raw wifi compass
-    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
     class main
