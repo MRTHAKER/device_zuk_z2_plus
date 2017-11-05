@@ -631,7 +631,6 @@ bin/mm-qcamera-daemon
 bin/loc_launcher
 bin/cnd
 bin/ims_rtp_daemon
-bin/xtwifi-client
 bin/energy-awareness
 bin/radish
 bin/hci_qcomm_init
