@@ -63,7 +63,10 @@ ro.opa.eligible_device=true
 # Graphics
 debug.gralloc.enable_fb_ubwc=1
 persist.hwc.enable_vds=1
+persist.camera.preview.ubwc=0
+persist.camera.video.ubwc=0
 ro.opengles.version=196610
+ro.persist.qcapb=1
 ro.sf.lcd_density=480
 sdm.perf_hint_window=50
 
