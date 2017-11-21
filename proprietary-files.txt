@@ -100,13 +100,19 @@ vendor/lib/hw/vulkan.msm8996.so
 vendor/lib/hw/activity_recognition.msm8996.so
 vendor/lib/libmmcamera_isp_bhist_stats44.so
 vendor/lib/libOmxApeDec.so
+vendor/lib/rfsa/adsp/libadsp_hvx_zzhdr_RGGB.so
 vendor/lib/rfsa/adsp/us-syncproximity.so
 vendor/lib/rfsa/adsp/libdspCV_skel.so
 vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
+vendor/lib/rfsa/adsp/libadsp_hvx_skel.so
+vendor/lib/rfsa/adsp/libadsp_hvx_stats.so
 vendor/lib/rfsa/adsp/libapps_mem_heap.so
+vendor/lib/rfsa/adsp/libadsp_hvx_add_constant.so
+vendor/lib/rfsa/adsp/libadsp_hvx_zzhdr_BGGR.so
 vendor/lib/rfsa/adsp/libvpp_frc.so
 vendor/lib/rfsa/adsp/libfastcvadsp.so
 vendor/lib/rfsa/adsp/libvpp_svc_skel.so
+vendor/lib/rfsa/adsp/libadsp_fd_skel.so
 vendor/lib/libvpphvx.so
 vendor/lib/lib-imsvt.so
 vendor/lib/libcneqmiutils.so
@@ -159,6 +165,7 @@ vendor/lib/libmmosal.so
 vendor/lib/libvendorconn.so
 vendor/lib/libadpcmdec.so
 vendor/lib/lib-imscamera.so
+vendor/lib/libadsp_hvx_callback_skel.so
 vendor/lib/lib-rcsjni.so
 vendor/lib/libmmcamera_isp_sce40.so
 vendor/lib/libmmcamera_isp_gic46.so
@@ -254,6 +261,7 @@ vendor/lib/libFidoCrypto.so
 vendor/lib/libbtnv.so
 vendor/lib/libaudiodevarb.so
 vendor/lib/libFidoSuiJNI.so
+vendor/lib/libadsp_hvx_stub.so
 vendor/lib/libmmcamera2_pproc_modules.so
 vendor/lib/libOmxAlacDec.so
 vendor/lib/libsdm-color.so
@@ -496,11 +504,9 @@ vendor/bin/qti
 vendor/bin/qseeproxydaemon
 vendor/bin/thermal-engine
 vendor/bin/pd-mapper
-lib/libmm-omxcore.so
 lib/libmmjpeg_interface.so
 lib/vendor.display.postproc@1.0.so
 lib/libmmcamera_interface.so
-lib/libextmedia_jni.so
 lib/libvpplibrary.so
 lib/libOmxVpp.so
 lib/libtfa98xx.so
