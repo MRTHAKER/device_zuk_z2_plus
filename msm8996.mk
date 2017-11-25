@@ -129,7 +129,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ZukDoze
 
-# For android_filesystem_config.h
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/calib.cfg:system/etc/calib.cfg
+#For android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files
 
