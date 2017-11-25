@@ -132,6 +132,9 @@ PRODUCT_PACKAGES += \
 # PRODUCT_PACKAGES += \
 #     ZukDoze
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/calib.cfg:system/etc/calib.cfg
+
 # Fingerprint
 PRODUCT_PACKAGES += \
     fingerprint.msm8996
