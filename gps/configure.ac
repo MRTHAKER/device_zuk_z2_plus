@@ -45,9 +45,15 @@ PKG_CHECK_MODULES([LOCPLA], [loc-pla])
 AC_SUBST([LOCPLA_CFLAGS])
 AC_SUBST([LOCPLA_LIBS])
 
-PKG_CHECK_MODULES([GPSUTILS], [gps-utils])
-AC_SUBST([GPSUTILS_CFLAGS])
-AC_SUBST([GPSUTILS_LIBS])
+AC_ARG_WITH([libhardware_includes],
+      AC_HELP_STRING([--with-libhardware-includes=@<:@dir@:>@],
+         [Specify the location of the libhardware headers]),
+      [libhardware_incdir=$withval],
+      with_libhardware_includes=no)
+
+if test "x$with_libhardware_includes" != "xno"; then
+   CPPFLAGS="${CPPFLAGS} -I${libhardware_incdir}"
+fi
 
 AC_ARG_WITH([core_includes],
       AC_HELP_STRING([--with-core-includes=@<:@dir@:>@],
@@ -82,9 +88,9 @@ AM_CONDITIONAL(USE_GLIB, test "x${with_glib}" = "xyes")
 
 AC_CONFIG_FILES([ \
         Makefile \
+        utils/Makefile \
         core/Makefile \
-        location/Makefile \
-        gnss/Makefile \
+        loc_api/Makefile \
         loc-hal.pc \
         ])
 
