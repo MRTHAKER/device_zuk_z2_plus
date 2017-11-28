@@ -119,6 +119,7 @@ SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 #DT2W Node
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/touch/tp_dev/gesture_on"
 
+
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
 
@@ -168,6 +169,15 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true
+
+# SDclang
+LLVM_PREBUILTS_PATH := $(realpath $(TOP))/prebuilts/clang/linux-x86/arm-multiarch-linux-android-llvm-3.8/bin
+LLVM_RTLIB_PATH := $(realpath $(TOP))/prebuilts/clang/linux-x86/arm-multiarch-linux-android-llvm-3.8/lib/clang/3.8.2/lib/linux
+CLANG := $(LLVM_PREBUILTS_PATH)/clang
+CLANG_CXX := $(LLVM_PREBUILTS_PATH)/clang++
+LLVM_AS := $(LLVM_PREBUILTS_PATH)/llvm-as
+LLVM_LINK := $(LLVM_PREBUILTS_PATH)/llvm-link
+TARGET_USE_SDCLANG := true
 
 # Vendor init
 TARGET_INIT_VENDOR_LIB := libinit_z2_plus
