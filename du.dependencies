@@ -1,0 +1,7 @@
+[
+ {
+   "repository" : "DirtyUnicorns/android_system_qcom",
+   "target_path": "system/qcom",
+   "branch"     : "o8x-caf"
+}
+]
