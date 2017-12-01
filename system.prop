@@ -152,6 +152,16 @@ ro.sys.sdcardfs=true
 # TimeService
 persist.timed.enable=true
 
+# Google Assistant
+ro.opa.eligible_device=true
+
+# Google WFD settings
+persist.debug.wfd.enable=1
+persist.sys.wfd.virtual=0
+
+# Create zram disk
+ro.vendor.qti.config.zram=true
+
 # ADB
 ro.adb.secure=0
 ro.secure=0
