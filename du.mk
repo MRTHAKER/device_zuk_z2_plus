@@ -24,10 +24,9 @@ $(call inherit-product, device/zuk/z2_plus/device.mk)
 TARGET_BOOT_ANIMATION_RES := 1080
 
 # Inherit some common AOSP-OMS stuff.
-$(call inherit-product, vendor/validus/config/common_full_phone.mk)
-$(call inherit-product, vendor/validus/config/caf_fw.mk)
+$(call inherit-product, vendor/du/config/common_full_phone.mk)
 
-PRODUCT_NAME := validus_z2_plus
+PRODUCT_NAME := du_z2_plus
 PRODUCT_DEVICE := z2_plus
 PRODUCT_MANUFACTURER := ZUK
 PRODUCT_BRAND := ZUK
@@ -45,6 +44,4 @@ TARGET_VENDOR := zuk
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT="ZUK/z2_plus/z2_plus:7.0/NRD90M/2.5.412_170428:user/release-keys" \
     PRIVATE_BUILD_DESC="z2_plus-user 7.0 NRD90M 2.5.412_170428 release-keys"
-# Maintainer info
-PRODUCT_BUILD_PROP_OVERRIDES += \
-DEVICE_MAINTAINERS="Mahek Thaker (MR.HACKER)"
+
