@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.settings.device;
+package com.du.settings.doze;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;
