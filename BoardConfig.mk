@@ -160,8 +160,8 @@ endif
 TARGET_FS_CONFIG_GEN := $(PLATFORM_PATH)/config.fs
 
 # Init
-# TARGET_INIT_VENDOR_LIB := libinit_z2_plus
-# TARGET_RECOVERY_DEVICE_MODULES := libinit_z2_plus
+TARGET_INIT_VENDOR_LIB := libinit_msm8996
+TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8996
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 
 # Keystore
