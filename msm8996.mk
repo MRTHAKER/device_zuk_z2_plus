@@ -122,8 +122,8 @@ PRODUCT_PACKAGES += \
     memtrack.msm8996
 
 # Doze mode
-# PRODUCT_PACKAGES += \
-#     ZukDoze
+PRODUCT_PACKAGES += \
+    ZukDoze
 
 # Fingerprint
 PRODUCT_PACKAGES += \
