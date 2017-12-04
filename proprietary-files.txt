@@ -491,6 +491,7 @@ vendor/bin/perfd
 vendor/bin/slim_daemon
 vendor/bin/qti
 vendor/bin/qseeproxydaemon
+vendor/bin/xtwifi-client
 vendor/bin/thermal-engine
 vendor/bin/pd-mapper
 lib/libmmjpeg_interface.so
