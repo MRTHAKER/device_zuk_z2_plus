@@ -135,10 +135,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/calib.cfg:system/etc/calib.cfg
 
-# Doze mode
-PRODUCT_PACKAGES += \
-    ZukDoze
-
 # Fingerprint
 PRODUCT_PACKAGES += \
     fingerprint.msm8996
