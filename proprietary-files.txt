@@ -621,7 +621,6 @@ bin/btnvtool
 bin/imsqmidaemon
 bin/msm_irqbalance
 bin/pm-service
-bin/ipacm-diag
 bin/qseecomd
 bin/dpmd
 bin/mm-qcamera-daemon
