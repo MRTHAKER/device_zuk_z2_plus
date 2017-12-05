@@ -19,7 +19,6 @@
 #include "DumpstateDevice.h"
 
 #include <android-base/properties.h>
-#include <android-base/unique_fd.h>
 #include <cutils/properties.h>
 #include <libgen.h>
 #include <log/log.h>
@@ -43,7 +42,9 @@ namespace dumpstate {
 namespace V1_0 {
 namespace implementation {
 
-void DumpstateDevice::dumpModem(int fd, int fdModem)
+namespace {
+
+static void getModemLogs(int fd)
 {
     bool modemLogsEnabled = 0;
     std::string modemLogDir = android::base::GetProperty(MODEM_LOG_LOC_PROPERTY, "");
@@ -81,41 +82,19 @@ void DumpstateDevice::dumpModem(int fd, int fdModem)
                 RunCommandToFd(fd, "TAR LOG", { "/vendor/bin/sh", "-c", modemLogTarCmd.c_str()}, options);
                 std::string modemLogPermCmd= "/vendor/bin/chmod a+rw " + modemLogCombined;
                 RunCommandToFd(fd, "CHG PERM", { "/vendor/bin/sh", "-c", modemLogPermCmd.c_str()}, options);
-
-                std::vector<uint8_t> buffer(65536);
-                android::base::unique_fd fdLog(TEMP_FAILURE_RETRY(open(modemLogCombined.c_str(), O_RDONLY | O_CLOEXEC | O_NONBLOCK)));
-
-                if (fdLog >= 0) {
-                    while (1) {
-                        ssize_t bytes_read = TEMP_FAILURE_RETRY(read(fdLog, buffer.data(), buffer.size()));
-
-                        if (bytes_read == 0) {
-                            break;
-                        } else if (bytes_read < 0) {
-                            ALOGD("read(%s): %s\n", modemLogCombined.c_str(), strerror(errno));
-                            break;
-                        }
-
-                        ssize_t result = TEMP_FAILURE_RETRY(write(fdModem, buffer.data(), bytes_read));
-
-                        if (result != bytes_read) {
-                            ALOGD("Failed to write %ld bytes, actually written: %ld", bytes_read, result);
-                            break;
-                        }
-                    }
-                }
-
                 std::string modemLogClearCmd= "/vendor/bin/rm -r " + modemLogAllDir;
                 RunCommandToFd(fd, "RM MODEM DIR", { "/vendor/bin/sh", "-c", modemLogClearCmd.c_str()}, options);
-                RunCommandToFd(fd, "RM LOG", { "/vendor/bin/rm", modemLogCombined.c_str()}, options);
             }
         }
     }
 }
 
+} // unnamed namespace
+
+
 // Methods from ::android::hardware::dumpstate::V1_0::IDumpstateDevice follow.
 Return<void> DumpstateDevice::dumpstateBoard(const hidl_handle& handle) {
-    if (handle == nullptr || handle->numFds < 1) {
+    if (handle->numFds < 1) {
         ALOGE("no FDs\n");
         return Void();
     }
@@ -126,14 +105,7 @@ Return<void> DumpstateDevice::dumpstateBoard(const hidl_handle& handle) {
         return Void();
     }
 
-    if (handle->numFds < 2) {
-        ALOGE("no FD for modem\n");
-    }
-    else {
-        int fdModem = handle->data[1];
-        dumpModem(fd, fdModem);
-    }
-
+    getModemLogs(fd);
     DumpFileToFd(fd, "CPU present", "/sys/devices/system/cpu/present");
     DumpFileToFd(fd, "CPU online", "/sys/devices/system/cpu/online");
     DumpFileToFd(fd, "INTERRUPTS", "/proc/interrupts");

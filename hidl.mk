@@ -50,7 +50,7 @@ PRODUCT_PACKAGES += \
 
 # Dumpstate HAL
 PRODUCT_PACKAGES += \
-    android.hardware.dumpstate@1.0-service.zuk_z2
+    android.hardware.dumpstate@1.0-service.msm8996
 
 # Fingerprint
 PRODUCT_PACKAGES += \
