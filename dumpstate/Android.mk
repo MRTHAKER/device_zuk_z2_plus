@@ -16,8 +16,8 @@
 
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
-LOCAL_MODULE := android.hardware.dumpstate@1.0-service.msm8996
-LOCAL_INIT_RC := android.hardware.dumpstate@1.0-service.msm8996.rc
+LOCAL_MODULE := android.hardware.dumpstate@1.0-service.zuk_z2
+LOCAL_INIT_RC := android.hardware.dumpstate@1.0-service.zuk_z2.rc
 LOCAL_MODULE_RELATIVE_PATH := hw
 
 LOCAL_SRC_FILES := \
