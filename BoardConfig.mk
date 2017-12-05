@@ -184,6 +184,7 @@ BOARD_FLASH_BLOCK_SIZE := 262144
 
 # QCOM Power
 TARGET_POWERHAL_VARIANT := none
+TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
