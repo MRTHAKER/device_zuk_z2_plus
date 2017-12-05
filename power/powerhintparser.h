@@ -1,4 +1,4 @@
-/* Copyright (c) 2012, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2016, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -27,43 +27,22 @@
  *
  */
 
-#define ATTRIBUTE_VALUE_DELIM ('=')
-#define ATTRIBUTE_STRING_DELIM (";")
+#ifndef __POWERHINTPARSER__
+#define __POWERHINTPARSER__
 
-#define METADATA_PARSING_ERR (-1)
-#define METADATA_PARSING_CONTINUE (0)
-#define METADATA_PARSING_DONE (1)
+#define POWERHINT_XML      "/system/etc/powerhint.xml"
+#define MAX_HINT 6
+#define MAX_PARAM 30
 
-#define MIN(x,y) (((x)>(y))?(y):(x))
+typedef struct perflock_param_t {
+    int type;
+    int numParams;
+    int paramList[MAX_PARAM];//static limit on number of hints - 15
+}perflock_param_t;
 
-struct video_encode_metadata_t {
-    int hint_id;
-    int state;
-};
+static perflock_param_t powerhint[MAX_HINT];
 
-struct video_decode_metadata_t {
-    int hint_id;
-    int state;
-};
+int parsePowerhintXML();
+int *getPowerhint(int, int*);
 
-struct audio_metadata_t {
-    int hint_id;
-    int state;
-};
-
-struct cam_preview_metadata_t {
-    int hint_id;
-    int state;
-};
-
-int parse_metadata(char *metadata, char **metadata_saveptr,
-    char *attribute, int attribute_size, char *value,
-    unsigned int value_size);
-int parse_video_encode_metadata(char *metadata,
-    struct video_encode_metadata_t *video_encode_metadata);
-int parse_video_decode_metadata(char *metadata,
-    struct video_decode_metadata_t *video_decode_metadata);
-int parse_audio_metadata(char *metadata,
-    struct audio_metadata_t *audio_metadata);
-int parse_cam_preview_metadata(char *metadata,
-    struct cam_preview_metadata_t *video_decode_metadata);
+#endif /* __POWERHINTPARSER__ */

@@ -182,10 +182,9 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3154116608
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 57436708864
 BOARD_FLASH_BLOCK_SIZE := 262144
 
-# zuk Power HAL
-TARGET_POWERHAL_VARIANT := z2_plus
-TARGET_USES_INTERACTION_BOOST := true
-TARGET_PROVIDES_POWERHAL := true
+# QCOM Power
+TARGET_POWERHAL_VARIANT := none
+
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
@@ -199,13 +198,12 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 # Ril
 TARGET_RIL_VARIANT := caf
-
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
-# D2TW
--TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
+# Tap to wake 
+TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/touch/tp_dev/gesture_on"
 
 # Timeservice
 BOARD_USES_QC_TIME_SERVICES := true
