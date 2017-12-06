@@ -26,7 +26,6 @@ use.voice.path.for.pcm.voip=true
 
 # Bluetooth
 bt.max.hfpclient.connections=1
-persist.bt.enableAptXHD=true
 qcom.bluetooth.soc=rome
 ro.bluetooth.emb_wp_mode=true
 ro.bluetooth.wipower=true
