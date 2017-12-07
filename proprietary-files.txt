@@ -577,6 +577,8 @@ lib/libsdm-disp-apis.so
 lib/libtfa98xx.so
 lib/libmm-qcamera.so
 lib/libqomx_core.so
+lib/libaptXHD_encoder.so
+lib/libaptX_encoder.so
 etc/sensors/sensor_def_qcomdev.conf
 etc/acdbdata/MTP/MTP_General_cal.acdb
 etc/acdbdata/MTP/MTP_Handset_cal.acdb
@@ -705,6 +707,8 @@ lib64/lib-imsvideocodec.so
 lib64/libadsprpc.so
 lib64/libimscamera_jni.so
 lib64/libimsmedia_jni.so
+lib64/libaptXHD_encoder.so
+lib64/libaptX_encoder.so
 lib64/libsdm-disp-apis.so
 bin/rmt_storage
 bin/qmuxd

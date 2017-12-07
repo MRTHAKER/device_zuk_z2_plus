@@ -25,6 +25,9 @@ tunnel.audio.encode=false
 use.voice.path.for.pcm.voip=true
 
 # Bluetooth
+persistent.bt.a2dp_offload_cap=sbc-aptx-aptXHD
+persist.service.btui.use_aptx=1
+persist.bt.enableAptXHD=true
 bt.max.hfpclient.connections=1
 qcom.bluetooth.soc=rome
 ro.bluetooth.emb_wp_mode=true
