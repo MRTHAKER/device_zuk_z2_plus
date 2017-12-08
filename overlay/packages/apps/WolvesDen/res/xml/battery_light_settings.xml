@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  Copyright (C) 2014-2016 The Dirty Unicorns Project
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+    <com.gzr.wolvesden.preference.SystemSettingSwitchPreference
+        android:key="battery_light_allow_on_dnd"
+        android:title="@string/battery_light_allow_on_dnd_title"
+        android:defaultValue="false" />
+
+    <com.gzr.wolvesden.preference.SystemSettingSwitchPreference
+        android:key="battery_light_low_blinking"
+        android:title="@string/battery_light_low_blinking_title"
+        android:defaultValue="false" />
+
+    <PreferenceCategory
+        android:key="battery_light_cat"
+        android:title="@string/battery_light_cat">
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="battery_light_low_color"
+            android:title="@string/battery_light_low_color"
+            settings:defaultColorValue="0xFFFF0000" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="battery_light_medium_color"
+            android:title="@string/battery_light_medium_color"
+            settings:defaultColorValue="0xFFFFFF00" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="battery_light_full_color"
+            android:title="@string/battery_light_full_color"
+            settings:defaultColorValue="0xFF00FF00" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="battery_light_reallyfull_color"
+            android:title="@string/battery_light_reallyfull_color"
+            settings:defaultColorValue="0xFF00FF00" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
