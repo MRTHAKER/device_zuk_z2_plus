@@ -289,10 +289,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# MSM IRQ Balancer configuration file
-PRODUCT_COPY_FILES += \
-    configs/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
-
 # Thermal
 PRODUCT_PACKAGES += \
     thermal.msm8996
