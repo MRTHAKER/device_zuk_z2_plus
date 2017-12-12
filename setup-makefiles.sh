@@ -1,6 +1,6 @@
 #!/bin/bash
 VENDOR=zuk
-DEVICE=msm8996-common
+DEVICE=z2_plus
 
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor.mk
@@ -19,10 +19,8 @@ MAKEFILE=../../../$OUTDIR/$DEVICE-vendor.mk
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 PRODUCT_COPY_FILES += \\
 EOF
-
 LINEEND=" \\"
 COUNT=`wc -l proprietary-files.txt | awk {'print $1'}`
 DISM=`egrep -c '(^#|^$)' proprietary-files.txt`
@@ -43,12 +41,9 @@ for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
     echo "    $OUTDIR/proprietary/$FILE:system/$FILE$LINEEND" >> $MAKEFILE
   fi
 done
-
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor.mk
-
 (cat << EOF) >> $MAKEFILE
-
 PRODUCT_PACKAGES += \\
     libloc_api_v02 \\
     libsdm-disp-vndapis \\
@@ -67,7 +62,6 @@ PRODUCT_PACKAGES += \\
     ims \\
     imssettings
 EOF
-
 (cat << EOF) > ../../../$OUTDIR/BoardConfigVendor.mk
 # Copyright (C) 2016 The CyanogenMod Project
 #
@@ -83,7 +77,6 @@ EOF
 # See the License for the specific language governing permissions and
 # limitations under the License.
 EOF
-
 (cat << EOF) > ../../../$OUTDIR/Android.mk
 # Copyright (C) 2016 The CyanogenMod Project
 #
@@ -98,9 +91,7 @@ EOF
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 LOCAL_PATH := \$(call my-dir)
-
 include \$(CLEAR_VARS)
 LOCAL_MODULE := libloc_api_v02
 LOCAL_MODULE_OWNER := zuk
@@ -110,7 +101,6 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_MODULE_SUFFIX := .so
 include \$(BUILD_PREBUILT)
-
 include \$(CLEAR_VARS)
 LOCAL_MODULE := libtime_genoff
 LOCAL_MODULE_OWNER := zuk
@@ -122,7 +112,6 @@ LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_MODULE_SUFFIX := .so
 LOCAL_PROPRIETARY_MODULE := true
 include \$(BUILD_PREBUILT)
-
 include \$(CLEAR_VARS)
 LOCAL_MODULE := datastatusnotification
 LOCAL_MODULE_OWNER := zuk
@@ -133,7 +122,6 @@ LOCAL_MODULE_CLASS := APPS
 LOCAL_DEX_PREOPT := false
 LOCAL_MODULE_SUFFIX := .apk
 include \$(BUILD_PREBUILT)
-
 include \$(CLEAR_VARS)
 LOCAL_MODULE := QtiTelephonyService
 LOCAL_MODULE_OWNER := zuk
@@ -144,7 +132,6 @@ LOCAL_MODULE_CLASS := APPS
 LOCAL_DEX_PREOPT := false
 LOCAL_MODULE_SUFFIX := .apk
 include \$(BUILD_PREBUILT)
-
 include \$(CLEAR_VARS)
 LOCAL_MODULE := shutdownlistener
 LOCAL_MODULE_OWNER := zuk
@@ -155,7 +142,6 @@ LOCAL_MODULE_CLASS := APPS
 LOCAL_DEX_PREOPT := false
 LOCAL_MODULE_SUFFIX := .apk
 include \$(BUILD_PREBUILT)
-
 include \$(CLEAR_VARS)
 LOCAL_MODULE := TimeService
 LOCAL_MODULE_OWNER := zuk
@@ -166,7 +152,6 @@ LOCAL_MODULE_CLASS := APPS
 LOCAL_DEX_PREOPT := false
 LOCAL_MODULE_SUFFIX := .apk
 include \$(BUILD_PREBUILT)
-
 include \$(CLEAR_VARS)
 LOCAL_MODULE := CNEService
 LOCAL_MODULE_OWNER := zuk
@@ -178,7 +163,6 @@ LOCAL_DEX_PREOPT := false
 LOCAL_MODULE_SUFFIX := .apk
 LOCAL_PRIVILEGED_MODULE := true
 include \$(BUILD_PREBUILT)
-
 include \$(CLEAR_VARS)
 LOCAL_MODULE := com.qualcomm.location
 LOCAL_MODULE_OWNER := zuk
@@ -190,7 +174,6 @@ LOCAL_DEX_PREOPT := false
 LOCAL_MODULE_SUFFIX := .apk
 LOCAL_PRIVILEGED_MODULE := true
 include \$(BUILD_PREBUILT)
-
 include \$(CLEAR_VARS)
 LOCAL_MODULE := qcrilmsgtunnel
 LOCAL_MODULE_OWNER := zuk
@@ -202,7 +185,6 @@ LOCAL_DEX_PREOPT := false
 LOCAL_MODULE_SUFFIX := .apk
 LOCAL_PRIVILEGED_MODULE := true
 include \$(BUILD_PREBUILT)
-
 include \$(CLEAR_VARS)
 LOCAL_MODULE := colorservice
 LOCAL_MODULE_OWNER := zuk
@@ -214,7 +196,6 @@ LOCAL_DEX_PREOPT := false
 LOCAL_MODULE_SUFFIX := .apk
 LOCAL_PROPRIETARY_MODULE := true
 include \$(BUILD_PREBUILT)
-
 include \$(CLEAR_VARS)
 LOCAL_MODULE := qcrilhook
 LOCAL_MODULE_OWNER := zuk
@@ -223,7 +204,6 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := JAVA_LIBRARIES
 LOCAL_MODULE_SUFFIX := .jar
 include \$(BUILD_PREBUILT)
-
 include \$(CLEAR_VARS)
 LOCAL_MODULE := imssettings
 LOCAL_MODULE_OWNER := zuk
@@ -235,7 +215,6 @@ LOCAL_DEX_PREOPT := false
 LOCAL_MODULE_SUFFIX := .apk
 LOCAL_PROPRIETARY_MODULE := true
 include \$(BUILD_PREBUILT)
-
 include \$(CLEAR_VARS)
 LOCAL_MODULE := ims
 LOCAL_MODULE_OWNER := zuk
@@ -247,7 +226,6 @@ LOCAL_DEX_PREOPT := false
 LOCAL_MODULE_SUFFIX := .apk
 LOCAL_PROPRIETARY_MODULE := true
 include \$(BUILD_PREBUILT)
-
 include \$(CLEAR_VARS)
 LOCAL_MODULE := libsdm-disp-vndapis
 LOCAL_MODULE_OWNER := zuk
@@ -259,7 +237,6 @@ LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_MODULE_SUFFIX := .so
 LOCAL_PROPRIETARY_MODULE := true
 include \$(BUILD_PREBUILT)
-
 include \$(CLEAR_VARS)
 LOCAL_MODULE := libgpustats
 LOCAL_MODULE_OWNER := zuk
@@ -271,8 +248,6 @@ LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_MODULE_SUFFIX := .so
 LOCAL_PROPRIETARY_MODULE := true
 include \$(BUILD_PREBUILT)
-
 \$(shell mkdir -p \$(PRODUCT_OUT)/proprietary/lib/egl && pushd \$(PRODUCT_OUT)/proprietary/lib > /dev/null && ln -s egl/libEGL_adreno.so libEGL_adreno.so && popd > /dev/null)
 \$(shell mkdir -p \$(PRODUCT_OUT)/proprietary/lib64/egl && pushd \$(PRODUCT_OUT)/proprietary/lib64 > /dev/null && ln -s egl/libEGL_adreno.so libEGL_adreno.so && popd > /dev/null)
-
 EOF

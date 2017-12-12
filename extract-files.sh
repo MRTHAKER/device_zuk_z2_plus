@@ -1,6 +1,6 @@
 #!/bin/bash
 VENDOR=zuk
-DEVICE=msm8996-common
+DEVICE=z2_plus
 
 function extract() {
     for FILE in `egrep -v '(^#|^$)' $1`; do

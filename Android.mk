@@ -26,8 +26,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter z2_plus z2_row,$(TARGET_DEVICE)),)
-
+ifeq ($(TARGET_DEVICE),z2_plus)
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
 include $(CLEAR_VARS)
