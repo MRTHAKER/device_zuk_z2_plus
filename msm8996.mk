@@ -129,10 +129,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ZukDoze
 
-# Fingerprint
-PRODUCT_PACKAGES += \
-    fingerprint.msm8996
-
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files
