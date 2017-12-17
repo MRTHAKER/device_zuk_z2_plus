@@ -5,6 +5,14 @@ DEVICE=z2_plus
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor.mk
 
+echo "creating new proprietary-files.txt..."
+cd ../../../$OUTDIR/proprietary
+find . -type f |cut -c 3- > proprietary-files.txt
+sed -i '/.apk/d' ./proprietary-files.txt
+sed -i '/proprietary-files.txt/d' ./proprietary-files.txt
+mv proprietary-files.txt ../../../../device/$VENDOR/$DEVICE/proprietary-files.txt
+cd ../../../../device/$VENDOR/$DEVICE
+
 (cat << EOF) > $MAKEFILE
 # Copyright (C) 2016 The CyanogenMod Project
 #
