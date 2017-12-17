@@ -113,9 +113,7 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8996 \
-    SnapdragonCamera \
-    libcamera_parameters_shim \
-    libshim_camera
+    SnapdragonCamera
 
 # Display
 PRODUCT_PACKAGES += \

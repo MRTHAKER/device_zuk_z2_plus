@@ -26,35 +26,3 @@ LOCAL_MODULE := libshims_get_process_name
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
-
-# camera shim
-include $(CLEAR_VARS)
-
-LOCAL_SRC_FILES := \
-    camera_shim.cpp
-
-LOCAL_SHARED_LIBRARIES := \
-    liblog \
-    libutils \
-    libgui \
-    libui
-
-LOCAL_C_INCLUDES := \
-    frameworks/native/include
-
-LOCAL_MODULE := libshim_camera
-LOCAL_MODULE_TAGS := optional
-LOCAL_MULTILIB := 32
-
-include $(BUILD_SHARED_LIBRARY)
-
-include $(CLEAR_VARS)
-
-LOCAL_SRC_FILES := CameraParameters.cpp
-LOCAL_MODULE := libcamera_parameters_shim
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
-LOCAL_MODULE_TAGS := optional
-LOCAL_32_BIT_ONLY := true
-LOCAL_VENDOR_MODULE := true
-
-include $(BUILD_SHARED_LIBRARY)
