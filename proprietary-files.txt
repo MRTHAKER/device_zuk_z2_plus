@@ -288,6 +288,7 @@ vendor/etc/perf-profile5.conf
 vendor/etc/perf-profile4.conf
 vendor/etc/msm_irqbalance.conf
 vendor/etc/perf-profile6.conf
+vendor/etc/permissions/com.qti.snapdragon.sdk.display.xml
 vendor/etc/perf-profile1.conf
 vendor/etc/perf-profile0.conf
 vendor/etc/perf-profile3.conf
@@ -507,6 +508,7 @@ vendor/lib64/libCB.so
 vendor/lib64/libqmi.so
 vendor/lib64/libqdi.so
 vendor/bin/perfd
+vendor/bin/mm-pp-dpps
 vendor/bin/hw/vendor.display.color@1.0-service
 vendor/bin/qti
 vendor/bin/qseeproxydaemon
@@ -598,7 +600,6 @@ etc/permissions/telephonyservice.xml
 etc/permissions/com.qti.location.sdk.xml
 etc/permissions/cneapiclient.xml
 etc/permissions/ConnectivityExt.xml
-etc/permissions/com.qti.snapdragon.sdk.display.xml
 etc/permissions/izat.xt.srv.xml
 etc/permissions/dpmapi.xml
 etc/permissions/com.qti.dpmframework.xml
@@ -642,7 +643,6 @@ bin/iop
 bin/pm-proxy
 framework/com.qti.location.sdk.jar
 framework/ConnectivityExt.jar
-framework/com.qti.snapdragon.sdk.display.jar
 framework/dpmapi.jar
 framework/tcmclient.jar
 framework/izat.xt.srv.jar
