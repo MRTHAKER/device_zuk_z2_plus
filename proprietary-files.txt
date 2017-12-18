@@ -145,6 +145,7 @@ vendor/lib/libqmi_encdec.so
 vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera_isp_cac47.so
 vendor/lib/libqcci_legacy.so
+vendor/lib/libwvhidl.so
 vendor/lib/libfastcvopt.so
 vendor/lib/libmmcamera_isp_bg_stats46.so
 vendor/lib/libmorpho_image_stab4.so
@@ -293,6 +294,7 @@ vendor/etc/perf-profile1.conf
 vendor/etc/perf-profile0.conf
 vendor/etc/perf-profile3.conf
 vendor/etc/perf-profile2.conf
+vendor/etc/init/android.hardware.drm@1.0-service.widevine.rc
 vendor/etc/init/vendor.display.color@1.0-service.rc
 vendor/etc/qcril_fancy.db
 vendor/etc/RIDL/qdss.cfg
@@ -438,6 +440,7 @@ vendor/lib64/lib-rtpcore.so
 vendor/lib64/libqmi_csi.so
 vendor/lib64/libdrplugin_client.so
 vendor/lib64/libvpplibrary.so
+vendor/lib64/mediadrm/libwvdrmengine.so
 vendor/lib64/libqvop-service.so
 vendor/lib64/libmmcamera_dbg.so
 vendor/lib64/libril-qcril-hook-oem.so
@@ -510,6 +513,7 @@ vendor/lib64/libqdi.so
 vendor/bin/perfd
 vendor/bin/mm-pp-dpps
 vendor/bin/hw/vendor.display.color@1.0-service
+vendor/bin/hw/android.hardware.drm@1.0-service.widevine
 vendor/bin/qti
 vendor/bin/qseeproxydaemon
 vendor/bin/thermal-engine
