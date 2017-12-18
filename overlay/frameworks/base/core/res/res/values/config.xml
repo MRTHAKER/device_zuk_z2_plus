@@ -282,7 +282,7 @@
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
 
     <!-- Boolean indicating whether Hotspot 2.0/Passpoint and ANQP queries is enabled -->
-    <bool translatable="false" name="config_wifi_hotspot2_enabled">true</bool>
+  <!--  <bool translatable="false" name="config_wifi_hotspot2_enabled">true</bool> -->
 
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
@@ -472,18 +472,18 @@
     <!-- Default value for proximity check on screen wake
          NOTE ! - Enable for devices that have a fast response proximity sensor (ideally < 300ms) -->
    
-    <bool name="config_proximityCheckOnWake">true</bool>
+   <!--  <bool name="config_proximityCheckOnWake">true</bool>
     <integer name="config_proximityCheckTimeout">800</integer>
-    <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
+    <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool> -->
 
     <!-- Whether home button can wake device
     <bool name="config_homeCanWake">true</bool> -->
 
     <!-- Stop listening to the fingerprint reader when NON-WAKEUP proximity sensor is covered & screen is off.
          config_proximityCheckOnWake must be true. -->
-    <bool name="config_proximityCheckOnFingerprintWake">true</bool>
+   <!-- <bool name="config_proximityCheckOnFingerprintWake">true</bool> -->
 
     <!-- Whether notify fingerprint client of successful cancelled authentication -->
-    <bool name="config_notifyClientOnFingerprintCancelSuccess">true</bool>
-
+   <!-- <bool name="config_notifyClientOnFingerprintCancelSuccess">true</bool> -->
+ 
 </resources>
