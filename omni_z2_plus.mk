@@ -15,18 +15,22 @@
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 # Inherit from z2_plus device
 $(call inherit-product, device/zuk/z2_plus/device.mk)
 
 # Boot animation resolution
-TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_BOOT_ANIMATION_RES := 1080p
 
-# Inherit some common AOSP-OMS stuff.
-$(call inherit-product, vendor/aosp/common.mk)
+# Inherit some common omni stuff.
+$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/omni/config/gsm.mk)
 
-PRODUCT_NAME := aosp_z2_plus
+
+PRODUCT_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
+
+PRODUCT_NAME := omni_z2_plus
 PRODUCT_DEVICE := z2_plus
 PRODUCT_MANUFACTURER := ZUK
 PRODUCT_BRAND := ZUK
@@ -38,5 +42,5 @@ TARGET_VENDOR := zuk
 
 # Fingerprint
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT="ZUK/z2_plus/z2_plus:7.0/NRD90M/2.5.412_170428:user/release-keys" \
-    PRIVATE_BUILD_DESC="z2_plus-user 7.0 NRD90M 2.5.412_170428 release-keys"
+    BUILD_FINGERPRINT="ZUK/z2_plus/z2_plus:8.0.0/OPR1.170623.032/3.5.099_171214:user/release-keys" \
+PRIVATE_BUILD_DESC="z2_plus-user 8.0.0 OPR1.170623.032 3.5.099_171214 release-keys"
