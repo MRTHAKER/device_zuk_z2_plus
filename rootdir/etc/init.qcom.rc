@@ -516,7 +516,7 @@ on post-fs-data
 service ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
     user radio
-    group radio cache inet misc audio log 2901 net_raw wifi compass
+    group radio cache inet misc audio log diag net_raw wifi compass
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 # start camera server as daemon
@@ -589,14 +589,14 @@ service imsqmidaemon /system/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
-    group radio net_raw log 2901
+    group radio net_raw log diag
     writepid /dev/cpuset/system-background/tasks
 
 service imsdatadaemon /system/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
-    group system wifi radio inet net_raw log 2901 net_admin
+    group system wifi radio inet net_raw log diag net_admin
     writepid /dev/cpuset/system-background/tasks
     disabled
 
@@ -618,13 +618,13 @@ service ims_rtp_daemon /system/bin/ims_rtp_daemon
     class main
     user system
     socket ims_rtpd stream 0660 system radio
-    group radio net_raw 2901 inet log
+    group radio net_raw diag inet log
     disabled
 
 service imscmservice /system/bin/imscmservice
     class main
     user system
-    group radio net_raw 2901 log
+    group radio net_raw diag diag log
     writepid /dev/cpuset/system-background/tasks
     disabled
 
@@ -673,7 +673,7 @@ service iop /system/bin/iop
 service qcomsysd /system/bin/qcom-system-daemon
     class main
     user root
-    group root 2901
+    group root diag
 
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
@@ -767,7 +767,7 @@ on property:wc_transport.start_hci=false
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth 2901
+    group bluetooth diag
     disabled
 
 service config_bt_addr /system/bin/btnvtool -O
@@ -785,7 +785,7 @@ on property:wc_transport.start_root=false
 service hci_filter_root /system/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth 2901 system
+    group bluetooth diag system
     disabled
 
 service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
@@ -809,14 +809,14 @@ on property:bluetooth.hciattach=false
 service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
     class late_start
     user root
-    group bluetooth net_bt_admin misc net_bt_stack 2901 net_bt
+    group bluetooth net_bt_admin misc net_bt_stack diag net_bt
     disabled
     oneshot
 
 service bridgemgrd /system/bin/bridgemgrd
     class late_start
     user radio
-    group radio 2901
+    group radio diag
     disabled
 
 service port-bridge /system/bin/port-bridge
@@ -833,7 +833,7 @@ service netmgrd /system/bin/netmgrd
 service qti /system/vendor/bin/qti
     class main
     user radio
-    group radio net_raw 2901 usb net_admin
+    group radio net_raw diag usb net_admin
     writepid /dev/cpuset/system-background/tasks
 
 service sensors /system/bin/sensors.qcom
@@ -881,7 +881,7 @@ on property:sys.shutdown.requested=*
 service loc_launcher /system/bin/loc_launcher
     # loc_launcher will start as root and set its uid to gps
     class late_start
-    group gps inet 2901 wifi
+    group gps inet diag wifi
     writepid /dev/cpuset/system-background/tasks
 
 on property:ro.data.large_tcp_window_size=true
