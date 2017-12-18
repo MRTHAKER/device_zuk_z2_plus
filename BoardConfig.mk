@@ -35,8 +35,8 @@ TARGET_KERNEL_CONFIG := z2_plus_defconfig
 AUDIO_FEATURE_ENABLED_SPKR_PROTECTION := true
 
 # Init
-# TARGET_INIT_VENDOR_LIB := libinit_z2_plus
-# TARGET_RECOVERY_DEVICE_MODULES := libinit_z2_plus
+TARGET_INIT_VENDOR_LIB := libinit_z2_plus
+TARGET_RECOVERY_DEVICE_MODULES := libinit_z2_plus
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
