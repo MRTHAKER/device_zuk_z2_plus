@@ -1347,7 +1347,6 @@ case "$target" in
         esac
         #Enable Memory Features
         enable_memory_features
-        restorecon -R /sys/devices/system/cpu
     ;;
 esac
 
