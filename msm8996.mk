@@ -217,6 +217,10 @@ PRODUCT_PACKAGES += \
     libOmxVdecHevc \
     libstagefrighthw
 
+# Power
+PRODUCT_PACKAGES += \
+    power.msm8996
+
 # VR
 PRODUCT_PACKAGES += \
     vr.msm8996
@@ -227,7 +231,7 @@ PRODUCT_COPY_FILES += \
 # QMI
 PRODUCT_PACKAGES += \
     libjson
-
+   
 # QTI
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
