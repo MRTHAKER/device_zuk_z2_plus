@@ -101,6 +101,7 @@ vendor/lib/hw/vulkan.msm8996.so
 vendor/lib/hw/activity_recognition.msm8996.so
 vendor/lib/libmmcamera_isp_bhist_stats44.so
 vendor/lib/libOmxApeDec.so
+vendor/lib/libmmjpeg_interface.so
 vendor/lib/rfsa/adsp/libadsp_hvx_zzhdr_RGGB.so
 vendor/lib/rfsa/adsp/us-syncproximity.so
 vendor/lib/rfsa/adsp/libdspCV_skel.so
@@ -149,6 +150,7 @@ vendor/lib/libwvhidl.so
 vendor/lib/libfastcvopt.so
 vendor/lib/libmmcamera_isp_bg_stats46.so
 vendor/lib/libmorpho_image_stab4.so
+vendor/lib/libmmcamera_interface.so
 vendor/lib/libmmcamera_eebinparse.so
 vendor/lib/libqti-perfd-client.so
 vendor/lib/libwms.so
@@ -224,7 +226,6 @@ vendor/lib/libmmcamera_isp_color_correct46.so
 vendor/lib/libmmcamera_isp_ihist_stats46.so
 vendor/lib/libqti-gt.so
 vendor/lib/libmmcamera_faceproc.so
-vendor/lib/libtrueportrait.so
 vendor/lib/lib-imsdpl.so
 vendor/lib/libqmi_cci.so
 vendor/lib/libtinyxml2_1.so
@@ -280,6 +281,7 @@ vendor/lib/libqmi_common_so.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcvirt.so
+vendor/lib/libqomx_core.so
 vendor/lib/libjpegdmahw.so
 vendor/lib/libCB.so
 vendor/lib/libqmi.so
@@ -515,16 +517,16 @@ vendor/bin/mm-pp-dpps
 vendor/bin/hw/vendor.display.color@1.0-service
 vendor/bin/hw/android.hardware.drm@1.0-service.widevine
 vendor/bin/qti
+vendor/bin/mm-qcamera-daemon
+vendor/bin/loc_launcher
 vendor/bin/qseeproxydaemon
 vendor/bin/thermal-engine
 vendor/bin/pd-mapper
-lib/libmmjpeg_interface.so
 lib/vendor.display.postproc@1.0.so
-lib/libmmcamera_interface.so
+lib/libtrueportrait.so
 lib/vendor.display.color@1.0.so
 lib/libtfa98xx.so
 lib/libmm-qcamera.so
-lib/libqomx_core.so
 etc/sensors/sensor_def_qcomdev.conf
 etc/cne/andsfCne.xml
 etc/cne/wqeclient/ATT/ATT_profile1.xml
@@ -628,8 +630,6 @@ bin/pm-service
 bin/ipacm-diag
 bin/qseecomd
 bin/dpmd
-bin/mm-qcamera-daemon
-bin/loc_launcher
 bin/cnd
 bin/ims_rtp_daemon
 bin/energy-awareness
