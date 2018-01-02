@@ -194,6 +194,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
 
+# IMS
+PRODUCT_PACKAGES += \
+    ims-ext-common
+
 # Thermal
 PRODUCT_PACKAGES += \
     thermal.msm8996
