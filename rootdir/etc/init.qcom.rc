@@ -901,8 +901,15 @@ service cs-post-boot /system/bin/sh /persist/coresight/qdss.agent.sh
     disabled
     oneshot
 
+service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
+    class late_start
+    user root
+    disabled
+    oneshot
+
 on property:sys.boot_completed=1
     start cs-post-boot
+    start qcom-post-boot
 
 on property:sys.dbg.coresight.enable=1
     write /persist/coresight/enable 1
