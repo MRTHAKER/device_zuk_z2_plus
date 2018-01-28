@@ -367,13 +367,15 @@ on post-fs-data
     mkdir /data/misc/audio_pp 0771 media audio
 
     # Sensors
-    mkdir /data/misc/sensors
-    chmod 0775 /data/misc/sensors
-    chmod 0755 /persist/sensors
-    chmod 0644 /persist/sensors/sensors_settings
-    chmod 0644 /persist/sensors/gyro_sensitity_cal
-    chown system root /persist/sensors/sensors_settings
-    chown system root /persist/sensors/gyro_sensitity_cal
+    # Allow access to sensors device attributes
+    chown system system /sys/class/sensors/MPU6050-accel/enable
+    chown system system /sys/class/sensors/MPU6050-accel/poll_delay
+    chown system system /sys/class/sensors/MPU6050-gyro/enable
+    chown system system /sys/class/sensors/MPU6050-gyro/poll_delay
+    chown system system /sys/class/sensors/apds9930-light/enable
+    chown system system /sys/class/sensors/apds9930-light/poll_delay
+    chown system system /sys/class/sensors/apds9930-proximity/enable
+    chown system system /sys/class/sensors/apds9930-proximity/poll_delay
 
     # Create directories for Fingerprint
     mkdir /data/vendor/misc/qti_fp 0770 system system
@@ -763,7 +765,7 @@ service dpmQmiMgr /vendor/bin/dpmQmiMgr
     user system
     group radio system
 
-service irsc_util /system/bin/irsc_util "/system/etc/sec_config"
+service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
     user root
     oneshot
@@ -858,11 +860,10 @@ service qti /vendor/bin/qti
     group radio oem_2950 usb
     writepid /dev/cpuset/system-background/tasks
 
-service sensors /system/bin/sensors.qcom
-    class core
-    user root
-    group root wakelock
-    writepid /dev/cpuset/system-background/tasks
+service sensors /vendor/bin/sensors.qcom
+     class core
+     user root
+     group root wakelock
 
 on property:ro.use_data_netmgrd=false
     # netmgr not supported on specific target
@@ -945,6 +946,11 @@ service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqb
     write /dev/cpuset/system-background/cpus 4-6
     write /dev/cpuset/top-app/cpus 0-7
     write /dev/cpuset/camera-daemon/cpus 4-7
+
+service sensor-sh /vendor/bin/init.qcom.sensors.sh
+    class core
+    user root
+    oneshot
 
 # Coresight early boot service
 service cs-early-boot /system/bin/sh /persist/coresight/qdss.agent.sh early-boot /system/etc/init.qcom.debug.sh
