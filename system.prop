@@ -128,17 +128,6 @@ persist.radio.sw_mbn_volte=1
 persist.radio.sw_mbn_openmkt=1
 persist.radio.sw_mbn_update=1
 
-# IMS
-persist.radio.jbims=1
-persist.radio.RATE_ADAPT_ENABLE=1
-persist.radio.VT_ENABLE=1
-persist.radio.VT_HYBRID_ENABLE=1
-persist.radio.VT_USE_MDM_TIME=0
-sys.ims.DATA_DAEMON_STATUS=1
-persist.radio.ROTATION_ENABLE=1
-persist.radio.NO_STAPA=1
-persist.radio.rat_on=combine
-
 # RmNet Data
 persist.rmnet.data.enable=true
 persist.data.wda.enable=true
