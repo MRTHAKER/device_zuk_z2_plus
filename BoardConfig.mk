@@ -21,9 +21,13 @@
 # definition file).
 #
 
-VENDOR_PATH := device/zuk/msm8996-common
+DEVICE_PATH := device/zuk/z2_plus
 
-TARGET_SPECIFIC_HEADER_PATH := $(VENDOR_PATH)/include
+# Assert
+TARGET_OTA_ASSERT_DEVICE := z2,Z2,z2plus,z2_plus
+
+
+TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
 BOARD_VENDOR := zuk
 
@@ -36,7 +40,7 @@ TARGET_BOARD_PLATFORM := msm8996
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno530
 
 # Properties
-TARGET_SYSTEM_PROP += $(VENDOR_PATH)/system.prop
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # Architecture
 TARGET_ARCH := arm64
@@ -69,6 +73,7 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_SOURCE := kernel/zuk/msm8996
+TARGET_KERNEL_CONFIG := z2_plus_defconfig
 
 # Audio
 AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
@@ -80,6 +85,7 @@ AUDIO_FEATURE_ENABLED_DEV_ARBI := true
 AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
 AUDIO_FEATURE_ENABLED_FLAC_OFFLOAD := true
 AUDIO_FEATURE_ENABLED_FLUENCE := true
+AUDIO_FEATURE_ENABLED_SPKR_PROTECTION := true
 AUDIO_FEATURE_ENABLED_HFP := true
 AUDIO_FEATURE_ENABLED_KPI_OPTIMIZE := true
 AUDIO_FEATURE_ENABLED_NT_PAUSE_TIMEOUT := true
@@ -93,7 +99,7 @@ USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(VENDOR_PATH)/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 BOARD_BLUETOOTH_BDROID_HCILP_INCLUDED := false
 BOARD_HAS_QCA_BT_ROME := true
 BOARD_HAVE_BLUETOOTH := true
@@ -103,7 +109,6 @@ QCOM_BT_USE_BTNV := true
 # Camera
 BOARD_QTI_CAMERA_32BIT_ONLY := true
 USE_DEVICE_SPECIFIC_CAMERA := true
-TARGET_SUPPORT_HAL1 := false
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
@@ -147,7 +152,10 @@ endif
 endif
 
 # Filesystem
-TARGET_FS_CONFIG_GEN := $(VENDOR_PATH)/config.fs
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
+
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
 
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := msm8996
@@ -156,8 +164,8 @@ TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 
 # Hidl manifests
-DEVICE_MANIFEST_FILE := $(VENDOR_PATH)/manifest.xml
-DEVICE_MATRIX_FILE := $(VENDOR_PATH)/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm8996
@@ -188,7 +196,7 @@ TARGET_HAS_NO_WIFI_STATS := true
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/touch/tp_dev/gesture_on"
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/etc/fstab.full
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.full
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
@@ -197,8 +205,8 @@ PROTOBUF_SUPPORTED := true
 TARGET_RIL_VARIANT := caf
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
+#include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Use Snapdragon LLVM, if available
 TARGET_USE_SDCLANG := true

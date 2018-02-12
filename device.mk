@@ -23,6 +23,7 @@
 
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/zuk/msm8996-common/msm8996-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/zuk/z2_plus/z2_plus-vendor.mk)
 
 # Hidl HALs
 $(call inherit-product, $(LOCAL_PATH)/hidl.mk)
@@ -97,7 +98,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/listen_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/listen_platform_info.xml \
     $(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
     $(LOCAL_PATH)/audio/sound_trigger_mixer_paths_wcd9330.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths_wcd9330.xml \
-    $(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml
+    $(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
+    $(LOCAL_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_tasha.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
 
 PRODUCT_COPY_FILES += \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
@@ -253,7 +256,8 @@ PRODUCT_PACKAGES += \
     init.qcom.bt.sh \
     init.safailnet.rc \
     ueventd.qcom.rc \
-    init.qcom.sensors.sh
+    init.qcom.sensors.sh \
+    init.zuk.usb.rc
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -291,3 +295,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat
+
+# MSM8996 Headers
+PRODUCT_VENDOR_KERNEL_HEADERS := hardware/qcom/msm8996/kernel-headers
