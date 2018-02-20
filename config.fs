@@ -7,7 +7,6 @@ value:2951
 [AID_VENDOR_RFS_SHARED]
 value:2952
 
-
 [vendor/bin/wcnss_filter]
 mode: 0755
 user: AID_BLUETOOTH
@@ -67,6 +66,12 @@ mode: 0755
 user:  AID_GPS
 group: AID_GPS
 caps: NET_BIND_SERVICE
+
+[vendor/bin/loc_launcher]
+mode: 0755
+user:  AID_GPS
+group: AID_GPS
+caps: SETUID SETGID
 
 [vendor/bin/xtwifi-client]
 mode: 0755
