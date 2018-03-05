@@ -17,6 +17,7 @@ persist.vendor.audio.fluence.voicecall=true
 persist.vendor.audio.fluence.voicerec=false
 persist.vendor.audio.fluence.speaker=true
 ro.vendor.audio.sdk.fluencetype=fluence
+persist.vendor.audio.speaker.prot.enable=true
 ro.vendor.audio.sdk.ssr=false
 vendor.audio.tunnel.encode=false
 vendor.voice.path.for.pcm.voip=true
