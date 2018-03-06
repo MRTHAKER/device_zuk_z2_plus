@@ -1,2 +1,0 @@
-allow fsck rootfs:lnk_file getattr;
-allow fsck persist_block_device:blk_file { read open write ioctl };

@@ -1,2 +1,4 @@
-allow audioserver socket_device:sock_file write;
-allow audioserver thermal-engine:unix_stream_socket connectto;
+# Callbacks in response to rild IPC into audioserver
+binder_call(audioserver, rild)
+
+binder_call(audioserver, bootanim)
