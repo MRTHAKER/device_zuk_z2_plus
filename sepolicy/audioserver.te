@@ -1,4 +1,4 @@
-# Callbacks in response to rild IPC into audioserver
-binder_call(audioserver, rild)
-
-binder_call(audioserver, bootanim)
+allow audioserver device:chr_file ioctl;
+allow audioserver init:unix_stream_socket connectto;
+allow audioserver rild:binder call;
+allow audioserver socket_device:sock_file write;
