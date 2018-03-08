@@ -594,7 +594,7 @@ service thermal-engine /system/vendor/bin/thermal-engine -c ${sys.qcom.thermalcf
    group root
    writepid /dev/cpuset/system-background/tasks
 
-service time_daemon /system/vendor/bin/time_daemon
+service time_daemon /vendor/bin/time_daemon
    class late_start
    user root
    group root
@@ -763,7 +763,7 @@ service dpmQmiMgr /vendor/bin/dpmQmiMgr
     user system
     group radio system
 
-service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
+service irsc_util /system/bin/irsc_util "/system/etc/sec_config"
     class core
     user root
     oneshot
