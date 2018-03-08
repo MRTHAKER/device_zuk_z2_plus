@@ -109,3 +109,7 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0
 
+# Net
+PRODUCT_PACKAGES += \
+     android.system.net.netd@1.0 \
+     netutils-wrapper-1.0
