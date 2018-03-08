@@ -1,10 +1,15 @@
-allow init cameraserver:fd use;
-allow init device:chr_file { ioctl open read write };
-allow init hal_graphics_allocator_default:fd use;
-allow init ion_device:chr_file { ioctl write };
-allow init property_socket:sock_file write;
-allow init rtc_device:chr_file ioctl;
-allow init self:socket { read write };
-allow init socket_device:sock_file write;
-allow init vendor_file:file execute_no_trans;
-allow init video_device:chr_file { ioctl write };
+# symlink /sdcard to backing block
+allow init tmpfs:lnk_file create;
+
+# Run "ifup lo" to bring up the localhost interface
+allowxperm init self:udp_socket ioctl { SIOCSIFFLAGS };
+
+allow init proc_kernel_sched:file w_file_perms;
+allow init sysfs_type:lnk_file read;
+
+allow init firmware_file:dir mounton;
+allow init persist_file:dir mounton;
+allow init userdata_block_device:blk_file { write };
+
+allow init debugfs_sps:dir search;
+allow init debugfs_sps:file w_file_perms;

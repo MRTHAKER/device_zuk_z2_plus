@@ -1,2 +1,0 @@
-allow untrusted_app device:chr_file { ioctl open read write };
-allow untrusted_app proc:file { getattr open read };
