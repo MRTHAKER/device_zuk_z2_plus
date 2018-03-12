@@ -550,7 +550,7 @@ service readfem /vendor/bin/readfem
     group root oem_2950
     oneshot
 
-service ipacm /system/vendor/bin/ipacm
+service ipacm /vendor/bin/ipacm
      class main
      user radio
      group inet
@@ -561,15 +561,15 @@ service qvop-daemon /system/bin/qvop-daemon
     user system
     group system drmrpc
 
-# start up peripheral manager
-service per_mgr system/bin/pm-service
-    class late_start
+# Start up peripheral manager
+service per_mgr /vendor/bin/pm-service
+    class core
     user system
     group system
     writepid /dev/cpuset/system-background/tasks
 
-service per_proxy /system/bin/pm-proxy
-    class late_start
+service per_proxy /vendor/bin/pm-proxy
+    class core
     user system
     group system
     writepid /dev/cpuset/system-background/tasks
@@ -581,21 +581,13 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
-service qseecomd /system/bin/qseecomd
+service qseecomd /vendor/bin/qseecomd
    class core
    user root
    group root
    writepid /dev/cpuset/system-background/tasks
 
-service perfd /system/vendor/bin/perfd
-    class main
-    user root
-    group root readproc
-    disabled
-    socket perfd seqpacket 0666 root system
-    writepid /dev/cpuset/system-background/tasks
-
-service thermal-engine /system/vendor/bin/thermal-engine -c ${sys.qcom.thermalcfg:-/vendor/etc/thermal-engine.conf}
+service thermal-engine /vendor/bin/thermal-engine -c ${sys.qcom.thermalcfg:-/vendor/etc/thermal-engine.conf}
    class main
    user root
    socket thermal-send-client stream 0666 system system
@@ -633,7 +625,7 @@ service imsdatadaemon /vendor/bin/imsdatadaemon
 on property:vendor.ims.QMI_DAEMON_STATUS=1
         start imsdatadaemon
 
-service pd_mapper /system/vendor/bin/pd-mapper
+service pd_mapper /vendor/bin/pd-mapper
     class core
     disabled
 
@@ -688,19 +680,11 @@ service readmac /system/bin/readmac
     group root
     oneshot
 
-service energy-awareness /system/bin/energy-awareness
+service energy-awareness /vendor/bin/energy-awareness
     class main
     user root
     group system
     oneshot
-
-service iop /system/bin/iop
-    class main
-    user root
-    group root
-    disabled
-    socket iop seqpacket 0666 root system
-    writepid /dev/cpuset/system-background/tasks
 
 service qcomsysd /system/bin/qcom-system-daemon
     class main
@@ -797,17 +781,11 @@ on property:wc_transport.start_hci=true
 on property:wc_transport.start_hci=false
     stop start_hci_filter
 
-service start_hci_filter /system/bin/wcnss_filter
+service start_hci_filter /vendor/bin/wcnss_filter
     class late_start
     user bluetooth
     group bluetooth diag
     disabled
-
-service config_bt_addr /system/bin/btnvtool -O
-    class core
-    user bluetooth
-    group bluetooth radio
-    oneshot
 
 on property:wc_transport.start_root=true
     start hci_filter_root
@@ -815,10 +793,10 @@ on property:wc_transport.start_root=true
 on property:wc_transport.start_root=false
     stop hci_filter_root
 
-service hci_filter_root /system/bin/wcnss_filter
+service hci_filter_root /vendor/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth diag system
+    group bluetooth oem_2950 system
     disabled
 
 service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
@@ -846,13 +824,8 @@ service ftmd /system/bin/logwrapper /system/vendor/bin/ftmdaemon
     disabled
     oneshot
 
-service bridgemgrd /system/bin/bridgemgrd
-    class late_start
-    user radio
-    group radio diag
-    disabled
 
-service port-bridge /system/bin/port-bridge
+service port-bridge /vendor/bin/port-bridge
     class main
     user radio
     group radio system inet
@@ -903,14 +876,13 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-service cnss-daemon /system/bin/cnss-daemon -n -l
+service cnss-daemon /vendor/bin/cnss-daemon -n -l
     class late_start
     user system
     group system inet net_admin wifi
-    capabilities NET_ADMIN
 
 on property:sys.shutdown.requested=*
-    stop cnss-daemon
+   stop cnss-daemon
 
 service loc_launcher /system/vendor/bin/loc_launcher
     # loc_launcher will start as root and set its uid to gps
