@@ -309,6 +309,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vr.high_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vr.high_performance.xml
 
+#wfd
+PRODUCT_BOOT_JARS += \
+    WfdCommon
+
 # Wifi
 PRODUCT_PACKAGES += \
     libwpa_client \
@@ -328,3 +332,4 @@ PRODUCT_COPY_FILES += \
 
 # MSM8996 Headers
 PRODUCT_VENDOR_KERNEL_HEADERS := hardware/qcom/msm8996/kernel-headers
+
