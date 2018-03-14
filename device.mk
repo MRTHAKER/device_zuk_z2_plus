@@ -143,7 +143,8 @@ PRODUCT_PACKAGES += \
     libhwc2on1adapter \
     libgenlock \
     liboverlay \
-    libtinyxml
+    libtinyxml \
+    libdisplayconfig
 
 # Doze mode
 PRODUCT_PACKAGES += \
