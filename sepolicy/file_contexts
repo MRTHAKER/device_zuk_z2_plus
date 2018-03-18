@@ -255,4 +255,4 @@
 /persist/sensorcal\.json  u:object_r:sensors_cal_file:s0
 
 # hidraw dynamic sensor
-/dev/hidraw[0-9]+            u:object_r:sensors_device:s0
+/dev/hidraw[0-9]+ u:object_r:sensors_device:s0
