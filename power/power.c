@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2012-2017, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2017, Paranoid Android
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -47,6 +48,7 @@
 #include "hint-data.h"
 #include "performance.h"
 #include "power-common.h"
+#include "power-feature.h"
 
 static int saved_dcvs_cpu0_slack_max = -1;
 static int saved_dcvs_cpu0_slack_min = -1;
@@ -57,11 +59,12 @@ static int slack_node_rw_failed = 0;
 static int display_hint_sent;
 int display_boost;
 
-static int power_device_open(const hw_module_t* module, const char* name,
-        hw_device_t** device);
+// Sustained performance mode support
+static bool sustained_performance_mode;
+static pthread_mutex_t sustained_performance_toggle_lock = PTHREAD_MUTEX_INITIALIZER;
 
 static struct hw_module_methods_t power_module_methods = {
-    .open = power_device_open,
+    .open = NULL,
 };
 
 static void power_init(struct power_module *module)
@@ -191,18 +194,37 @@ static void process_video_encode_hint(void *metadata)
     }
 }
 
+/* Declare function before use */
+int interaction(int duration, int num_args, int opt_list[]);
+int interaction_with_handle(int lock_handle, int duration, int num_args, int opt_list[]);
+
 int __attribute__ ((weak)) power_hint_override(struct power_module *module, power_hint_t hint,
         void *data)
 {
     return HINT_NONE;
 }
 
-/* Declare function before use */
-void interaction(int duration, int num_args, int opt_list[]);
+/*
+ * Contains chipset/target specific handling
+ * for Sustained performance mode.
+ */
+void __attribute__ ((weak)) toggle_sustained_performance(bool request_enable)
+{}
 
 static void power_hint(struct power_module *module, power_hint_t hint,
         void *data)
 {
+    /* Sustained performance mode */
+    if (hint == POWER_HINT_SUSTAINED_PERFORMANCE) {
+        pthread_mutex_lock(&sustained_performance_toggle_lock);
+
+        /* Execute the change in SPM mode */
+        toggle_sustained_performance(data);
+        sustained_performance_mode = data;
+
+        pthread_mutex_unlock(&sustained_performance_toggle_lock);
+    }
+
     /* Check if this hint has been overridden. */
     if (power_hint_override(module, hint, data) == HINT_HANDLED) {
         /* The power_hint has been handled. We can skip the rest. */
@@ -212,18 +234,18 @@ static void power_hint(struct power_module *module, power_hint_t hint,
     switch(hint) {
         case POWER_HINT_VSYNC:
         break;
-        case POWER_HINT_SUSTAINED_PERFORMANCE:
-            ALOGI("Sustained perf power hint not handled in power_hint_override");
-            break;
-        case POWER_HINT_VR_MODE:
-            ALOGI("VR mode power hint not handled in power_hint_override");
-            break;
         case POWER_HINT_INTERACTION:
         {
             int resources[] = {0x702, 0x20F, 0x30F};
             int duration = 3000;
 
-            interaction(duration, sizeof(resources)/sizeof(resources[0]), resources);
+            /* Avoid dispatching an interaction boost if Sustained performance mode is active */
+            if (sustained_performance_mode)
+                return;
+
+            static int handle_interaction = 0;
+
+            handle_interaction = interaction_with_handle(handle_interaction, duration, sizeof(resources)/sizeof(resources[0]), resources);
         }
         break;
         case POWER_HINT_VIDEO_ENCODE:
@@ -246,14 +268,6 @@ void set_interactive(struct power_module *module, int on)
     char tmp_str[NODE_MAX];
     struct video_encode_metadata_t video_encode_metadata;
     int rc = 0;
-
-    if (!on) {
-        /* Send Display OFF hint to perf HAL */
-        perf_hint_enable(VENDOR_HINT_DISPLAY_OFF, 0);
-    } else {
-        /* Send Display ON hint to perf HAL */
-        perf_hint_enable(VENDOR_HINT_DISPLAY_ON, 0);
-    }
 
     if (set_interactive_override(module, on) == HINT_HANDLED) {
         return;
@@ -393,7 +407,7 @@ void set_interactive(struct power_module *module, int on)
                 (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
             undo_hint_action(DISPLAY_STATE_HINT_ID);
             display_hint_sent = 0;
-        } else if ((strncmp(governor, MSMDCVS_GOVERNOR, strlen(MSMDCVS_GOVERNOR)) == 0) && 
+        } else if ((strncmp(governor, MSMDCVS_GOVERNOR, strlen(MSMDCVS_GOVERNOR)) == 0) &&
                 (strlen(governor) == strlen(MSMDCVS_GOVERNOR))) {
             if (saved_interactive_mode == -1 || saved_interactive_mode == 0) {
                 /* Display turned on. Restore if possible. */
@@ -453,48 +467,14 @@ void set_interactive(struct power_module *module, int on)
     saved_interactive_mode = !!on;
 }
 
-static int power_device_open(const hw_module_t* module, const char* name,
-        hw_device_t** device)
+void set_feature(struct power_module *module, feature_t feature, int state)
 {
-    int status = -EINVAL;
-    if (module && name && device) {
-        if (!strcmp(name, POWER_HARDWARE_MODULE_ID)) {
-            power_module_t *dev = (power_module_t *)malloc(sizeof(*dev));
-
-            if(dev) {
-                memset(dev, 0, sizeof(*dev));
-
-                if(dev) {
-                    /* initialize the fields */
-                    dev->common.module_api_version = POWER_MODULE_API_VERSION_0_2;
-                    dev->common.tag = HARDWARE_DEVICE_TAG;
-                    dev->init = power_init;
-                    dev->powerHint = power_hint;
-                    dev->setInteractive = set_interactive;
-                    /* At the moment we support 0.2 APIs */
-                    dev->setFeature = NULL,
-                        dev->get_number_of_platform_modes = NULL,
-                        dev->get_platform_low_power_stats = NULL,
-                        dev->get_voter_list = NULL,
-                        *device = (hw_device_t*)dev;
-                    status = 0;
-                } else {
-                    status = -ENOMEM;
-                }
-            }
-            else {
-                status = -ENOMEM;
-            }
-        }
-    }
-
-    return status;
+    set_device_specific_feature(module, feature, state);
 }
-
 struct power_module HAL_MODULE_INFO_SYM = {
     .common = {
         .tag = HARDWARE_MODULE_TAG,
-        .module_api_version = POWER_MODULE_API_VERSION_0_2,
+        .module_api_version = POWER_MODULE_API_VERSION_0_3,
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = POWER_HARDWARE_MODULE_ID,
         .name = "QCOM Power HAL",
@@ -505,4 +485,5 @@ struct power_module HAL_MODULE_INFO_SYM = {
     .init = power_init,
     .powerHint = power_hint,
     .setInteractive = set_interactive,
+    .setFeature = set_feature
 };

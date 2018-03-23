@@ -141,9 +141,31 @@ int power_hint_override(struct power_module *module, power_hint_t hint, void *da
     return ret_val;
 }
 
+/*
+ * Contains chipset/target specific handling
+ * for Sustained performance mode.
+ */
+void toggle_sustained_performance(bool request_enable)
+{
+    static int handle_sustained_performance = 0;
+
+    if (request_enable) {
+        /*
+         * Limit CPU frequency to 1.3Ghz
+         * Set maximum GPU power level to 4
+         * Set interactive timer rate to 40ms
+         */
+        int resources[] = {0x40804000, 0x514, 0x40804100, 0x514, 0x41424000, 0x28, 0x41424100, 0x28, 0X42808000, 0x4};
+        handle_sustained_performance = interaction_with_handle(
+                 handle_sustained_performance, 0,
+                 sizeof(resources) / sizeof(resources[0]), resources);
+    } else {
+        release_request(handle_sustained_performance);
+    }
+}
+
 int set_interactive_override(struct power_module *module, int on)
 {
-    return HINT_HANDLED; /* Don't excecute this code path, not in use */
     char governor[80];
 
     if (get_scaling_governor(governor, sizeof(governor)) == -1) {
@@ -156,7 +178,7 @@ int set_interactive_override(struct power_module *module, int on)
         /* Display off */
         if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
             (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
-            int resource_values[] = {}; /* dummy node */
+            int resource_values[] = {0x41410100, 0x64, 0x41410000, 0x64};
             if (!display_hint_sent) {
                 perform_hint_action(DISPLAY_STATE_HINT_ID,
                 resource_values, sizeof(resource_values)/sizeof(resource_values[0]));

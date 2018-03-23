@@ -1,4 +1,4 @@
-/* Copyright (c) 2012, 2014, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -34,12 +34,6 @@ extern "C" {
 #define FAILED                  -1
 #define SUCCESS                 0
 #define INDEFINITE_DURATION     0
-
-/* Hints sent to perf HAL from power HAL
- * These have to be kept in sync with Perf HAL side definitions
- */
-#define VENDOR_HINT_DISPLAY_OFF      0x00001040
-#define VENDOR_HINT_DISPLAY_ON       0x00001041
 
 enum SCREEN_DISPLAY_TYPE {
     DISPLAY_OFF = 0x00FF,
@@ -118,6 +112,11 @@ enum MAX_CPUS_ONLINE_LVL {
     CPUS_ONLINE_MAX_LIMIT_MAX = 0x8FB,
 };
 
+enum ALL_CPUS_FREQBOOST_LVL {
+    ALL_CPUS_FREQ_NONTURBO_MAX = 0x90A,
+    ALL_CPUS_FREQ_TURBO = 0x9FE,
+};
+
 enum SAMPLING_RATE_LVL {
     MS_500 = 0xBCD,
     MS_50 = 0xBFA,
@@ -134,6 +133,7 @@ enum ONDEMAND_SAMPLING_DOWN_FACTOR_LVL {
     SAMPLING_DOWN_FACTOR_4 = 0xD04,
 };
 
+
 enum INTERACTIVE_TIMER_RATE_LVL {
     TR_MS_500 = 0xECD,
     TR_MS_100 = 0xEF5,
@@ -148,6 +148,7 @@ enum INTERACTIVE_TIMER_RATE_LVL_CPU0_8939 {
     TR_MS_CPU0_500 = 0x30CD,
     TR_MS_CPU0_100 = 0x30F5,
     TR_MS_CPU0_50 = 0x30FA,
+    TR_MS_CPU0_40 = 0x30FB,
     TR_MS_CPU0_30 = 0x30FC,
     TR_MS_CPU0_20 = 0x30FD,
 };
@@ -158,6 +159,7 @@ enum INTERACTIVE_TIMER_RATE_LVL_CPU4_8939 {
     TR_MS_CPU4_500 = 0x3BCD,
     TR_MS_CPU4_100 = 0x3BF5,
     TR_MS_CPU4_50 = 0x3BFA,
+    TR_MS_CPU4_40 = 0x3BFB,
     TR_MS_CPU4_30 = 0x3BFC,
     TR_MS_CPU4_20 = 0x3BFD,
 };
@@ -184,6 +186,7 @@ enum INTERACTIVE_OPCODES {
 
 enum INTERACTIVE_HISPEED_FREQ_LVL {
     HS_FREQ_1026 = 0xF0A,
+    HS_FREQ_800  = 0xF08,
 };
 
 enum INTERACTIVE_HISPEED_LOAD_LVL {
@@ -259,6 +262,15 @@ enum CPU6_MAX_FREQ_LVL {
 enum CPU7_MAX_FREQ_LVL {
     CPU7_MAX_FREQ_NONTURBO_MAX = 0x260A,
 };
+
+enum SCHED_PREFER_IDLE {
+    SCHED_PREFER_IDLE_DIS = 0x3E01,
+};
+
+enum SCHED_MIGRATE_COST_CHNG {
+    SCHED_MIGRATE_COST_SET = 0x3F01,
+};
+
 
 #ifdef __cplusplus
 }
