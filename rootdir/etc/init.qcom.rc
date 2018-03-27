@@ -600,7 +600,7 @@ service thermal-engine /system/vendor/bin/thermal-engine -c ${sys.qcom.thermalcf
    writepid /dev/cpuset/system-background/tasks
 
 service time_daemon /vendor/bin/time_daemon
-   class late_start
+   class main
    user root
    group root
    writepid /dev/cpuset/system-background/tasks

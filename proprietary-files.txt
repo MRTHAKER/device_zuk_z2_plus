@@ -620,7 +620,7 @@ lib64/libtfa98xx.so
 bin/rmt_storage
 bin/imsdatadaemon
 bin/imscmservice
-bin/time_daemon
+vendor/bin/time_daemon
 bin/cnss-daemon
 bin/wcnss_filter
 bin/btnvtool
