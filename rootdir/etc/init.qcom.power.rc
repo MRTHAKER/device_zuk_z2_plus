@@ -151,6 +151,11 @@ on charger
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
     start dashd
 
+service charger /charger
+    class charger
+    group system graphics
+    seclabel u:r:charger:s0
+
 on property:init.svc.recovery=running
     trigger enable-low-power
 
