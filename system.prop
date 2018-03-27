@@ -68,6 +68,7 @@ sdm.perf_hint_window=50
 debug.sf.latch_unsignaled=1
 sdm.debug.disable_skip_validate=1
 debug.sf.recomputecrop=0
+sdm.debug.rotator_downscale=1
 
 # GPS
 persist.gps.qc_nlp_in_use=1
