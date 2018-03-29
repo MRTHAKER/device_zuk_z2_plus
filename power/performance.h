@@ -1,4 +1,4 @@
-/* Copyright (c) 2012, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2012, 2014, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -112,11 +112,6 @@ enum MAX_CPUS_ONLINE_LVL {
     CPUS_ONLINE_MAX_LIMIT_MAX = 0x8FB,
 };
 
-enum ALL_CPUS_FREQBOOST_LVL {
-    ALL_CPUS_FREQ_NONTURBO_MAX = 0x90A,
-    ALL_CPUS_FREQ_TURBO = 0x9FE,
-};
-
 enum SAMPLING_RATE_LVL {
     MS_500 = 0xBCD,
     MS_50 = 0xBFA,
@@ -133,7 +128,6 @@ enum ONDEMAND_SAMPLING_DOWN_FACTOR_LVL {
     SAMPLING_DOWN_FACTOR_4 = 0xD04,
 };
 
-
 enum INTERACTIVE_TIMER_RATE_LVL {
     TR_MS_500 = 0xECD,
     TR_MS_100 = 0xEF5,
@@ -143,50 +137,27 @@ enum INTERACTIVE_TIMER_RATE_LVL {
 };
 
 /* This timer rate applicable to cpu0
-    across 8939 series chipset */
+    across 8939/8952 series chipset */
 enum INTERACTIVE_TIMER_RATE_LVL_CPU0_8939 {
     TR_MS_CPU0_500 = 0x30CD,
     TR_MS_CPU0_100 = 0x30F5,
     TR_MS_CPU0_50 = 0x30FA,
-    TR_MS_CPU0_40 = 0x30FB,
     TR_MS_CPU0_30 = 0x30FC,
     TR_MS_CPU0_20 = 0x30FD,
 };
 
 /* This timer rate applicable to cpu4
-    across 8939 series chipset */
+    across 8939/8952 series chipset */
 enum INTERACTIVE_TIMER_RATE_LVL_CPU4_8939 {
     TR_MS_CPU4_500 = 0x3BCD,
     TR_MS_CPU4_100 = 0x3BF5,
     TR_MS_CPU4_50 = 0x3BFA,
-    TR_MS_CPU4_40 = 0x3BFB,
     TR_MS_CPU4_30 = 0x3BFC,
     TR_MS_CPU4_20 = 0x3BFD,
 };
 
-/* This timer rate applicable to big.little arch */
-enum INTERACTIVE_TIMER_RATE_LVL_BIG_LITTLE {
-    BIG_LITTLE_TR_MS_100 = 0x64,
-    BIG_LITTLE_TR_MS_50 = 0x32,
-    BIG_LITTLE_TR_MS_40 = 0x28,
-    BIG_LITTLE_TR_MS_30 = 0x1E,
-    BIG_LITTLE_TR_MS_20 = 0x14,
-};
-
-/* INTERACTIVE opcodes */
-enum INTERACTIVE_OPCODES {
-    INT_OP_CLUSTER0_TIMER_RATE = 0x41424000,
-    INT_OP_CLUSTER1_TIMER_RATE = 0x41424100,
-    INT_OP_CLUSTER0_USE_SCHED_LOAD = 0x41430000,
-    INT_OP_CLUSTER1_USE_SCHED_LOAD = 0x41430100,
-    INT_OP_CLUSTER0_USE_MIGRATION_NOTIF = 0x41434000,
-    INT_OP_CLUSTER1_USE_MIGRATION_NOTIF = 0x41434100,
-    INT_OP_NOTIFY_ON_MIGRATE = 0x4241C000
-};
-
 enum INTERACTIVE_HISPEED_FREQ_LVL {
     HS_FREQ_1026 = 0xF0A,
-    HS_FREQ_800  = 0xF08,
 };
 
 enum INTERACTIVE_HISPEED_LOAD_LVL {
@@ -216,6 +187,11 @@ enum SCREEN_PWR_CLPS_LVL {
 
 enum THREAD_MIGRATION_LVL {
     THREAD_MIGRATION_SYNC_OFF = 0x1400,
+};
+
+enum SCHED_GUIDED_LVL {
+    INTERACTIVE_USE_SCHED_LOAD_OFF = 0x5201,
+    INTERACTIVE_USE_MIGRATION_NOTIF_OFF = 0x5301
 };
 
 enum INTERACTIVE_IO_BUSY_LVL {
@@ -262,15 +238,6 @@ enum CPU6_MAX_FREQ_LVL {
 enum CPU7_MAX_FREQ_LVL {
     CPU7_MAX_FREQ_NONTURBO_MAX = 0x260A,
 };
-
-enum SCHED_PREFER_IDLE {
-    SCHED_PREFER_IDLE_DIS = 0x3E01,
-};
-
-enum SCHED_MIGRATE_COST_CHNG {
-    SCHED_MIGRATE_COST_SET = 0x3F01,
-};
-
 
 #ifdef __cplusplus
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013,2015-2016, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -26,13 +26,14 @@
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#define LOG_NIDEBUG 0
+#define LOG_NDEBUG 1
 
 #include <dlfcn.h>
 #include <fcntl.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
 
 #include "utils.h"
 #include "list.h"
@@ -41,6 +42,10 @@
 
 #define LOG_TAG "QCOM PowerHAL"
 #include <utils/Log.h>
+
+#ifndef INTERACTION_BOOST
+#define INTERACTION_BOOST
+#endif
 
 char scaling_gov_path[4][80] ={
     "sys/devices/system/cpu/cpu0/cpufreq/scaling_governor",
@@ -198,19 +203,13 @@ int get_scaling_governor_check_cores(char governor[], int size,int core_num)
     return 0;
 }
 
-int is_interactive_governor(char* governor) {
-   if (strncmp(governor, INTERACTIVE_GOVERNOR, (strlen(INTERACTIVE_GOVERNOR)+1)) == 0)
-      return 1;
-   return 0;
-}
-
-int interaction(int duration, int num_args, int opt_list[])
+void interaction(int duration, int num_args, int opt_list[])
 {
 #ifdef INTERACTION_BOOST
-    int lock_handle = 0;
+    static int lock_handle = 0;
 
-    if (duration < 0 || num_args < 1 || opt_list[0] == NULL)
-        return 0;
+    if (duration < 0 || num_args < 1 || opt_list[0] == 0)
+        return;
 
     if (qcopt_handle) {
         if (perf_lock_acq) {
@@ -219,15 +218,13 @@ int interaction(int duration, int num_args, int opt_list[])
                 ALOGE("Failed to acquire lock.");
         }
     }
-    return lock_handle;
 #endif
-    return 0;
 }
 
 int interaction_with_handle(int lock_handle, int duration, int num_args, int opt_list[]) 
 {
 #ifdef INTERACTION_BOOST
-    if (duration < 0 || num_args < 1 || opt_list[0] == NULL)
+    if (duration < 0 || num_args < 1 || opt_list[0] == 0)
         return 0;
 
     if (qcopt_handle) {
@@ -240,7 +237,7 @@ int interaction_with_handle(int lock_handle, int duration, int num_args, int opt
     return lock_handle;
 #endif
     return 0;
- }
+}
 
 void release_request(int lock_handle) {
     if (qcopt_handle && perf_lock_rel)
@@ -250,6 +247,15 @@ void release_request(int lock_handle) {
 void perform_hint_action(int hint_id, int resource_values[], int num_resources)
 {
     if (qcopt_handle) {
+        struct hint_data temp_hint_data = {
+            .hint_id = hint_id
+        };
+        struct list_node *found_node = find_node(&active_hint_list_head,
+                                                 &temp_hint_data);
+        if (found_node) {
+            ALOGE("hint ID %d already active", hint_id);
+            return;
+        }
         if (perf_lock_acq) {
             /* Acquire an indefinite lock for the requested resources. */
             int lock_handle = perf_lock_acq(0, 0, resource_values,
@@ -312,7 +318,7 @@ void undo_hint_action(int hint_id)
 
                 if (found_hint_data) {
                     if (perf_lock_rel(found_hint_data->perflock_handle) == -1)
-                        ALOGE("Perflock release failed.");
+                        ALOGE("Perflock release failed: %d", hint_id);
                 }
 
                 if (found_node->data) {
@@ -321,8 +327,9 @@ void undo_hint_action(int hint_id)
                 }
 
                 remove_list_node(&active_hint_list_head, found_node);
+                ALOGV("Undo of hint ID %d succeeded", hint_id);
             } else {
-                ALOGE("Invalid hint ID.");
+                ALOGE("Invalid hint ID: %d", hint_id);
             }
         }
     }
