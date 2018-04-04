@@ -81,13 +81,13 @@ ro.gps.agps_provider=1
 vendor.audio.hw.aac.encoder=true
 
 # Media
+vendor.vidc.enc.disable.pq=true
+vidc.enc.dcvs.extra-buff-count=2
+vendor.audio.flac.sw.decoder.24bit=true
 media.aac_51_output_enabled=true
 mm.enable.smoothstreaming=true
-persist.media.treble_omx=false
-vendor.audio.flac.sw.decoder.24bit=true
 vendor.audio.use.sw.alac.decoder=true
 vendor.audio.use.sw.ape.decoder=true
-vendor.vidc.enc.disable.pq=true
 
 # NITZ
 persist.rild.nitz_plmn=""
