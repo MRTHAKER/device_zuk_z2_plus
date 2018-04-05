@@ -310,6 +310,8 @@ PRODUCT_COPY_FILES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
+    ipacm \
+    IPACM_cfg.xml \
     libwpa_client \
     wificond \
     hostapd \
