@@ -33,11 +33,9 @@
 #include <android-base/file.h>
 #include <android-base/properties.h>
 #include <android-base/strings.h>
-#include <android-base/logging.h>
+#include "vendor_init.h"
 #include "property_service.h"
 
-namespace android {
-namespace init {
 using android::base::GetProperty;
 using android::base::ReadFileToString;
 using android::base::Trim;
@@ -100,7 +98,6 @@ void check_device()
 void vendor_load_properties() 
 {
 	std::string platform;
-        LOG(INFO) << __func__ << "\n";
 
 	platform = GetProperty("ro.board.platform", "");
 	if (platform != ANDROID_TARGET)
@@ -117,5 +114,4 @@ void vendor_load_properties()
 
     init_alarm_boot_properties();
 }
-}  // namespace init
-} // namespace android
+
