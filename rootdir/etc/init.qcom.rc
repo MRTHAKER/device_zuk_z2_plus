@@ -577,7 +577,7 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
-service qseecomd /system/bin/qseecomd
+service qseecomd /system/vendor/bin/qseecomd
    class core
    user root
    group root
@@ -982,12 +982,6 @@ service cs-post-boot /system/bin/sh /persist/coresight/qdss.agent.sh
 
 on property:sys.dbg.coresight.enable=0
     write /persist/coresight/enable 0
-
-service qseeproxydaemon /system/vendor/bin/qseeproxydaemon
-    class late_start
-    user system
-    group system
-    writepid /dev/cpuset/system-background/tasks
 
 on property:vold.decrypt=trigger_restart_min_framework
 start time_daemon
