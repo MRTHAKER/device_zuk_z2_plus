@@ -61,6 +61,13 @@ on early-boot
     write /sys/kernel/boot_slpi/boot 1
     chown root audio /sys/kernel/boot_adsp/boot
 
+    # Create directory used by display clients
+     mkdir /data/vendor/display 0770 system graphics
+    
+    mkdir /data/vendor 0770 system system
+    mkdir /data/vendor/misc 0770 system system
+
+
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
@@ -379,6 +386,11 @@ on post-fs-data
     chown system system /sys/class/sensors/apds9930-proximity/enable
     chown system system /sys/class/sensors/apds9930-proximity/poll_delay
 
+    chown system system /sys/module/msm_core/parameters/polling_interval
+    chown system system /sys/module/msm_core/parameters/disabled
+    chown system system /sys/kernel/debug/msm_core/enable
+    chown system system /sys/kernel/debug/msm_core/ptable   
+
     # Create directories for Fingerprint
     mkdir /data/vendor/misc/qti_fp 0770 system system
     mkdir /data/vendor/misc/qti_fp/bg_estimation 0770 system system
@@ -431,15 +443,17 @@ on post-fs-data
     chown system system /data/dpm/nsrm
 
     # Create directory used by audio subsystem
-    mkdir /data/misc/audio 0770 audio audio
+    mkdir /data/vendor/misc/audio 0770 audio audio
 
     # Create directory for audio delta files
-    mkdir /data/misc/audio/acdbdata 0770 media audio
-    mkdir /data/misc/audio/acdbdata/delta 0770 media audio
+    mkdir /data/vendor/misc/audio/acdbdata 0770 media audio
+    mkdir /data/vendor/misc/audio/acdbdata/delta 0770 media audio
 
     # Create directory used by the DASH client
     mkdir /data/misc/dash 0770 media audio
 
+    # Create directory used by media clients
+    mkdir /data/vendor/media 0770 mediacodec media
 
     # Create directory used by display clients
     mkdir /data/vendor/display 0770 system graphics
@@ -467,13 +481,10 @@ on post-fs-data
 
     #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
     # Create directories for Location services
-    mkdir /data/misc/location 0770 gps gps
-    mkdir /data/misc/location/mq 0770 gps gps
-    mkdir /data/misc/location/xtwifi 0770 gps gps
-    mkdir /data/misc/location/gpsone_d 0770 system gps
-    mkdir /data/misc/location/quipc 0770 gps system
-    mkdir /data/misc/location/gsiff 0770 gps gps
-
+    mkdir /data/vendor/location 0770 gps gps
+    mkdir /data/vendor/location/mq 0770 gps gps
+    mkdir /data/vendor/location/xtwifi 0770 gps gps
+ 
     # Create directory from IMS services
     mkdir /data/shared 0755
     chown system system /data/shared
@@ -668,6 +679,8 @@ on property:init.svc.surfaceflinger=running
     start ppd
 
 on property:init.svc.surfaceflinger=restarting
+    stop hwcomposer-2-1
+    start hwcomposer-2-1
     stop ppd
 
 on property:init.svc.zygote=stopped
