@@ -145,7 +145,8 @@ PRODUCT_PACKAGES += \
     libgenlock \
     liboverlay \
     libtinyxml \
-    libdisplayconfig
+    libdisplayconfig \
+    libqdMetaData.system
 
 # Doze mode
 PRODUCT_PACKAGES += \
