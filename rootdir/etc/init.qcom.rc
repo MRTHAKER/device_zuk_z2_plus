@@ -747,17 +747,6 @@ service tftp_server /vendor/bin/tftp_server
     user root
     writepid /dev/cpuset/system-background/tasks
 
-on property:wc_transport.start_hci=true
-    start start_hci_filter
-
-on property:wc_transport.start_hci=false
-    stop start_hci_filter
-
-service start_hci_filter /system/bin/wcnss_filter
-    class late_start
-    user bluetooth
-    group bluetooth diag
-    disabled
 
 service config_bt_addr /system/bin/btnvtool -O
     class core
@@ -765,16 +754,30 @@ service config_bt_addr /system/bin/btnvtool -O
     group bluetooth radio
     oneshot
 
+on property:wc_transport.start_hci=true
+    start start_hci_filter
+
+on property:wc_transport.start_hci=false
+    stop start_hci_filter
+
+service start_hci_filter /vendor/bin/wcnss_filter
+    class late_start
+    user bluetooth
+    group bluetooth oem_2901
+    seclabel u:r:wcnss_filter:s0
+    disabled
+
 on property:wc_transport.start_root=true
     start hci_filter_root
 
 on property:wc_transport.start_root=false
     stop hci_filter_root
 
-service hci_filter_root /system/bin/wcnss_filter
+service hci_filter_root /vendor/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth diag system
+    group bluetooth oem_2901 system
+    seclabel u:r:wcnss_filter:s0
     disabled
 
 service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
