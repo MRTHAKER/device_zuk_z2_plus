@@ -198,7 +198,11 @@ TARGET_RIL_VARIANT := caf
 -include device/qcom/sepolicy/sepolicy.mk
 # BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
-# Tap to wake 
+# Lineage Hardware
+BOARD_HARDWARE_CLASS += \
+    $(DEVICE_PATH)/lineagehw
+
+# Tap to wake
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/touch/tp_dev/gesture_on"
 
 # Wifi
