@@ -127,6 +127,13 @@ PRODUCT_PACKAGES += \
     libmm-qcamera \
     SnapdragonCamera
 
+# Telephony packages
+PRODUCT_PACKAGES += \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
+
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
     cneapiclient \
