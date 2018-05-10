@@ -14,4 +14,7 @@
 <resources>
     <!-- Enable HAL3 by default -->
     <bool name="config_use_hal3">true</bool>
+
+    <!-- Use volume buttons for zooming -->
+    <bool name="volume_key_for_zoom">true</bool>
 </resources>
