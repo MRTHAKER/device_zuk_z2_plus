@@ -202,6 +202,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     ims-ext-common
 
+# Telephony packages
+PRODUCT_PACKAGES += \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += \
+   telephony-ext
+
 # Thermal
 PRODUCT_PACKAGES += \
     thermal.msm8996
