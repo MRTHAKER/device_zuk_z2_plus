@@ -173,10 +173,8 @@ persist.service.adb.enable=1
 persist.service.debuggable=1
 persist.sys.usb.config=mtp,adb
 
-# Higher fling velocities
-# for smoother scrolling and better responsiveness
-ro.min.fling_velocity=160
-ro.max.fling_velocity=20000
+#ui-trends
+sys.use_fifo_ui=1
 
 # USB
 sys.usb.controller=6a00000.dwc3
