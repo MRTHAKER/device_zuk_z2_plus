@@ -173,6 +173,9 @@ persist.service.adb.enable=1
 persist.service.debuggable=1
 persist.sys.usb.config=mtp,adb
 
+#ui-trends
+sys.use_fifo_ui=1
+
 # touch optimize
 persist.vendor.qti.inputopts.enable=true
 
