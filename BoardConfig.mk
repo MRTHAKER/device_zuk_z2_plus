@@ -215,6 +215,12 @@ BOARD_HARDWARE_CLASS += \
 # Tap to wake
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/touch/tp_dev/gesture_on"
 
+# Thermal
+USE_DEVICE_SPECIFIC_THERMAL := true
+
+# Vr
+USE_DEVICE_SPECIFIC_VR := true
+
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HAS_QCOM_WLAN_SDK := true
