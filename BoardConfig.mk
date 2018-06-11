@@ -66,6 +66,9 @@ TARGET_KERNEL_CONFIG := z2_plus_defconfig
 # Webview defs
 #PREBUILT_WEBVIEW_VERSION := chromium
 
+# ANT+
+BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
+
 # Audio
 AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
 AUDIO_FEATURE_ENABLED_ACDB_LICENSE := true
