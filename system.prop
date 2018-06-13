@@ -33,7 +33,7 @@ ro.bluetooth.wipower=true
 camera.disable_zsl_mode=0
 
 # CNE
-persist.cne.feature=1
+persist.vendor.cne.feature=1
 
 # Data modules
 persist.data.mode=concurrent
@@ -45,7 +45,7 @@ persist.data.iwlan.enable=true
 ro.product.first_api_level=23
 
 # Display (Qualcomm AD)
-ro.qualcomm.cabl=2
+ro.vendor.display.cabl=0
 ro.qcom.ad=1
 ro.qcom.ad.calib.data=/system/etc/calib.cfg
 ro.qcom.ad.sensortype=2
@@ -57,16 +57,17 @@ persist.qfp=false
 ro.opa.eligible_device=true
 
 # Graphics
-debug.gralloc.enable_fb_ubwc=1
+vendor.gralloc.enable_fb_ubwc=1
 persist.hwc.enable_vds=1
 persist.camera.preview.ubwc=0
 persist.camera.video.ubwc=0
 ro.opengles.version=196610
 ro.persist.qcapb=1
 ro.sf.lcd_density=420
-sdm.perf_hint_window=50
-debug.sf.latch_unsignaled=1
-sdm.debug.disable_skip_validate=1
+vendor.display.disable_rotator_split=1
+vendor.display.disable_skip_validate=1
+vendor.display.enable_default_color_mode=1
+vendor.display.perf_hint_window=50
 debug.sf.recomputecrop=0
 sdm.debug.rotator_downscale=1
 
