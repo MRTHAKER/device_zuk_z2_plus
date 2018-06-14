@@ -327,6 +327,9 @@ on boot
     # Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
 
+    # Create hvdcp_opti directory
+    mkdir /persist/hvdcp_opti 0770 root system
+
     # Torch
     chown system system /sys/class/leds/led:torch_0/brightness
     chmod 666 /sys/class/leds/led:torch_0/brightness
