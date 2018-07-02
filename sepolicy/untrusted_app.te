@@ -1,0 +1,6 @@
+dontaudit untrusted_app_all sysfs_zram:dir search;
+dontaudit untrusted_app_all sysfs_zram:file r_file_perms;
+
+allow untrusted_app_25 qemu_hw_mainkeys_prop:file {read};
+allow untrusted_app_25 qemu_hw_mainkeys_prop:file {open};
+allow untrusted_app_25 adbd_exec:file {getattr};

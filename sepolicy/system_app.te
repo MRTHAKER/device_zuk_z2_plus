@@ -1,10 +1,9 @@
-# Read ro.boot.hardware.sku. Needed by Regulatory Info screen of Settings app.
-# Normally this property is a default_prop which is readable by anybody, but on marlin/sailfish
-# init_mid needs to be able to set this property and thus this property had to be relabelled as
-# a new type, hw_sku_pop. This in turn requires us to grant system_app read access to this property
-# label.
-get_prop(system_app, hw_sku_prop);
+allow system_app sysfs_fingerprint:file rw_file_perms;
+allow system_app shell_prop:property_service set;
 
-# Needed by Settings app's TelephonyMonitorPreferenceController, available only on a subset of
-# userdebug and eng devices
-userdebug_or_eng(`set_prop(system_app, radio_prop)')
+binder_call(system_app, wificond);
+
+dontaudit system_app netd_service:service_manager find;
+dontaudit system_app installd_service:service_manager find;
+
+#allow system_app storaged:binder {call};
