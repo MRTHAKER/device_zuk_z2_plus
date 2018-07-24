@@ -221,9 +221,6 @@ on boot
     chown system system /sys/devices/soc/soc:fpc1020/utouch_disable
     chmod 0660 /sys/devices/soc/soc:fpc1020/utouch_disable
 
-    #dt2w
-    write /sys/devices/virtual/touch/tp_dev/gesture_on 1
-
     #added touch gesture wake node permission
     chown system system /sys/devices/virtual/touch/tp_dev/gesture_on
     chmod 0660 /sys/devices/virtual/touch/tp_dev/gesture_on
