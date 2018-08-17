@@ -66,11 +66,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_WIDTH := 1080
+
 # HWUI overrides
-$(call inherit-product, vendor/omni/config/phone-xxxhdpi-3072-hwui-memory.mk)
+$(call inherit-product, vendor/nitrogen/config/phone-xxxhdpi-3072-hwui-memory.mk)
 
 # Dalvik overrides
-$(call inherit-product, vendor/omni/config/phone-xxxhdpi-3072-dalvik-heap.mk)
+$(call inherit-product, vendor/nitrogen/config/phone-xxxhdpi-3072-dalvik-heap.mk)
 
 # facelock properties
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -83,13 +87,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_CHARACTERISTICS := nosdcard
 
 # ANT+
-PRODUCT_PACKAGES += \
-    AntHalService \
-    com.dsi.ant.antradio_library \
-    libantradio
+#PRODUCT_PACKAGES += \
+ #   AntHalService \
+   # com.dsi.ant.antradio_library \
+   # libantradio
 
-PRODUCT_COPY_FILES += \
-   external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.dsi.ant.antradio_library.xml
+#PRODUCT_COPY_FILES += \  
+ 
+#external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.dsi.ant.antradio_library.xml
 
 # Audio
 PRODUCT_PACKAGES += \

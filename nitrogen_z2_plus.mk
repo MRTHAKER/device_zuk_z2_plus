@@ -20,17 +20,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 # Inherit from z2_plus device
 $(call inherit-product, device/zuk/z2_plus/device.mk)
 
+# Inherit some common Nitrogen stuff.
+$(call inherit-product, vendor/nitrogen/products/common.mk)
 
-# must be before including omni part
-TARGET_BOOTANIMATION_SIZE := 1080p
-
-# Inherit some common OMNI stuff.
-$(call inherit-product, vendor/omni/config/gsm.mk)
-$(call inherit-product, vendor/omni/config/common.mk)
-
-PRODUCT_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
-
-PRODUCT_NAME := omni_z2_plus
+PRODUCT_NAME := nitrogen_z2_plus
 PRODUCT_DEVICE := z2_plus
 PRODUCT_MANUFACTURER := ZUK
 PRODUCT_BRAND := ZUK

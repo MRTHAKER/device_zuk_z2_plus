@@ -67,7 +67,7 @@ TARGET_KERNEL_CONFIG := z2_plus_defconfig
 #PREBUILT_WEBVIEW_VERSION := chromium
 
 # ANT+
-BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
+#BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
 
 # Audio
 AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
@@ -111,7 +111,6 @@ BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
-TARGET_CRYPTFS_HW_PATH := $(DEVICE_PATH)/cryptfs_hw
 
 # DEVICE MATRIX
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := device/zuk/z2_plus/device_framework_matrix.xml
@@ -149,7 +148,7 @@ TARGET_USES_QCOM_BSP := true
 TARGET_QCOM_DISPLAY_VARIANT := caf-msm8996
 TARGET_QCOM_AUDIO_VARIANT := caf-msm8996
 TARGET_QCOM_MEDIA_VARIANT := caf-msm8996
-TARGET_USE_SDCLANG := true
+#TARGET_USE_SDCLANG := true
 TARGET_QCOM_BLUETOOTH_VARIANT := caf-msm8996
 
 # Filesystem
@@ -170,9 +169,9 @@ TARGET_PROVIDES_KEYMASTER := true
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_msm8996
-TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8996
-TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
+#TARGET_INIT_VENDOR_LIB := libinit_msm8996
+#TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8996
+#TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
@@ -191,7 +190,6 @@ BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # QCOM Power
-TARGET_USES_INTERACTION_BOOST := true
 TARGET_PROVIDES_POWERHAL := true
 TARGET_POWERHAL_VARIANT := msm8996
 
@@ -208,13 +206,8 @@ PROTOBUF_SUPPORTED := true
 TARGET_RIL_VARIANT := caf
 
 # SELinux
--include device/qcom/sepolicy/sepolicy.mk
--include vendor/omni/sepolicy/sepolicy.mk
+#-include device/qcom/sepolicy/sepolicy.mk
 # BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
-
-# Lineage Hardware
-BOARD_HARDWARE_CLASS += \
-    $(DEVICE_PATH)/lineagehw
 
 # Tap to wake
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/touch/tp_dev/gesture_on"
