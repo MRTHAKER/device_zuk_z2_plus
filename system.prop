@@ -107,9 +107,6 @@ ro.min_freq_4=307200
 ro.vendor.qti.sys.fw.bg_apps_limit=60
 ro.vendor.extension_library=libqti-perfd-client.so
 
-# Priv-app permissions whitelist
-ro.control_privapp_permissions=enforce
-
 # Radio
 DEVICE_PROVISIONED=1
 rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
