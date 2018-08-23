@@ -34,6 +34,15 @@
             <name>IVr</name>
      </interface>
      </hal>
+    <hal format="hidl">
+        <name>android.hardware.biometrics.fingerprint</name>
+        <transport>hwbinder</transport>
+        <version>2.1</version>
+        <interface>
+            <name>IBiometricsFingerprint</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
       <hal format="hidl">
         <name>android.hardware.drm</name>
         <transport>hwbinder</transport>
