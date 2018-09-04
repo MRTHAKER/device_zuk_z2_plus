@@ -216,6 +216,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     ims-ext-common
 
+#Power
+PRODUCT_PACKAGES += \
+     power.qcom
+
 # Thermal
 PRODUCT_PACKAGES += \
     thermal.msm8996
