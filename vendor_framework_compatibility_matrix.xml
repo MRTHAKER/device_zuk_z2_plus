@@ -125,6 +125,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>default</instance>
         </interface>
    </hal>
+        <hal format="hidl" optional="true">
+        <name>vendor.qti.hardware.data.connection</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDataConnection</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
    <hal format="hidl" optional="true">
         <name>com.qualcomm.qti.bluetooth_audio</name>
         <version>1.0</version>
