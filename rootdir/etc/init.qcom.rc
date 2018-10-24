@@ -59,9 +59,6 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
-    # Start HW service manager early
-    start hwservicemanager
-
     mount_all fstab.qcom
 
 on late-fs
