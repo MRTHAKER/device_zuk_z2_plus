@@ -538,8 +538,8 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
 
 service loc_launcher /vendor/bin/loc_launcher
     class late_start
-    user gps
-    group gps
+    group gps inet diag wifi
+    writepid /dev/cpuset/system-background/tasks
 
 service qcom-sh /system/bin/sh /init.qcom.sh
     class late_start
