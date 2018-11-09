@@ -68,7 +68,7 @@ TARGET_KERNEL_CONFIG := z2_plus_defconfig
 #PREBUILT_WEBVIEW_VERSION := chromium
 
 # ANT+
-BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
+#BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
 
 # Audio
 AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
