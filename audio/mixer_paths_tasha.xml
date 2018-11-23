@@ -1325,6 +1325,38 @@
         <path name="incall-rec-uplink" />
         <path name="incall-rec-downlink" />
     </path>
+    
+    <path name="incall-music-uplink">
+        <ctl name="Incall_Music Audio Mixer MultiMedia9" value="1" />
+    </path>
+
+    <path name="incall-music-uplink speaker">
+        <path name="incall-music-uplink" />
+    </path>
+
+    <path name="incall-music-uplink speaker-and-headphones">
+        <path name="incall-music-uplink" />
+    </path>
+
+    <path name="incall-music-uplink bt-sco">
+        <path name="incall-music-uplink" />
+    </path>
+
+    <path name="incall-music-uplink bt-sco-wb">
+        <path name="incall-music-uplink" />
+    </path>
+
+    <path name="incall-music-uplink afe-proxy">
+        <path name="incall-music-uplink" />
+    </path>
+
+    <path name="incall-music-uplink speaker-and-bt-sco">
+        <path name="incall-music-uplink" />
+    </path>
+
+    <path name="incall-music-uplink speaker-and-bt-sco-wb">
+        <path name="incall-music-uplink" />
+    </path>
 
     <path name="incall-rec-uplink-and-downlink bt-sco">
         <path name="incall-rec-uplink-and-downlink" />
