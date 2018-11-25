@@ -213,12 +213,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     ims-ext-common
 
-PRODUCT_PACKAGES += \
-   QPerformance
-
-PRODUCT_BOOT_JARS += \
-   QPerformance
-
 #Power
 PRODUCT_PACKAGES += \
      power.qcom
