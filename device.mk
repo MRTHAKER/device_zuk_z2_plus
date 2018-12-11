@@ -141,7 +141,7 @@ PRODUCT_PACKAGES += \
     camera.msm8996 \
     libmm-qcamera \
     mm-qcamera-app \
-    SnapdragonCamera2
+    SnapdragonCamera
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
