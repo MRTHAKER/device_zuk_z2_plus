@@ -75,6 +75,9 @@ persist.gps.qc_nlp_in_use=1
 persist.loc.nlp_name=com.qualcomm.location
 ro.gps.agps_provider=1
 
+# Memory optimizations
+ro.vendor.qti.sys.fw.bservice_enable=true
+
 # Hdmi
 vendor.audio.hw.aac.encoder=true
 
