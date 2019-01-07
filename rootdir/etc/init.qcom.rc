@@ -233,6 +233,9 @@ on post-fs-data
     chmod 0660 /data/vendor/radio/db_check_done
 
 on early-boot
+
+exec u:r:qti_init_shell:s0 -- /init.qcom.early_boot.sh
+
     # Set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
