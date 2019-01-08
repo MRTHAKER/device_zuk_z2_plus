@@ -158,7 +158,7 @@ ro.opa.eligible_device=true
 # Google WFD settings
 persist.debug.wfd.enable=1
 persist.sys.wfd.virtual=0
-debug.sf.enable_hwc_vds=1
+vendor.video.disable.ubwc=1
 
 # Create zram disk
 ro.vendor.qti.config.zram=true
@@ -195,3 +195,4 @@ persist.vendor.qti.inputopts.enable=true
 # USB
 sys.usb.controller=6a00000.dwc3
 sys.usb.rndis.func.name=rndis_bam
+
