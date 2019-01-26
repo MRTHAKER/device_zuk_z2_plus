@@ -202,6 +202,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 # RIL
 PROTOBUF_SUPPORTED := true
 TARGET_RIL_VARIANT := caf
+TARGET_USES_OLD_MNC_FORMAT := true
 
 # SELinux
 #-include device/qcom/sepolicy/sepolicy.mk
