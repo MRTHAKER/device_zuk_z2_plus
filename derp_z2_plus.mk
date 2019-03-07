@@ -23,6 +23,8 @@ $(call inherit-product, device/zuk/z2_plus/device.mk)
 # Inherit some common Nitrogen stuff.
 $(call inherit-product, vendor/derp/config/derp.mk)
 
+PRODUCT_PACKAGE_OVERLAYS += device/zuk/z2_plus/overlay/packages/apps/CarrierConfig
+
 PRODUCT_NAME := derp_z2_plus
 PRODUCT_DEVICE := z2_plus
 PRODUCT_MANUFACTURER := ZUK
