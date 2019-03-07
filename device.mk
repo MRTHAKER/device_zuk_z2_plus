@@ -68,8 +68,7 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1080
+TARGET_BOOT_ANIMATION_RES :=1920
 
 # HWUI overrides
 $(call inherit-product, vendor/derp/build/configs/phone-xxxhdpi-3072-hwui-memory.mk)
@@ -142,7 +141,7 @@ PRODUCT_PACKAGES += \
     camera.msm8996 \
     libmm-qcamera \
     mm-qcamera-app \
-    SnapdragonCamera
+    Snap
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \

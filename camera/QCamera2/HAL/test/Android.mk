@@ -15,7 +15,6 @@ LOCAL_SHARED_LIBRARIES:= \
     libui \
     libgui \
     libcamera_client \
-    libskia \
     libstagefright \
     libstagefright_foundation \
 
