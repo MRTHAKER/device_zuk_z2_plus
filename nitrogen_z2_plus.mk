@@ -21,11 +21,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, device/zuk/z2_plus/device.mk)
 
 # Inherit some common Nitrogen stuff.
-$(call inherit-product, vendor/derp/config/derp.mk)
+$(call inherit-product, vendor/nitrogen/products/common.mk)
 
 PRODUCT_PACKAGE_OVERLAYS += device/zuk/z2_plus/overlay/packages/apps/CarrierConfig
 
-PRODUCT_NAME := derp_z2_plus
+PRODUCT_NAME := nitrogen_z2_plus
 PRODUCT_DEVICE := z2_plus
 PRODUCT_MANUFACTURER := ZUK
 PRODUCT_BRAND := ZUK
@@ -46,4 +46,3 @@ PRIVATE_BUILD_DESC="z2_plus-user 7.0 NRD90M 2.5.412_170428 release-keys"
 
     BUILD_FINGERPRINT="ZUK/z2_plus/z2_plus:7.0/NRD90M/2.5.412_170428:user/release-keys" \
 
-DERP_RELEASE := true
