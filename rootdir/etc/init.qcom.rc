@@ -40,8 +40,6 @@ on early-init
     write /proc/sys/vm/page-cluster 0
 
 on init
-    # Set permissions for persist partition
-    mkdir /persist 0771 root system
 
     # Create cgroup mount point for memory
     mkdir /sys/fs/cgroup/memory/bg 0750 root system
@@ -142,6 +140,13 @@ on post-fs-data
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 
+    # Set permissions for persist partition
+    chown root system /mnt/vendor/persist
+    chmod 0771 /mnt/vendor/persist
+    mkdir /mnt/vendor/persist/bms 0700 root system
+    mkdir /mnt/vendor/persist/data 0700 system system
+    restorecon_recursive /mnt/vendor/persist
+
     # Create netmgr log dir
     mkdir /data/vendor/netmgr 0770 radio radio
     chmod 0770 /data/vendor/netmgr
@@ -155,18 +160,21 @@ on post-fs-data
     chmod 0770 /data/vendor/dataqti
 
     # Create the directories used by CnE subsystem
-    mkdir /data/connectivity 0771 system system
-    chown system system /data/connectivity
+    mkdir /data/vendor/connectivity 0771 radio radio
+    chown radio radio /data/vendor/connectivity
 
     # Create directory used by audio subsystem
-    mkdir /data/vendor/misc/audio 0770 audio audio
+    mkdir /data/vendor/audio 0770 audio audio
 
     # Create directory for audio delta files
-    mkdir /data/vendor/misc/audio/acdbdata 0770 media audio
-    mkdir /data/vendor/misc/audio/acdbdata/delta 0770 media audio
+    mkdir /data/vendor/audio/acdbdata 0770 media audio
+    mkdir /data/vendor/audio/acdbdata/delta 0770 media audio
 
     # Create directory for radio
     mkdir /data/vendor/radio 0770 system radio
+
+    # Create directory for modem_config
+    mkdir /data/vendor/modem_config 0550 system radio
 
     #Create SWAP related dirs
     mkdir /data/vendor/swap 0770 root system
@@ -310,15 +318,12 @@ on boot
     mkdir /persist/misc 0770 system system
     mkdir /persist/alarm 0770 system system
     mkdir /persist/time 0770 system system
-    mkdir /persist/data 0700 system system
     mkdir /persist/data/sfs 0700 system system
     mkdir /persist/data/tz 0700 system system
     mkdir /persist/qc_senseid 0700 system system
-    mkdir /persist/bms 0700 root system
     mkdir /persist/wlan_bt 0770 system system
     mkdir /persist/audio 0777 media audio
     mkdir /persist/display 0770 system graphics
-    restorecon_recursive /persist
 
     # Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
@@ -434,7 +439,7 @@ on property:sys.boot_completed=1
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
-service cnd /vendor/bin/cnd
+service vendor.cnd /vendor/bin/cnd
     class main
     user system
     group system wifi inet radio wakelock net_admin
@@ -450,7 +455,7 @@ service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     user root
     oneshot
 
-service rmt_storage /vendor/bin/rmt_storage
+service vendor.rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
@@ -458,24 +463,24 @@ service rmt_storage /vendor/bin/rmt_storage
     ioprio rt 0
     writepid /dev/cpuset/system-background/tasks
 
-service tftp_server /vendor/bin/tftp_server
+service vendor.tftp_server /vendor/bin/tftp_server
     class core
     user root
     writepid /dev/cpuset/system-background/tasks
 
-on property:wc_transport.start_hci=true
-    start start_hci_filter
+on property:vendor.wc_transport.start_hci=true
+    start vendor.start_hci_filter
 
-on property:wc_transport.start_hci=false
-    stop start_hci_filter
+on property:vendor.wc_transport.start_hci=false
+    stop vendor.start_hci_filter
 
-service start_hci_filter /vendor/bin/wcnss_filter
+service vendor.start_hci_filter /vendor/bin/wcnss_filter
     class late_start
     user bluetooth
     group bluetooth diag system wakelock
     disabled
 
-service atfwd /vendor/bin/ATFWD-daemon
+service vendor.atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
@@ -486,7 +491,7 @@ service qvop-daemon /vendor/bin/qvop-daemon
     user system
     group system drmrpc
 
-service netmgrd /vendor/bin/netmgrd
+service vendor.netmgrd /vendor/bin/netmgrd
     class main
     user root
     group root wifi wakelock radio inet
@@ -498,13 +503,13 @@ service ipacm /vendor/bin/ipacm
     group radio inet
     writepid /dev/cpuset/system-background/tasks
 
-service qti /vendor/bin/qti
+service vendor.dataqti /vendor/bin/qti
     class main
     user radio
     group radio oem_2901 diag usb net_admin
     writepid /dev/cpuset/system-background/tasks
 
-service sensors /vendor/bin/sensors.qcom
+service vendor.sensors /vendor/bin/sensors.qcom
     class core
     user system
     group system
@@ -555,6 +560,9 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
+on property:ro.runtime.mbn_copy_completed=1
+    write /data/vendor/radio/copy_complete 1
+
 service ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
     socket rild2 stream 660 root radio
@@ -568,7 +576,7 @@ service sensor-sh /system/bin/sh /init.qcom.sensors.sh
     user root
     oneshot
 
-service qseecomd /vendor/bin/qseecomd
+service vendor.qseecomd /vendor/bin/qseecomd
     class core
     user root
     group root
@@ -580,32 +588,39 @@ service time_daemon /vendor/bin/time_daemon
     group root
     writepid /dev/cpuset/system-background/tasks
 
+service vendor.power_off_alarm /vendor/bin/power_off_alarm
+    class core
+    group system
+    disabled
+    oneshot
+
 # Start camera server as daemon
 service qcamerasvr /vendor/bin/mm-qcamera-daemon
-    class late_start
+    class main
     user camera
     group camera system inet input graphics
     writepid /dev/cpuset/system-background/tasks
 
 # Start up peripheral manager
-service per_mgr /vendor/bin/pm-service
+service vendor.per_mgr /vendor/bin/pm-service
     class core
     user system
     group system
     writepid /dev/cpuset/system-background/tasks
 
-service per_proxy /vendor/bin/pm-proxy
+service vendor.per_proxy /vendor/bin/pm-proxy
     class core
     user system
     group system
     writepid /dev/cpuset/system-background/tasks
     disabled
 
-on property:init.svc.per_mgr=running
-    start per_proxy
+on property:init.svc.vendor.per_mgr=running
+    start vendor.per_proxy
 
 on property:sys.shutdown.requested=*
-    stop per_proxy
+    stop vendor.per_proxy
+    stop vendor.ims_rtp_daemon
 
 service readfem /vendor/bin/readfem
     class main
@@ -636,14 +651,15 @@ service adsprpcd /vendor/bin/adsprpcd
     user media
     group media
 
-service imsqmidaemon /vendor/bin/imsqmidaemon
+## imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
+service vendor.imsqmidaemon /system/vendor/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
     group radio log diag
-    writepid /dev/cpuset/system-background/tasks
 
-service imsdatadaemon /vendor/bin/imsdatadaemon
+# imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
+service vendor.imsdatadaemon /system/vendor/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
@@ -652,7 +668,7 @@ service imsdatadaemon /vendor/bin/imsdatadaemon
     disabled
 
 on property:vendor.ims.QMI_DAEMON_STATUS=1
-    start imsdatadaemon
+    start vendor.imsdatadaemon
 
 service vendor.ims_rtp_daemon /vendor/bin/ims_rtp_daemon
     class main
@@ -664,7 +680,6 @@ service vendor.imsrcsservice /vendor/bin/imsrcsd
     user system
     group radio diag inet log
     writepid /dev/cpuset/system-background/tasks
-    disabled
 
 on property:vendor.ims.DATA_DAEMON_STATUS=1
     restart vendor.ims_rtp_daemon
@@ -676,8 +691,8 @@ service ppd /vendor/bin/mm-pp-dpps
     socket pps stream 0660 system system
 
 on property:init.svc.surfaceflinger=restarting
-    stop hwcomposer-2-1
-    start hwcomposer-2-1
+    stop vendor.hwcomposer-2-1
+    start vendor.hwcomposer-2-1
 
 on property:slpi.restart=1
 write /sys/kernel/debug/msm_subsys/slpi restart
