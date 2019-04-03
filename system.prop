@@ -38,10 +38,12 @@ camera.disable_zsl_mode=0
 persist.vendor.cne.feature=1
 
 # Data modules
-persist.data.mode=concurrent
+persist.vendor.data.mode=concurrent
 persist.data.netmgrd.qos.enable=true
 ro.use_data_netmgrd=true
 persist.data.iwlan.enable=true
+ro.telephony.default_network=9,1
+ro.telephony.call_ring.multiple=false
 
 # Device was launched with M
 ro.product.first_api_level=23
