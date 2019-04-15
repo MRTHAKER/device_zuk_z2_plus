@@ -23,6 +23,9 @@ $(call inherit-product, device/zuk/z2_plus/device.mk)
 # Inherit some common Nitrogen stuff.
 $(call inherit-product, vendor/derp/config/derp.mk)
 
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
 PRODUCT_PACKAGE_OVERLAYS += device/zuk/z2_plus/overlay/packages/apps/CarrierConfig
 
 PRODUCT_NAME := derp_z2_plus
