@@ -59,10 +59,6 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.1-service.clearkey
 
-# Dumpstate HAL
-PRODUCT_PACKAGES += \
-    android.hardware.dumpstate@1.0-service.msm8996
-
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.0-service.zuk_z2

@@ -65,12 +65,6 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_SOURCE := kernel/zuk/msm8996
 TARGET_KERNEL_CONFIG := z2_plus_defconfig
 
-# Webview defs
-#PREBUILT_WEBVIEW_VERSION := chromium
-
-# ANT+
-#BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
-
 # Audio
 AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
 AUDIO_FEATURE_ENABLED_ACDB_LICENSE := true
@@ -149,13 +143,8 @@ ifeq ($(HOST_OS),linux)
 endif
 WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= true
 
-#omni sax
+#Qcom bsp
 TARGET_USES_QCOM_BSP := true
-TARGET_QCOM_DISPLAY_VARIANT := caf-msm8996
-TARGET_QCOM_AUDIO_VARIANT := caf-msm8996
-TARGET_QCOM_MEDIA_VARIANT := caf-msm8996
-#TARGET_USE_SDCLANG := true
-TARGET_QCOM_BLUETOOTH_VARIANT := caf-msm8996
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
@@ -177,11 +166,6 @@ TARGET_PROVIDES_KEYMASTER := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
-
-# Init
-#TARGET_INIT_VENDOR_LIB := libinit_msm8996
-#TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8996
-#TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
@@ -225,12 +209,6 @@ TARGET_RIL_VARIANT := caf
 
 # Tap to wake
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/touch/tp_dev/gesture_on"
-
-# Thermal
-USE_DEVICE_SPECIFIC_THERMAL := true
-
-# Vr
-USE_DEVICE_SPECIFIC_VR := true
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true

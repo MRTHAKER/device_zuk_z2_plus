@@ -76,24 +76,8 @@ $(call inherit-product, vendor/derp/build/configs/phone-xxxhdpi-3072-hwui-memory
 # Dalvik overrides
 $(call inherit-product, vendor/derp/build/configs/phone-xxxhdpi-3072-dalvik-heap.mk)
 
-# facelock properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.facelock.black_timeout=700 \
-    ro.facelock.det_timeout=2500 \
-    ro.facelock.rec_timeout=3500 \
-    ro.facelock.est_max_time=600
-
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
-
-# ANT+
-#PRODUCT_PACKAGES += \
-   #  AntHalService \
-  #   com.dsi.ant.antradio_library \
- #    libantradio
-
-#PRODUCT_COPY_FILES += \
-#external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.dsi.ant.antradio_library.xml
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -131,10 +115,6 @@ PRODUCT_COPY_FILES += \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:/$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:/$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/hearing_aid_audio_policy_configuration.xml:/$(TARGET_COPY_OUT_VENDOR)/etc/hearing_aid_audio_policy_configuration.xml
-
-# Bluetooth
-PRODUCT_PACKAGES += \
-    libbt-vendor
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -234,8 +214,8 @@ PRODUCT_PACKAGES += \
 
 # Thermal
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf \
-    $(LOCAL_PATH)/configs/thermal-engine-vr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-vr.conf
+    $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
+
 # IPv6
 PRODUCT_PACKAGES += \
     ebtables \
@@ -249,7 +229,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
     $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/synaptics_dsx.kl \
     $(LOCAL_PATH)/keylayout/msm8996-tasha-mtp-snd-card_Button_Jack.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/msm8996-tasha-mtp-snd-card_Button_Jack.kl \
-    $(LOCAL_PATH)/keylayout/qpnp_pon.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/qpnp_pon.kl 
+    $(LOCAL_PATH)/keylayout/qpnp_pon.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/qpnp_pon.kl
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -287,13 +267,6 @@ PRODUCT_PACKAGES += \
     libOmxVdecHevc \
     libstagefrighthw
 
-# VR
-PRODUCT_PACKAGES += \
-    vr.msm8996
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.vr.high_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vr.high_performance.xml
-
 # Qualcomm
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml \
@@ -329,13 +302,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp_policy/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
     $(LOCAL_PATH)/seccomp_policy/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
 
-# VR
-PRODUCT_PACKAGES += \
-    vr.msm8996 \
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.vr.high_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vr.high_performance.xml
-
 # Wifi
 PRODUCT_PACKAGES += \
     libqsap_sdk \
@@ -357,6 +323,3 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
     $(LOCAL_PATH)/wifi/hostapd.accept:system/etc/hostapd/hostapd.accept \
     $(LOCAL_PATH)/wifi/hostapd.deny:system/etc/hostapd/hostapd.deny
-
-# MSM8996 Headers
-PRODUCT_VENDOR_KERNEL_HEADERS := hardware/qcom/msm8996/kernel-headers
