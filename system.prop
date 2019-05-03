@@ -75,6 +75,9 @@ persist.debug.wfd.enable=1
 persist.sys.wfd.nohdcp=1
 debug.sf.enable_hwc_vds=1
 
+# SurfaceFlinger
+ro.surface_flinger.protected_contents=true
+
 # Memory optimizations
 ro.vendor.qti.sys.fw.bservice_enable=true
 
