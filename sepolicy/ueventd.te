@@ -1,15 +1,6 @@
-allow ueventd sysfs_camera:file w_file_perms;
-allow ueventd sysfs_fingerprint:file w_file_perms;
-allow ueventd sysfs_leds:file w_file_perms;
-allow ueventd sysfs_msm_core:file w_file_perms;
-allow ueventd sysfs_msm_subsys:file w_file_perms;
-allow ueventd sysfs_nanoapp_cmd:file w_file_perms;
-allow ueventd sysfs_net:file w_file_perms;
-allow ueventd sysfs_pcie:file w_file_perms;
-allow ueventd sysfs_rmtfs:file w_file_perms;
-allow ueventd sysfs_soc:file w_file_perms;
-allow ueventd sysfs_thermal:file w_file_perms;
-allow ueventd sysfs_video:file w_file_perms;
-
-# /system/core/init/device.cpp catches uevents from /firmware
-r_dir_file(ueventd, firmware_file)
+allow ueventd unlabeled:dir { search };
+allow ueventd unlabeled:lnk_file { read };
+allow ueventd mnt_vendor_file:dir { search };
+allow ueventd mnt_vendor_file:file { open read getattr };
+allow ueventd vfat:dir { search };
+allow ueventd vfat:file { open read getattr };

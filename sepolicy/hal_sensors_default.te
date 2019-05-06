@@ -1,0 +1,2 @@
+allow hal_sensors_default hal_sensors_default:socket { read };
+

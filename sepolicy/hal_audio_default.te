@@ -1,0 +1,1 @@
+allow hal_audio_default device:chr_file { ioctl read write open };
