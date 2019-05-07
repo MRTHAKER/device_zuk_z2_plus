@@ -1,0 +1,2 @@
+allow vold mnt_vendor_file:dir { read open ioctl };
+

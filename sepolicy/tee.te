@@ -1,0 +1,5 @@
+allow tee block_device:blk_file { ioctl };
+allow tee tee:capability { sys_rawio };
+allow tee device:chr_file { ioctl };
+allow tee fingerprintd_data_file:file { read open };
+

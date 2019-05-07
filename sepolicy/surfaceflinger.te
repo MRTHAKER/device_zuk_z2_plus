@@ -1,1 +1,2 @@
 allow surfaceflinger device:chr_file { ioctl read write };
+allow surfaceflinger gpu_device:chr_file rw_file_perms;

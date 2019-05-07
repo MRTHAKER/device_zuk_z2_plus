@@ -1,1 +1,8 @@
 allow rild rild:socket { ioctl };
+allow rild socket_device:sock_file { write create };
+allow rild socket_device:dir { write add_name };
+allow rild vendor_data_file:file { read write getattr open ioctl lock };
+allow rild default_android_hwservice:hwservice_manager { add };
+allow rild vndservicemanager:binder { call };
+allow rild vndbinder_device:chr_file { ioctl };
+allow rild vendor_data_file:dir { write open };

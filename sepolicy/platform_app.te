@@ -4,3 +4,5 @@ allow platform_app device:chr_file { open };
 allow platform_app device:chr_file { ioctl }; 
 allow platform_app device:chr_file { read };
 allow platform_app device:chr_file { write };  
+allow platform_app sysfs:file { read open getattr };
+

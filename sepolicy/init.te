@@ -1,3 +1,13 @@
 allow init sysfs:file { open read write setattr };
 allow init device:chr_file { ioctl };
-allow init sysfs_lowmemorykiller:file { write };
+allow init sysfs_lowmemorykiller:file { write open };
+allow init ram_device:blk_file { write };
+allow init proc:file { write open };
+allow init sysfs_devices_system_cpu:file { write };
+allow init ion_device:chr_file { read open ioctl };
+allow init vendor_file:file { execute_no_trans };
+allow init device:chr_file { getattr read write open };
+allow init vfat:dir { search };
+allow init vfat:file { read open };
+allow init hal_fingerprint_hwservice:hwservice_manager { add };
+allow init hidl_base_hwservice:hwservice_manager { add };

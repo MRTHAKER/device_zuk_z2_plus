@@ -1,2 +1,6 @@
-allow bluetooth vendor_data_file:file { write };
+allow bluetooth vendor_data_file:file { write create open read append getattr };
+allow bluetooth vendor_data_file:dir { write add_name };
 allow bluetooth device:chr_file { ioctl };
+allow bluetooth sysfs:file { write };
+allow bluetooth device:chr_file { read write open };
+allow bluetooth unlabeled:dir { search };
