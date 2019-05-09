@@ -1,0 +1,2 @@
+allow mm-pp-daemon vndbinder_device:chr_file { read write };
+allow mm-pp-daemon sysfs:file { read };
