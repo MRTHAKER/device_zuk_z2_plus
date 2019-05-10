@@ -1,0 +1,3 @@
+allow mediaprovider dpmtcm_socket:sock_file w_file_perms;
+allow mediaprovider dpmwrapper_socket:sock_file w_file_perms;
+allow mediaprovider dpmd:unix_stream_socket connectto;

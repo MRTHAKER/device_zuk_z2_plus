@@ -1,0 +1,33 @@
+type qti-khung, domain;
+type qti-khung_exec, exec_type, file_type;
+
+#allow only for userdebug builds
+userdebug_or_eng(`
+typeattribute qti-khung coredomain;
+# Added to allow get prop on persist.vendor.khung.disable
+get_prop(qti-khung, persist_khung_prop)
+
+init_daemon_domain(qti-khung)
+allow qti-khung kernel:key search;
+
+# Added to allow execute for toybox/toolbox
+allow qti-khung toolbox_exec:file { execute execute_no_trans getattr open read map };
+# Added to allow use of ps and grep commands in script
+allow qti-khung system_file:file execute_no_trans;
+
+# Added to allow read acesses on /proc/pid
+r_dir_file(qti-khung, domain)
+
+# Added to allow executing  through /system/bin/sh
+allow qti-khung shell_exec:file {rx_file_perms entrypoint};
+
+# Added to allow for invoking script through exec_background
+allow init qti-khung:process { noatsecure rlimitinh siginh transition };
+
+# Added to allow for write access on files inside /proc/pid/
+allow qti-khung cameraserver:file write;
+allow qti-khung surfaceflinger:file write;
+allow qti-khung system_server:file write;
+allow qti-khung audioserver:file write;
+allow qti-khung vold:file write;
+')

@@ -1,2 +1,1 @@
-allow hal_sensors_default hal_sensors_default:socket { read ioctl };
-allow hal_sensors_default mnt_vendor_file:file { read open };
+allow hal_sensors_default sysfs:file { open read write setattr };

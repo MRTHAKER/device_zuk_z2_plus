@@ -1,0 +1,11 @@
+type qtelephony, domain;
+typeattribute qtelephony coredomain;
+
+app_domain(qtelephony)
+
+hwbinder_use(qtelephony);
+get_prop(qtelephony, hwservicemanager_prop);
+add_hwservice(qtelephony, hal_atfwd_hwservice);
+
+allow qtelephony system_api_service:service_manager find;
+allow qtelephony app_api_service:service_manager find;

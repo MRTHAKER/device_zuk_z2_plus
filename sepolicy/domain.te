@@ -1,0 +1,73 @@
+get_prop(domain, persist_dpm_prop)
+
+r_dir_file({domain - isolated_app}, sysfs_socinfo);
+r_dir_file({domain - isolated_app}, sysfs_esoc);
+r_dir_file({domain - isolated_app}, sysfs_ssr);
+
+dontaudit domain kernel:system module_request;
+
+# Allow all domains read access to sysfs_thermal
+r_dir_file({domain - isolated_app}, sysfs_thermal);
+
+# Allow domain to read /vendor -> /system/vendor
+allow domain system_file:lnk_file getattr;
+
+allow domain vendor_gralloc_prop:file r_file_perms;
+
+allow domain vendor_configs_file:file r_file_perms;
+
+not_full_treble(`allow domain vendor_file:dir r_dir_perms;')
+
+# Added now for smoother UI
+# Remove this after HIDL implementation
+userdebug_or_eng(`
+allow domain hal_graphics_composer:fd use;
+')
+dontaudit domain persist_dpm_prop:file r_file_perms;
+
+neverallow {
+    coredomain
+    -init
+    -ueventd
+    } vendor_persist_type: { dir file } *;
+
+allow { domain - coredomain } mnt_vendor_file:lnk_file r_file_perms;
+
+allowxperm domain domain:icmp_socket ioctl { unpriv_sock_ioctls unpriv_tty_ioctls };
+
+# For compliance testing test suite reads vendor_security_path_level
+# Which is the public readable property “ ro.vendor.build.security_patch
+get_prop(domain, vendor_security_patch_level_prop)
+get_prop(domain, public_vendor_default_prop)
+
+allow domain qti_debugfs:dir search;
+
+allow { domain - isolated_app } sysfs_kgsl_gpuclk:file r_file_perms;
+allow { domain - isolated_app } sysfs_kgsl_gpuclk:lnk_file r_file_perms;
+
+# Latest versions of linux kernel do a check for dac_read_search before
+# verifying dac_override capability. So adding a dont audit rule for
+# dac_read_search for domains that already have dac_override exceptions
+# will address denials of dac_read_search from these domains.
+# kernel commit: https://github.com/torvalds/linux/commit/2a4c22426955d4fc04069811997b7390c0fb858e
+
+dontaudit {
+    dnsmasq
+    dumpstate
+    init
+    installd
+    install_recovery
+    lmkd
+    netd
+    perfprofd
+    postinstall_dexopt
+    recovery
+    sdcardd
+    tee
+    ueventd
+    uncrypt
+    vendor_init
+    vold
+    vold_prepare_subdirs
+    zygote
+} self:capability dac_read_search;

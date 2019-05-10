@@ -1,0 +1,19 @@
+type smcinvoke_daemon, domain, coredomain;
+type smcinvoke_daemon_exec, exec_type, file_type;
+
+init_daemon_domain(smcinvoke_daemon)
+
+#Allow smcinvoke_daemon to use Binder IPC
+binder_use(smcinvoke_daemon)
+
+#Allow apps to interact with smcinvoke_daemon
+binder_call(smcinvoke_daemon, system_app)
+
+#Mark smcinvoke_daemon as a Binder service domain
+binder_service(smcinvoke_daemon)
+
+#Allow access to smcinvoke device
+allow smcinvoke_daemon smcinvoke_device:chr_file rw_file_perms;
+
+add_service(smcinvoke_daemon, MinkBinderSvc)
+allow smcinvoke_daemon system_app:unix_stream_socket connectto;

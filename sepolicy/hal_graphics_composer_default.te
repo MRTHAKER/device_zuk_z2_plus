@@ -1,5 +1,0 @@
-allow hal_graphics_composer_default hal_graphics_composer_default:netlink_kobject_uevent_socket { read create };
-allow hal_graphics_composer_default sysfs:file { write open };
-allow hal_graphics_composer_default vndbinder_device:chr_file { ioctl read write open };
-allow hal_graphics_composer_default device:chr_file { ioctl write };
-allow hal_graphics_composer_default default_android_hwservice:hwservice_manager { find };

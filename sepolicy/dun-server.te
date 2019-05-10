@@ -1,0 +1,14 @@
+type dun-server, domain;
+type dun-server_exec, exec_type, file_type;
+typeattribute  dun-server  bluetoothdomain;
+typeattribute dun-server coredomain;
+
+allow bluetooth dun-server:unix_stream_socket connectto;
+allow dun-server {
+    serial_device
+    smd7_device
+}:chr_file rw_file_perms;
+
+init_daemon_domain(dun-server)
+
+bluetooth_domain(dun-server)
