@@ -51,7 +51,7 @@ PRODUCT_PACKAGES += \
     vendor.display.color@1.0-impl \
     vendor.display.color@1.0-service \
     vendor.display.config@1.1 \
-    vendor.display.config@1.1_vendor \
+    vendor.display.config@1.1_vendor
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -70,8 +70,8 @@ PRODUCT_PACKAGES += \
 
 # GNSS HAL
 PRODUCT_PACKAGES += \
-   android.hardware.gnss@1.1-impl-qti \
-   android.hardware.gnss@1.1-service-qti
+   android.hardware.gnss@1.0-impl-qti \
+   android.hardware.gnss@1.0-service-qti
 
 # Healthd
 PRODUCT_PACKAGES += \
@@ -114,11 +114,6 @@ PRODUCT_PACKAGES += \
 # WiFi HAL
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service
-
-#VR
-PRODUCT_PACKAGES += \
-    android.hardware.vr@1.0-impl \
-    android.hardware.vr@1.0-service
 
 # HIDL
 PRODUCT_PACKAGES += \
