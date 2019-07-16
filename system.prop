@@ -96,6 +96,7 @@ vendor.audio.use.sw.ape.decoder=true
 # Perf
 ro.vendor.qti.sys.fw.bg_apps_limit=60
 ro.vendor.extension_library=libqti-perfd-client.so
+vendor.perf.gestureflingboost.enable=true
 
 # Radio
 DEVICE_PROVISIONED=1
