@@ -203,7 +203,7 @@ PRODUCT_PACKAGES += \
 
 #Power
 PRODUCT_PACKAGES += \
-     power.qcom
+     power.msm8996
 
 # Sensors
 PRODUCT_COPY_FILES += \
