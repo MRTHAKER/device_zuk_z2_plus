@@ -70,12 +70,6 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # Boot animation
 TARGET_BOOT_ANIMATION_RES :=1920
 
-# HWUI overrides
-$(call inherit-product, vendor/derp/build/configs/phone-xxxhdpi-3072-hwui-memory.mk)
-
-# Dalvik overrides
-$(call inherit-product, vendor/derp/build/configs/phone-xxxhdpi-3072-dalvik-heap.mk)
-
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
 
