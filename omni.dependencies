@@ -1,0 +1,50 @@
+[
+  {
+     "remote": "omnirom",
+     "repository": "android_device_qcom_caf-sepolicy",
+     "target_path": "device/qcom/sepolicy",
+     "revision": "android-9.0"
+   },
+   {
+     "remote": "omnirom",
+     "repository": "android_packages_apps_SnapdragonCamera2",
+     "target_path": "packages/apps/SnapdragonCamera2",
+     "revision": "android-9.0"
+   },
+   {
+     "remote": "omnirom",
+     "repository": "android_vendor_qcom_opensource_commonsys",
+     "target_path": "vendor/qcom/opensource/commonsys",
+     "revision": "android-9.0"
+   },
+    {
+    "remote": "omnirom",
+    "repository": "android_hardware_qcom_display-caf-msm8996",
+    "target_path": "hardware/qcom/display-caf-msm8996",
+    "revision": "android-9.0"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_hardware_qcom_audio-caf-msm8996",
+    "target_path": "hardware/qcom/audio-caf-msm8996",
+    "revision": "android-9.0"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_hardware_qcom_media-caf-msm8996",
+    "target_path": "hardware/qcom/media-caf-msm8996",
+    "revision": "android-9.0"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "vendor_qcom_opensource_dataservices",
+    "target_path": "vendor/qcom/opensource/dataservices",
+    "revision": "android-9.0"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_hardware_qcom_wlan-caf",
+    "target_path": "hardware/qcom/wlan-caf",
+    "revision": "android-9.0"
+  }
+]
