@@ -242,10 +242,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_BOOT_JARS += \
     WfdCommon
 
-# Offmode Charging
-PRODUCT_PACKAGES += \
-    charger_res_images
-
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
