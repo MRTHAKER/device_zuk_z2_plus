@@ -55,7 +55,6 @@ on boot
     write /proc/sys/kernel/sched_boost 1
 
 on charger
-    wait /dev/block/platform/soc/${ro.boot.bootdevice}
     # Enable UFS powersaving
     write /sys/devices/soc/${ro.boot.bootdevice}/clkscale_enable 1
     write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 1
@@ -197,3 +196,8 @@ service vendor.hvdcp_opti /vendor/bin/hvdcp_opti
     class main
     user root
     group system wakelock
+
+service charger /sbin/chargeonlymode
+    class charger
+    group system graphics
+    seclabel u:r:healthd:s0
