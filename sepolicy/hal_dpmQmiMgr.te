@@ -1,0 +1,4 @@
+allow hal_dpmQmiMgr sysfs_msm_subsys:dir search;
+allow hal_dpmQmiMgr sysfs_msm_subsys:file { setattr rw_file_perms getattr };
+allow hal_dpmQmiMgr sysfs_soc:file { setattr rw_file_perms getattr };
+allow hal_dpmQmiMgr sysfs_soc:dir rw_dir_perms;

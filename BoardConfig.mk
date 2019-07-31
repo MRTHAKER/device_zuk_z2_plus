@@ -51,7 +51,7 @@ TARGET_2ND_CPU_VARIANT := kryo
 TARGET_USES_64_BIT_BINDER := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff
 BOARD_KERNEL_CMDLINE += loop.max_part=7
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware_mnt/image
@@ -63,7 +63,7 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_SOURCE := kernel/zuk/msm8996
-TARGET_KERNEL_CONFIG := z2_plus_defconfig
+TARGET_KERNEL_CONFIG := alchemy_defconfig
 
 # Audio
 AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
@@ -204,8 +204,7 @@ TARGET_RIL_VARIANT := caf
 TARGET_USES_OLD_MNC_FORMAT := true
 
 # SELinux
-#-include device/qcom/sepolicy/sepolicy.mk
-# BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Tap to wake
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/touch/tp_dev/gesture_on"

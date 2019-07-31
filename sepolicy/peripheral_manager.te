@@ -1,0 +1,4 @@
+r_dir_file(vendor_per_mgr, sysfs_msm_subsys)
+allow vendor_per_mgr sysfs_msm_subsys:file r_file_perms;
+r_dir_file(vendor_per_mgr, vfat)
+allow vendor_per_mgr vfat:file r_file_perms;

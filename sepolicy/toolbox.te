@@ -1,0 +1,12 @@
+allow toolbox property_socket:sock_file rw_file_perms;
+allow toolbox init:fifo_file rw_file_perms;
+allow toolbox sysfs_soc:dir rw_dir_perms;
+allow toolbox sysfs_soc:file rw_file_perms;
+allow toolbox vendor_mbn_data_file:dir { getattr setattr rw_dir_perms };
+allow toolbox vendor_mbn_data_file:file { rw_file_perms getattr setattr };
+allow toolbox self:capability dac_override;
+allow toolbox init:unix_stream_socket connectto;
+allow toolbox mnt_vendor_file:dir { getattr setattr rw_dir_perms };
+allow toolbox mnt_vendor_file:file { getattr setattr rw_file_perms };
+allow toolbox sensors_persist_file:dir { rw_dir_perms getattr setattr open search };
+allow toolbox self:capability fowner;
