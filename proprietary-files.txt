@@ -1,12 +1,17 @@
-# ADSP
-vendor/bin/adsprpcd
-vendor/lib/libadsprpc.so
-vendor/lib/libadsp_default_listener.so
-vendor/lib/libfastcvadsp_stub.so
-vendor/lib/libfastcvopt.so
-vendor/lib64/libadsprpc.so
-vendor/lib64/libadsp_default_listener.so
-vendor/lib64/libfastcvadsp_stub.so
+# ADSP - from LA.UM.7.5.r1-04800-8x96.0
+vendor/bin/adsprpcd|ef200e3bce4429fd9461c74330a003f069ffd5b3
+vendor/lib64/libadsprpc.so|784c6e95270dbf2a62f481cc91493b94db8fb56c
+vendor/lib64/libadsp_default_listener.so|bddcdb6aa9efa39f12fc830fc54d42d8e45409dd
+vendor/lib64/libfastcvadsp_stub.so|e25929713605e70417dee54b362b98d04a860f47
+vendor/lib64/libfastcvopt.so|d3fde4207c495781d456a1cd10b338ce6ff790b5
+vendor/lib64/libmdsprpc.so|cb7a68fce69362b0ef5c848818516bf9f16cad8c
+vendor/lib/libadsprpc.so|336ed994eb455e7473641b3f35e0d9d2f99482c3
+vendor/lib/libadsp_default_listener.so|58d05c4794c6ceb7b59e332c909a79ab528a4f31
+vendor/lib/libadsp_hvx_callback_skel.so|b7e47d8d0c011caea30daf974de81eb01bb90268
+vendor/lib/libadsp_hvx_stub.so|5842e47b5929e15c8b63f1aa4795ca3432debebb
+vendor/lib/libfastcvadsp_stub.so|6b50fd7d53811b51e06fedd87c12a794d0c2f645
+vendor/lib/libfastcvopt.so|4954e60822bb3aad56525d5292cac3eb938169da
+vendor/lib/libmdsprpc.so|918dcaef9cf7adbda48f5dae44d037510190785f
 
 # Audio Amplifier
 lib64/libtfa98xx.so:vendor/lib64/libtfa98xx.so
