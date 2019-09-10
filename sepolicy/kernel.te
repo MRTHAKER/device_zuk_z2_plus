@@ -1,6 +1,9 @@
-allow kernel debugfs_ipc:dir search;
-allow kernel self:capability { dac_override };
-allow kernel self:capability { dac_read_search };
-allow kernel self:security setenforce;
-allow kernel init:process noatsecure;
 
+r_dir_file(kernel, firmware_file)
+# ipc
+allow kernel debugfs_ipc:dir search;
+
+# for diag over socket
+userdebug_or_eng(`
+  allow kernel self:socket create;
+')
