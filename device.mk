@@ -198,7 +198,7 @@ PRODUCT_COPY_FILES += \
 
 # IMS
 PRODUCT_PACKAGES += \
-    ims-ext-common \
+    ims-ext-common_system \
     android.hardware.radio.config@1.0 \
     android.hardware.secure_element@1.0
 
