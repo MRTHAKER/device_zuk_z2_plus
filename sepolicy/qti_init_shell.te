@@ -1,6 +1,0 @@
-allow qti_init_shell sysfs:file rw_file_perms;
-allow qti_init_shell rootfs:file entrypoint;
-allow qti_init_shell shell_exec:file { read write getattr setattr };
-allow qti_init_shell self:capability sys_resource;
-allow qti_init_shell crash_dump:process noatsecure;
-allow qti_init_shell toolbox_exec:file { read write getattr setattr execute open };

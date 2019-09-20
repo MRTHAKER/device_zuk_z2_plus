@@ -1,2 +1,0 @@
-allow dpmd self:capability { dac_override };
-allow dpmd netutils_wrapper:process noatsecure;

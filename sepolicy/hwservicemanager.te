@@ -1,4 +1,0 @@
-allow hwservicemanager init:dir search;
-allow hwservicemanager init:file r_file_perms;
-allow hwservicemanager init:process getattr;
-binder_call(hwservicemanager, init)

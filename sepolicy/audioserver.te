@@ -1,5 +1,4 @@
-allow audioserver thermal_socket:sock_file {write};
-allow audioserver hal_perf_hwservice:hwservice_manager {find};
-allow audioserver thermal-engine:unix_stream_socket {connectto};
-allow audioserver hal_perf_default:binder {call};
+# Callbacks in response to rild IPC into audioserver
+binder_call(audioserver, rild)
 
+binder_call(audioserver, bootanim)
