@@ -25,8 +25,8 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import init.qcom.power.rc
-import init.qcom.usb.rc
+import /vendor/etc/init/hw/init.qcom.power.rc
+import /vendor/etc/init/hw/init.qcom.usb.rc
 
 
 on early-init
@@ -62,7 +62,7 @@ on fs
     # Start HW service manager early
     start hwservicemanager
 
-    mount_all fstab.qcom
+    mount_all /vendor/etc/fstab.qcom
 
 on late-fs
    
@@ -75,7 +75,7 @@ on late-fs
 
     # Mount RW partitions which need run fsck
 
-    mount_all fstab.qcom
+    mount_all /vendor/etc/fstab.qcom
     
     # boot time fs tune
     write /sys/block/sda/queue/iostats 0
@@ -234,7 +234,7 @@ on post-fs-data
 
 on early-boot
 
-exec u:r:qti_init_shell:s0 -- /init.qcom.early_boot.sh
+exec u:r:qti_init_shell:s0 -- /vendor/bin/init.qcom.early_boot.sh
 
     # Set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -426,7 +426,7 @@ on boot
 
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_complete
-    swapon_all /fstab.qcom
+    swapon_all /vendor/etc/fstab.qcom
 
     # end boot time fs tune
     write /sys/block/sda/queue/read_ahead_kb 128
@@ -552,7 +552,7 @@ service loc_launcher /vendor/bin/loc_launcher
     group gps
     writepid /dev/cpuset/system-background/tasks
 
-service qcom-sh /system/bin/sh /init.qcom.sh
+service qcom-sh /vendor/bin/init.qcom.sh
     class late_start
     user root
     group root system radio
@@ -573,7 +573,7 @@ service ril-daemon2 /vendor/bin/hw/rild -c 2
     group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service sensor-sh /system/bin/sh /init.qcom.sensors.sh
+service sensor-sh /vendor/bin/init.qcom.sensors.sh
     class core
     user root
     oneshot
