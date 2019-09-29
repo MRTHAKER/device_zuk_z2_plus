@@ -315,6 +315,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.stagefright.ccodec=0
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
