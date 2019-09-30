@@ -118,7 +118,7 @@ PRODUCT_PACKAGES += \
     camera.msm8996 \
     libmm-qcamera \
     mm-qcamera-app \
-    Snap
+    Camera2
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/camera/msm8996_camera.xml:$(TARGET_COPY_OUT_VENDOR)/etc/camera/msm8996_camera.xml \
