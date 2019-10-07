@@ -72,8 +72,8 @@ LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/util \
         $(LOCAL_PATH)/HAL3 \
         hardware/libhardware/include/hardware \
-        hardware/qcom/media/libstagefrighthw \
-        hardware/qcom/media/mm-core/inc \
+        hardware/qcom-caf/msm8996/media/libstagefrighthw \
+        hardware/qcom-caf/msm8996/media/mm-core/inc \
         system/core/include/cutils \
         system/core/include/system \
         system/media/camera/include/system
@@ -82,10 +82,7 @@ LOCAL_C_INCLUDES := \
 LOCAL_C_INCLUDES += \
         $(LOCAL_PATH)/HAL
 
-ifeq ($(TARGET_COMPILE_WITH_MSM_KERNEL),true)
-LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
-LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
-endif
+LOCAL_HEADER_LIBRARIES := generated_kernel_headers
 ifeq ($(TARGET_TS_MAKEUP),true)
 LOCAL_CFLAGS += -DTARGET_TS_MAKEUP
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/HAL/tsMakeuplib/include
@@ -102,7 +99,7 @@ endif
 LOCAL_C_INCLUDES += \
         $(TARGET_OUT_HEADERS)/qcom/display
 LOCAL_C_INCLUDES += \
-        hardware/qcom/display/libqservice
+        hardware/qcom-caf/msm8996/display/libqservice
 LOCAL_SHARED_LIBRARIES := libcamera_client liblog libhardware libutils libcutils libdl libsync libgui
 LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface libui libcamera_metadata
 LOCAL_SHARED_LIBRARIES += libqdMetaData libqservice libbinder
