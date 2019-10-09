@@ -68,9 +68,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
-# Boot animation
-TARGET_BOOT_ANIMATION_RES :=1920
-
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
 
@@ -245,8 +242,8 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
 
 # Wi-Fi Display
-PRODUCT_BOOT_JARS += \
-    WfdCommon
+#PRODUCT_BOOT_JARS += \
+ #   WfdCommon
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -322,3 +319,5 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
     $(LOCAL_PATH)/wifi/hostapd.accept:system/etc/hostapd/hostapd.accept \
     $(LOCAL_PATH)/wifi/hostapd.deny:system/etc/hostapd/hostapd.deny
+
+PRODUCT_VENDOR_KERNEL_HEADERS := hardware/qcom/msm8996/kernel-headers
