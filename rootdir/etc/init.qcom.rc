@@ -59,7 +59,7 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
-    mount_all fstab.qcom
+    mount_all /system/vendor/etc/fstab.qcom
 
 on late-fs
    
@@ -70,10 +70,6 @@ on late-fs
     start vendor.configstore-hal
     start vendor.gralloc-2-0
 
-    # Mount RW partitions which need run fsck
-
-    mount_all fstab.qcom
-    
     # boot time fs tune
     write /sys/block/sda/queue/iostats 0
     write /sys/block/sda/queue/scheduler cfq
@@ -423,7 +419,7 @@ on boot
 
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_complete
-    swapon_all /fstab.qcom
+    swapon_all /system/vendor/etc/fstab.qcom
 
     # end boot time fs tune
     write /sys/block/sda/queue/read_ahead_kb 128
