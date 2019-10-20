@@ -200,7 +200,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     ims-ext-common_system \
     android.hardware.radio.config@1.0 \
-    android.hardware.secure_element@1.0
+    android.hardware.secure_element@1.0 \
+    ims-ext-common \
+    ims_ext_common.xml
 
 #Power
 PRODUCT_PACKAGES += \
@@ -214,6 +216,14 @@ PRODUCT_COPY_FILES += \
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
+
+# Telephony
+PRODUCT_PACKAGES += \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += \
+    ims-ext-common_system \
+    telephony-ext
 
 # IPv6
 PRODUCT_PACKAGES += \
@@ -268,6 +278,23 @@ PRODUCT_COPY_FILES += \
 # QMI
 PRODUCT_PACKAGES += \
     libjson
+
+# HIDL Wrapper
+PRODUCT_PACKAGES += \
+    qti-telephony-hidl-wrapper \
+    qti_telephony_hidl_wrapper.xml
+
+# QTI Telephony Utils
+PRODUCT_PACKAGES += \
+    qti-telephony-utils \
+    qti_telephony_utils.xml
+
+# QTI VNDK Framework Detect
+PRODUCT_PACKAGES += \
+    libvndfwk_detect_jni.qti \
+    libqti_vndfwk_detect \
+    libvndfwk_detect_jni.qti.vendor \
+    libqti_vndfwk_detect.vendor
 
 # TextClassifier smart selection model files
 PRODUCT_PACKAGES += \
