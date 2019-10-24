@@ -172,9 +172,10 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-     libcurl \
+    libwifi-hal-ctrl \
     libgnss \
-    libgnsspps \
+    libbatching \
+    libgeofencing \
     libsensorndkbridge
 
 PRODUCT_COPY_FILES += \
