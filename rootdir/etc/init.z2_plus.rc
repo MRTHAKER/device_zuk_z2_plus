@@ -53,6 +53,121 @@ on boot
 
     # Enable sched boost
     write /proc/sys/kernel/sched_boost 1
+  
+    # KeyDisabler
+    chown system system /sys/devices/soc/soc:fpc1020/utouch_disable
+    chmod 0660 /sys/devices/soc/soc:fpc1020/utouch_disable
+
+    #dt2w
+    write /sys/devices/virtual/touch/tp_dev/gesture_on 1
+
+    #added touch gesture wake node permission
+    chown system system /sys/devices/virtual/touch/tp_dev/gesture_on
+    chmod 0660 /sys/devices/virtual/touch/tp_dev/gesture_on
+
+    # Access permission for fingerprint
+    chown system system /sys/devices/soc/soc:fpc1020/irq
+    chmod 0660 /sys/devices/soc/soc:fpc1020/irq
+    chown system system /sys/devices/soc/soc:fpc1020/wakeup
+    chmod 0660 /sys/devices/soc/soc:fpc1020/wakeup
+    chown system system /sys/devices/soc/soc:fpc1020/key
+    chmod 0660 /sys/devices/soc/soc:fpc1020/key
+    chown system system /sys/devices/soc/soc:fpc1020/wl
+    chmod 0660 /sys/devices/soc/soc:fpc1020/wl
+    chown system system /sys/devices/soc/soc:fpc1020/screen
+    chmod 0660 /sys/devices/soc/soc:fpc1020/screen
+
+    # Access permission for secure touch
+    chmod 0660 /sys/devices/soc/75ba000.i2c/i2c-12/12-0020/secure_touch_enable
+    chmod 0440 /sys/devices/soc/75ba000.i2c/i2c-12/12-0020/secure_touch
+    chown system drmrpc /sys/devices/soc/75ba000.i2c/i2c-12/12-0020/secure_touch_enable
+    chown system drmrpc /sys/devices/soc/75ba000.i2c/i2c-12/12-0020/secure_touch
+ 
+    # Access permission for smartPA
+    chmod 0666 /dev/i2c-3
+    chmod 0666 /dev/i2c-9
+
+   # Torch
+    chown system system /sys/class/leds/led:torch_0/brightness
+    chmod 666 /sys/class/leds/led:torch_0/brightness
+    chown system system /sys/class/leds/led:torch_1/brightness
+    chmod 666 /sys/class/leds/led:torch_1/brightness
+    chown system system /sys/class/leds/led:switch/brightness
+    chmod 666 /sys/class/leds/led:switch/brightness
+
+    # RGB light
+    chown system system /sys/class/leds/red/brightness
+    chown system system /sys/class/leds/green/brightness
+    chown system system /sys/class/leds/blue/brightness
+
+    chown system system /sys/class/leds/red/pause_lo
+    chown system system /sys/class/leds/green/pause_lo
+    chown system system /sys/class/leds/blue/pause_lo
+
+    chown system system /sys/class/leds/red/pause_hi
+    chown system system /sys/class/leds/green/pause_hi
+    chown system system /sys/class/leds/blue/pause_hi
+
+    chown system system /sys/class/leds/red/blink
+    chown system system /sys/class/leds/green/blink
+    chown system system /sys/class/leds/blue/blink
+
+    chown system system /sys/class/leds/rgb/rgb_blink
+
+    chown system system /sys/class/leds/red/ramp_step_ms
+    chown system system /sys/class/leds/green/ramp_step_ms
+    chown system system /sys/class/leds/blue/ramp_step_ms
+
+    chown system system /sys/class/leds/red/duty_pcts
+    chown system system /sys/class/leds/green/duty_pcts
+    chown system system /sys/class/leds/blue/duty_pcts
+
+    chown system system /sys/class/leds/red/start_idx
+    chown system system /sys/class/leds/green/start_idx
+    chown system system /sys/class/leds/blue/start_idx
+
+    chown system system /sys/class/leds/blue/lut_flags
+    chown system system /sys/class/leds/red/lut_flags
+    chown system system /sys/class/leds/green/lut_flags
+
+    chmod 660 /sys/class/leds/red/brightness
+    chmod 660 /sys/class/leds/green/brightness
+    chmod 660 /sys/class/leds/blue/brightness
+    chmod 660 /sys/class/leds/red/ramp_step_ms
+    chmod 660 /sys/class/leds/green/ramp_step_ms
+    chmod 660 /sys/class/leds/blue/ramp_step_ms
+    chmod 660 /sys/class/leds/red/duty_pcts
+    chmod 660 /sys/class/leds/green/duty_pcts
+    chmod 660 /sys/class/leds/blue/duty_pcts
+    chmod 660 /sys/class/leds/red/start_idx
+    chmod 660 /sys/class/leds/green/start_idx
+    chmod 660 /sys/class/leds/blue/start_idx
+    chmod 660 /sys/class/leds/rgb/rgb_blink
+    chmod 660 /sys/class/leds/blue/lut_flags
+    chmod 660 /sys/class/leds/red/lut_flags
+    chmod 660 /sys/class/leds/green/lut_flags
+
+    # Assign TCP buffer thresholds to be ceiling value of technology maximums
+    # Increased technology maximums should be reflected here.
+    write /proc/sys/net/core/rmem_max  8388608
+    write /proc/sys/net/core/wmem_max  8388608
+
+    # Enable default router information in RA
+    write /proc/sys/net/ipv6/conf/default/accept_ra_defrtr 1
+
+    # To prevent out of order acknowledgements from making
+    # connection tracking to treat them as not belonging to
+    # the connection they belong to.
+    # Otherwise, a weird issue happens in which some long
+    # connections on high-throughput links get dropped when
+    # an ack packet comes out of order
+    write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
+
+    # Allow access for CCID command/response timeout configuration
+    chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
+
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
 
 on charger
     # Enable UFS powersaving
@@ -186,18 +301,6 @@ on property:sys.boot_completed=1
 on property:init.svc.recovery=running
     trigger enable-low-power
 
-service energy-awareness /vendor/bin/energy-awareness
-    class main
-    user root
-    group system
-    oneshot
-
-service vendor.hvdcp_opti /vendor/bin/hvdcp_opti
-    class main
-    user root
-    group system wakelock
-
 service charger /sbin/chargeonlymode
     class charger
     group system graphics
-    seclabel u:r:healthd:s0
