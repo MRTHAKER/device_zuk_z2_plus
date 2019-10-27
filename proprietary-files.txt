@@ -341,9 +341,7 @@ vendor/bin/lowi-server|18140d8c4fe8965755ebc289d9b0b3a3347c219a
 vendor/bin/slim_daemon|4f2737be7f8715b4ed9f43dbb3f03889ed9ca5c7
 vendor/bin/xtra-daemon|e2746de081f89ff3cb4caebbba9a3d81e53ebfbd
 vendor/etc/cacert_location.pem|0789bf799c7e45d352a83e2f79ddb0cea86db85b
-vendor/etc/vintf/manifest/vendor.qti.gnss@3.0-service.xml|9b2f6691d6c224bcb9ab9a0d57adfb9e52f1b53e
 vendor/etc/xtra_root_cert.pem|f55a31ec4d9cf8ce2724acadecf00c779f8767db
-vendor/lib64/hw/vendor.qti.gnss@3.0-impl.so|9fad52ca1637d7479302468e20d105cf121d2658
 vendor/lib64/libdataitems.so|854b345c503327addc4a82bfb2294de261a79048
 vendor/lib64/libgdtap.so|2f9365d0ca224a1977b6dfb84a6f4ea551e90289
 vendor/lib64/libizat_client_api.so|b85018c41fb06de3e2f877288b5d8d18ea00077b
@@ -362,8 +360,6 @@ vendor/lib64/vendor.qti.gnss@1.1.so|239fef6bce72f51844a4d019566abeb3f7a38c74
 vendor/lib64/vendor.qti.gnss@1.2.so|67a3ed98b50eb0ef1c824169759ed7f17c906c8d
 vendor/lib64/vendor.qti.gnss@2.0.so|4fa27005b3a927b0da0bd860e5730b53c8efa29d
 vendor/lib64/vendor.qti.gnss@2.1.so|40e151a2a91eb9a4527f8b2727d73f735a4031ee
-vendor/lib64/vendor.qti.gnss@3.0-service.so|6b3c387f31f4cb91c8907362af4daa3f0cad7911
-vendor/lib64/vendor.qti.gnss@3.0.so|f6fcad23402ff41c57f229c308e59b9781ddc7d4
 vendor/lib64/libpdmapper.so|21990291a2d5d16c92be120bca05951596a74d4c
 
 # Graphics - from LA.UM.8.6.r1-01900-89xx.0
