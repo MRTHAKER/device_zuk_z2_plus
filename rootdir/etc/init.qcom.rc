@@ -80,6 +80,8 @@ on late-fs
     write /sys/block/dm-1/queue/read_ahead_kb 2048
 
 on post-fs-data
+    start vendor.qseecomd
+
     mkdir /data/vendor/misc 01771 system system
 
     # Allow writing to the kernel trace log.
