@@ -176,10 +176,11 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-     libcurl \
+    libbatching \
+    libgeofencing \
     libgnss \
-    libgnsspps \
-    libsensorndkbridge
+    libsensorndkbridge \
+    libwifi-hal-ctrl
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
