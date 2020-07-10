@@ -1,0 +1,17 @@
+type hal_fingerprint_zuk_z2, domain;
+type hal_fingerprint_zuk_z2_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_fingerprint_zuk_z2)
+
+r_dir_file(hal_fingerprint_zuk_z2, firmware_file)
+
+allow hal_fingerprint_zuk_z2 sysfs_fingerprint:dir r_dir_perms;
+allow hal_fingerprint_zuk_z2 sysfs_fingerprint:file rw_file_perms;
+
+allow hal_fingerprint_zuk_z2 tee_device:chr_file rw_file_perms;
+allow hal_fingerprint_zuk_z2 firmware_file:file r_file_perms;
+
+allow hal_fingerprint_zuk_z2 fpc_data_file:dir create_dir_perms;
+allow hal_fingerprint_zuk_z2 fpc_data_file:sock_file { create setattr unlink };
+
+allow hal_fingerprint_zuk_z2 fingerprintd_data_file:dir rw_dir_perms;
+allow hal_fingerprint_zuk_z2 fingerprintd_data_file:file create_file_perms;
