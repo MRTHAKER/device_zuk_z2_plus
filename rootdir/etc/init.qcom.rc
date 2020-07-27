@@ -447,6 +447,25 @@ on property:sys.boot_completed=1
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
+service logcat_debug /system/bin/logcat -f /cache/log.txt -v threadtime
+    class main
+    user root
+    group system
+
+service logcat_debu /system/system/bin/logcat -f /cache/log1.txt -v threadtime
+    class main
+    user root
+    group system
+
+service dmes /system/bin/dmesg -f /cache/dm.txt -v threadtime
+    class main
+    user root
+    group system
+
+service des /system/bin/dmesg -f /cache/dm2.txt
+    class main
+    user root
+    group system
 
 service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core

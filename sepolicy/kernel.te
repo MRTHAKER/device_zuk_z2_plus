@@ -1,6 +1,6 @@
 allow kernel debugfs_ipc:dir search;
-allow kernel self:capability { dac_override };
-allow kernel self:capability { dac_read_search };
-allow kernel self:security setenforce;
+#allow kernel self:capability { dac_override };
+#allow kernel self:capability { dac_read_search };
+#allow kernel self:security setenforce;
 allow kernel init:process noatsecure;
 

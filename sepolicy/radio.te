@@ -1,7 +1,1 @@
-allow radio {
-    bg_boot_complete_prop
-    bg_daemon_prop
-    bluetooth_prop
-    bootloader_boot_reason_prop
-    boottime_prop
-    }:file r_file_perms;
+

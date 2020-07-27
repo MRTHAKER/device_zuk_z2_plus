@@ -1,4 +1,4 @@
-get_prop(domain, camera_prop)
+#get_prop(domain, camera_prop)
 
 dontaudit domain self:capability sys_module;
 dontaudit domain kernel:system module_request;

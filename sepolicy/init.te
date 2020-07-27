@@ -2,24 +2,24 @@ allow init adsprpcd_file:filesystem { mount relabelfrom relabelto };
 allow init debugfs_ipc:dir relabelfrom;
 allow init debugfs_ipc:file relabelfrom;
 allow init proc_kernel_sched:file write;
-allow init sysfs_scsi_devices_0000:dir write;
-allow init vendor_file:file { execute_no_trans };
-allow init system_file:file { execute_no_trans };
-allow init sysfs_poweron_alarm:file { setattr rw_file_perms getattr };
+#allow init sysfs_scsi_devices_0000:dir write;
+#allow init vendor_file:file { execute_no_trans };
+#allow init system_file:file { execute_no_trans };
+#allow init sysfs_poweron_alarm:file { setattr rw_file_perms getattr };
 allow init sysfs_msm_power:file { setattr rw_file_perms getattr };
-allow init sysfs:file { setattr rw_file_perms getattr };
+#allow init sysfs:file { setattr rw_file_perms getattr };
 allow init sysfs_bluetooth_writable:file { setattr rw_file_perms getattr };
-allow init sysfs_ea:file { setattr rw_file_perms getattr };
-allow init sysfs_fingerprint:file { setattr rw_file_perms getattr };
-allow init hal_usb_hwservice:hwservice_manager { find add };
-allow init hal_fingerprint_hwservice:hwservice_manager { find add };
+#allow init sysfs_ea:file { setattr rw_file_perms getattr };
+#allow init sysfs_fingerprint:file { setattr rw_file_perms getattr };
+#allow init hal_usb_hwservice:hwservice_manager { find add };
+#allow init hal_fingerprint_hwservice:hwservice_manager { find add };
 allow init tee_device:chr_file { setattr rw_file_perms getattr };
 allow init sysfs_msm_perf:file { setattr rw_file_perms getattr };
-allow init shell_exec:file { execute_no_trans };
+#allow init shell_exec:file { execute_no_trans };
 allow init sysfs_boot_adsp:file { setattr rw_file_perms getattr };
 allow init sysfs_slpi:file { setattr rw_file_perms getattr };
 allow init sysfs_msm_subsys:file { setattr rw_file_perms getattr };
-allow init sysfs:dir rw_dir_perms;
+#allow init sysfs:dir rw_dir_perms;
 allow init sysfs_audio:file { setattr rw_file_perms getattr };
 allow init {
     vendor_init
@@ -32,7 +32,6 @@ allow init {
     toolbox
     zygote
     logd
-    qti_init_shell
     mediaserver
     keystore
     rild
@@ -40,14 +39,14 @@ allow init {
     wifidisplayhalservice_qti
     hal_rcsservice
     }:process noatsecure;
-binder_call(init, hwservicemanager)
+#binder_call(init, hwservicemanager)
 allow init hidl_base_hwservice:hwservice_manager add;
 allow init sensors_device:chr_file { rw_file_perms getattr };
 allow init sysfs_wlan_fwpath:file { rw_file_perms setattr };
 allow init tee_device:chr_file write;
 allow init { ion_device tee_device }:chr_file ioctl;
 allow init proc:file rw_file_perms;
-binder_call(init, system_server)
+#binder_call(init, system_server)
 allow init sysfs_thermal:file { setattr rw_file_perms getattr };
 allow init sysfs_lowmemorykiller:file { setattr rw_file_perms getattr };
 allow init sysfs_devices_system_cpu:file { setattr rw_file_perms getattr };
