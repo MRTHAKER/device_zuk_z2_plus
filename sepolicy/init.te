@@ -1,7 +1,7 @@
 allow init adsprpcd_file:filesystem { mount relabelfrom relabelto };
 allow init debugfs_ipc:dir relabelfrom;
 allow init debugfs_ipc:file relabelfrom;
-allow init proc_kernel_sched:file write;
+allow init proc_kernel_sched:file rw_file_perms;
 #allow init sysfs_scsi_devices_0000:dir write;
 #allow init vendor_file:file { execute_no_trans };
 #allow init system_file:file { execute_no_trans };
@@ -50,3 +50,4 @@ allow init proc:file rw_file_perms;
 allow init sysfs_thermal:file { setattr rw_file_perms getattr };
 allow init sysfs_lowmemorykiller:file { setattr rw_file_perms getattr };
 allow init sysfs_devices_system_cpu:file { setattr rw_file_perms getattr };
+allow init sysfs_fingerprint:file { open read setattr write };

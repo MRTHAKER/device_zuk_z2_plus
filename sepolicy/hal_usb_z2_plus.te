@@ -10,3 +10,5 @@ allow hal_usb_z2_plus sysfs_usbpd_device:dir r_dir_perms;
 allow hal_usb_z2_plus sysfs_usbpd_device:lnk_file r_file_perms;
 allow hal_usb_z2_plus sysfs_usbpd_device:file rw_file_perms;
 r_dir_file(hal_usb_z2_plus, sysfs_usb_supply);
+get_prop(hal_usb_z2_plus,hwservicemanager_prop)
+allow hal_usb_z2_plus hwservicemanager:binder { call };

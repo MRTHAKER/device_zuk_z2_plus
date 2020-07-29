@@ -3,3 +3,5 @@
 #allow hwservicemanager init:process getattr;
 #binder_call(hwservicemanager, init)
 #allow hwservicemanager init:binder { transfer };
+#allow hwservicemanager_prop hwservicemanager_prop:file r_file_perms;
+

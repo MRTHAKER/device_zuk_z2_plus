@@ -15,11 +15,11 @@
 
 /bt_firmware(/.*)?    u:object_r:bt_firmware_file:s0
 /firmware(/.*)?       u:object_r:firmware_file:s0
-/dsp(/.*)?            u:object_r:adsprpcd_file:s0
-/persist(/.*)?           u:object_r:persist_file:s0
+#/dsp(/.*)?            u:object_r:adsprpcd_file:s0
+#/persist(/.*)?           u:object_r:persist_file:s0
 
 # Hal
-/vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service\.zuk_z2 u:object_r:hal_fingerprint_zuk_z2_exec:s0
+/vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service\.zuk_z2        u:object_r:hal_fingerprint_zuk_z2_exec:s0
 
 # Binaries
 /vendor/bin/readmac   u:object_r:readmac_exec:s0
@@ -30,3 +30,6 @@
 
 # USB
 /(vendor|system/vendor)/bin/hw/android\.hardware\.usb@1\.0-service\.z2_plus           u:object_r:hal_usb_z2_plus_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.1-service.widevine           u:object_r:hal_drm_widevine_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service\.zuk_z2           u:object_r:hal_fingerprint_zuk_z2_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.1-service\.clearkey     u:object_r:hal_drm_clearkey_exec:s0

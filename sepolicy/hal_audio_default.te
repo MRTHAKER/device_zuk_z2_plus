@@ -1,3 +1,4 @@
 allow hal_audio_default sysfs_soc:dir search;
 allow hal_audio_default thermal_socket:sock_file { read write };
 allow hal_audio_default thermal-engine:unix_stream_socket { connectto };
+allow hal_audio_default sysfs:dir { read };

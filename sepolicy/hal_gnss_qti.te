@@ -1,3 +1,4 @@
 allow hal_gnss_qti sysfs_msm_subsys:dir search;
 allow hal_gnss_qti sysfs_soc:dir search;
 allow hal_gnss_qti sysfs_msm_subsys:file rw_file_perms;
+get_prop(hal_gnss_qti,vendor_pd_locater_dbg_prop)

@@ -10,3 +10,4 @@ allow toolbox init:unix_stream_socket connectto;
 #allow toolbox mnt_vendor_file:file { getattr setattr rw_file_perms };
 #allow toolbox sensors_persist_file:dir { rw_dir_perms getattr setattr open search };
 allow toolbox self:capability fowner;
+allow toolbox self:capability sys_admin;
